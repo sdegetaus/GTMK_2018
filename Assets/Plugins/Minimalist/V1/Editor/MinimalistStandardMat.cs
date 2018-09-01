@@ -40,8 +40,8 @@ public class MinimalistStandardMat : ShaderGUI {
 
 
         MaterialProperty _LM = ShaderGUI.FindProperty("_LM", properties);
-		MaterialProperty _LMColor = ShaderGUI.FindProperty("_LMColor", properties);
-		MaterialProperty _LMPower = ShaderGUI.FindProperty("_LMPower", properties);
+		//MaterialProperty _LMColor = ShaderGUI.FindProperty("_LMColor", properties);
+		//MaterialProperty _LMPower = ShaderGUI.FindProperty("_LMPower", properties);
 
         // OUTLINE
         //MaterialProperty _Outline = ShaderGUI.FindProperty("_Outline", properties);
@@ -169,10 +169,10 @@ public class MinimalistStandardMat : ShaderGUI {
 		EditorGUILayout.Space();
 
 		materialEditor.ShaderProperty (_LM, "Enable");
-		if (_LM.floatValue != 0) {
-			materialEditor.ShaderProperty (_LMColor, "Color");
-			materialEditor.ShaderProperty (_LMPower, "Power");
-		}
+		//if (_LM.floatValue != 0) {
+		//	materialEditor.ShaderProperty (_LMColor, "Color");
+		//	materialEditor.ShaderProperty (_LMPower, "Power");
+		//}
         
 		EditorGUILayout.Space ();
 		EditorGUILayout.EndVertical ();
