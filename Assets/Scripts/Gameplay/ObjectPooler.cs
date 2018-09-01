@@ -3,106 +3,67 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class PoolItem
+public class Pool
 {
-
+    public PoolTypes tag;
     public GameObject objectPrefab;
     public int size;
-    public bool shouldExpand = true;
 
-    public PoolItem(GameObject obj, int amt, bool exp = true)
+    public Pool(GameObject obj, int amt)
     {
         objectPrefab = obj;
-        size = Mathf.Max(amt, 2); //*********************************************
-        shouldExpand = exp;
+        size = Mathf.Max(amt, 2);
     }
 }
 
 public class ObjectPooler : MonoBehaviour
 {
-    public static ObjectPooler SharedInstance;
-    public List<PoolItem> Pools;
-
-
-    public List<List<GameObject>> pooledObjectsList;
-    public List<GameObject> pooledObjects;
-    private List<int> positions;
+    public static ObjectPooler instance;
+    public List<Pool> pools;
+    public Dictionary<string, Queue<GameObject>> poolDictionary;
 
     void Awake()
     {
+        instance = this;
+        poolDictionary = new Dictionary<string, Queue<GameObject>>();
 
-        SharedInstance = this;
-
-        pooledObjectsList = new List<List<GameObject>>();
-        pooledObjects = new List<GameObject>();
-        positions = new List<int>();
-
-
-        for (int i = 0; i < Pools.Count; i++)
+        foreach (Pool pool in pools)
         {
-            ObjectPoolItemToPooledObject(i);
-        }
-
-    }
-
-
-    public GameObject GetPooledObject(int index)
-    {
-
-        int curSize = pooledObjectsList[index].Count;
-        for (int i = positions[index] + 1; i < positions[index] + pooledObjectsList[index].Count; i++)
-        {
-
-            if (!pooledObjectsList[index][i % curSize].activeInHierarchy)
+            Queue<GameObject> objectPool = new Queue<GameObject>();
+            for (int i = 0; i < pool.size; i++)
             {
-                positions[index] = i % curSize;
-                return pooledObjectsList[index][i % curSize];
+                GameObject obj = Instantiate(pool.objectPrefab);
+                obj.SetActive(false);
+                objectPool.Enqueue(obj);
             }
+            poolDictionary.Add(pool.tag.ToString(), objectPool);
         }
+    }
+    
 
-        if (Pools[index].shouldExpand)
+    public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation)
+    {
+        if (!poolDictionary.ContainsKey(tag))
         {
-
-            GameObject obj = (GameObject)Instantiate(Pools[index].objectPrefab);
-            obj.SetActive(false);
-            obj.transform.parent = this.transform;
-            pooledObjectsList[index].Add(obj);
-            return obj;
-
+            Debug.LogWarning("pool doesnt exist");
+            return null;
         }
-        return null;
-    }
 
-    public List<GameObject> GetAllPooledObjects(int index)
-    {
-        return pooledObjectsList[index];
-    }
+        GameObject objectToSpawn =  poolDictionary[tag].Dequeue();
+        objectToSpawn.SetActive(true);
+        objectToSpawn.transform.position = position;
+        objectToSpawn.transform.rotation = rotation;
 
-
-    public int AddObject(GameObject obj, int amt = 3, bool exp = true)
-    {
-        PoolItem item = new PoolItem(obj, amt, exp);
-        int currLen = Pools.Count;
-        Pools.Add(item);
-        ObjectPoolItemToPooledObject(currLen);
-        return currLen;
-    }
-
-
-    void ObjectPoolItemToPooledObject(int index)
-    {
-        PoolItem item = Pools[index];
-
-        pooledObjects = new List<GameObject>();
-        for (int i = 0; i < item.size; i++)
+        IPooledObject pooledObj = objectToSpawn.GetComponent<IPooledObject>();
+        if(pooledObj != null)
         {
-            GameObject obj = (GameObject)Instantiate(item.objectPrefab);
-            obj.SetActive(false);
-            obj.transform.parent = this.transform;
-            pooledObjects.Add(obj);
+            pooledObj.OnObjectSpawn(new Vector3(40f,0,0));
         }
-        pooledObjectsList.Add(pooledObjects);
-        positions.Add(0);
 
+        poolDictionary[tag].Enqueue(objectToSpawn);
+
+        return objectToSpawn;
     }
+
+
 }

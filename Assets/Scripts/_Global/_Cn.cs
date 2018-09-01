@@ -11,13 +11,26 @@ public enum Scenes
     GameOver
 }
 
+public enum PoolTypes
+{
+    Enviroment,
+    SmallWall,
+    MediumWall,
+    LargeWall,
+    Spring,
+    Hole
+}
+
 // Class
 public class _Cn {
     //------ DEBUG ------
 
     //------ PLAYER ------
 
-    //------ GAMEPLAY ------
+    //------ GAMEPLAY ------1.6 0 -1.6
+    public const float RIGHTLANECUBE = -1.6f;
+    public const float MIDDLELANECUBE = 0f;
+    public const float LEFTLANECUBE = 1.6f;
 
     //------ ANIMATIONS ------
 
@@ -30,5 +43,5 @@ public class _Cn {
     //------ LAYERS ------
 
     //------ HELPER FUNCTIONS ------
-  
+
 }
