@@ -192,6 +192,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1357126751755204, guid: 1973aceaefc81ad47b978be4840db384, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1973aceaefc81ad47b978be4840db384, type: 2}
   m_IsPrefabParent: 0
@@ -330,7 +334,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pools:
-  - tag: Enviroment
+  - tag: 0
     objectPrefab: {fileID: 1852146773434364, guid: c4c6e536b1995144d8bfa6b6af121467,
       type: 2}
     size: 3
@@ -385,6 +389,10 @@ Prefab:
     - target: {fileID: 4808994244000702, guid: d693c34f962724b49acb60062688aa36, type: 2}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1419045338606324, guid: d693c34f962724b49acb60062688aa36, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d693c34f962724b49acb60062688aa36, type: 2}
