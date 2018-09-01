@@ -51,8 +51,8 @@ public class Obstacle : MonoBehaviour, IPooledObject {
             case 1:
                 if (type.Equals(ObstacleType.LargeWall))
                 {
-                    r = Random.Range(1, 2);
-                    this.transform.position = spawnTransform + new Vector3(0, 0, 1.5f)*Mathf.Pow(1,r);
+                    r = Random.Range(1, 3);
+                    this.transform.position = spawnTransform + new Vector3(0, 0, 1.5f * Mathf.Pow(-1, r));
                 }
                 break;
             case 2:
