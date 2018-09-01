@@ -29,9 +29,9 @@ shader "Minimalist/2 Color Gradient/Standard" {
 		[MaterialToggle] _RealtimeShadow ("RealTime Shadow", Float ) = 0
 		_ShadowColor("ShadowColor",    Color) = (0.1, 0.1, 0.1, 1)
 
-		[MaterialToggle] _LM ("Enable Lightmap", Float ) = 0
-		_LMColor ("LightMap Color", Color) = (1, 1, 1, 1)
-		_LMPower ("LightMap Power", Range(0, 5.0)) = 0
+		//[MaterialToggle] _LM ("Enable Lightmap", Float ) = 0
+		//_LMColor ("LightMap Color", Color) = (1, 1, 1, 1)
+		//_LMPower ("LightMap Power", Range(0, 5.0)) = 0
 	}
 
 	SubShader{
