@@ -11,6 +11,15 @@ public enum Scenes
     GameOver
 }
 
+public enum PoolTypes
+{
+    Enviroment,
+    SmallWall,
+    MediumWall,
+    LargeWall,
+    Spring,
+    Hole
+}
 
 // Class
 public class _Cn {

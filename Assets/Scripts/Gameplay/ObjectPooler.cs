@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class Pool
 {
-    public string tag;
+    public PoolTypes tag;
     public GameObject objectPrefab;
     public int size;
 
@@ -18,30 +18,28 @@ public class Pool
 
 public class ObjectPooler : MonoBehaviour
 {
-    public static ObjectPooler Instance;
+    public static ObjectPooler instance;
     public List<Pool> pools;
     public Dictionary<string, Queue<GameObject>> poolDictionary;
 
     void Awake()
     {
-        Instance = this;
-    }
-    private void Start()
-    {
+        instance = this;
         poolDictionary = new Dictionary<string, Queue<GameObject>>();
 
         foreach (Pool pool in pools)
         {
             Queue<GameObject> objectPool = new Queue<GameObject>();
-            for(int i = 0; i < pool.size; i++)
+            for (int i = 0; i < pool.size; i++)
             {
                 GameObject obj = Instantiate(pool.objectPrefab);
                 obj.SetActive(false);
                 objectPool.Enqueue(obj);
             }
-            poolDictionary.Add(pool.tag, objectPool);
+            poolDictionary.Add(pool.tag.ToString(), objectPool);
         }
     }
+    
 
     public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation)
     {
@@ -55,6 +53,12 @@ public class ObjectPooler : MonoBehaviour
         objectToSpawn.SetActive(true);
         objectToSpawn.transform.position = position;
         objectToSpawn.transform.rotation = rotation;
+
+        IPooledObject pooledObj = objectToSpawn.GetComponent<IPooledObject>();
+        if(pooledObj != null)
+        {
+            pooledObj.OnObjectSpawn(new Vector3(40f,0,0));
+        }
 
         poolDictionary[tag].Enqueue(objectToSpawn);
 
