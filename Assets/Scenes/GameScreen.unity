@@ -304,6 +304,14 @@ MonoBehaviour:
     objectPrefab: {fileID: 1801663581362094, guid: a33de6101a4d45949a0a47f88200c5dd,
       type: 2}
     size: 5
+  - tag: 4
+    objectPrefab: {fileID: 1568416551872062, guid: 71a9d9b95126a3e4f8f3e6ac89d0364b,
+      type: 2}
+    size: 5
+  - tag: 5
+    objectPrefab: {fileID: 1746494174317786, guid: 43318c08fd9db2b4e819d0d7ea004c1c,
+      type: 2}
+    size: 5
 --- !u!4 &1313414095
 Transform:
   m_ObjectHideFlags: 0
