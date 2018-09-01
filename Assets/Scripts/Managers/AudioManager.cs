@@ -22,9 +22,6 @@ public class AudioManager : MonoBehaviour
 
     private bool clipHasPlayed;
 
-    public delegate void OnToggleMusicEvent();
-    public static event OnToggleMusicEvent ToggleMusicEvent;
-
     private void Awake()
     {
         if (instance == null)

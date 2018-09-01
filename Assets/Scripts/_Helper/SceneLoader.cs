@@ -12,7 +12,7 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene(currentSceneIndex + 1);
     }
 
-    public void LoadStartScene()
+    public void LoadEntryScene()
     {
         SceneManager.LoadScene(0);
     }

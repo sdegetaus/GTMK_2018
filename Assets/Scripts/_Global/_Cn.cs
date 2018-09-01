@@ -4,6 +4,12 @@ using System.Collections.Generic;
 
 // Public Enums
 //
+public enum Scenes
+{
+    Entry,
+    Game,
+    GameOver
+}
 
 // Class
 public class _Cn {
