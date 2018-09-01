@@ -18,7 +18,7 @@ public enum PoolTypes
     MediumWall,
     LargeWall,
     Spring,
-    Hole
+    ThornObtacle
 }
 
 // Class
