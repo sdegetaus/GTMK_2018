@@ -42,11 +42,15 @@ public class MinimalistStandardMat : ShaderGUI {
         MaterialProperty _LM = ShaderGUI.FindProperty("_LM", properties);
 		MaterialProperty _LMColor = ShaderGUI.FindProperty("_LMColor", properties);
 		MaterialProperty _LMPower = ShaderGUI.FindProperty("_LMPower", properties);
-	
-	
-		//Displaying Properties.....................
 
-		materialEditor.ShaderProperty(_MainTexture, _MainTexture.displayName);
+        // OUTLINE
+        //MaterialProperty _Outline = ShaderGUI.FindProperty("_Outline", properties);
+        //MaterialProperty _OutlineColor = ShaderGUI.FindProperty("_OutlineColor", properties);
+        //MaterialProperty _OutlineWidth = ShaderGUI.FindProperty("_OutlineWidth", properties);
+
+        //Displaying Properties.....................
+
+        materialEditor.ShaderProperty(_MainTexture, _MainTexture.displayName);
 		materialEditor.ShaderProperty(_MainTexturePower, _MainTexturePower.displayName);
 
 		if (_MainTexture.textureValue == null) {
@@ -172,5 +176,22 @@ public class MinimalistStandardMat : ShaderGUI {
         
 		EditorGUILayout.Space ();
 		EditorGUILayout.EndVertical ();
-	}
+
+        // OUTLINE
+        //EditorGUILayout.Space();
+        //EditorGUILayout.BeginVertical("Box");
+        //EditorGUILayout.LabelField("Outline Settings", EditorStyles.boldLabel);
+        //EditorGUILayout.Space();
+
+        //materialEditor.ShaderProperty(_Outline, "Enable");
+        //if (_Outline.floatValue != 0)
+        //{
+        //    materialEditor.ShaderProperty(_OutlineColor, "Color");
+        //    materialEditor.ShaderProperty(_OutlineWidth, "Width");
+        //}
+
+        //EditorGUILayout.Space();
+        //EditorGUILayout.EndVertical();
+
+    }
 }
