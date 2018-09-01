@@ -6,9 +6,9 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Obstacle
+  m_Name: Player
   m_Shader: {fileID: 4800000, guid: e7d7abbfe43a53f40a9e6b1600339b8f, type: 3}
-  m_ShaderKeywords: _LOCALSPACE_ON _REALTIMESHADOW_ON
+  m_ShaderKeywords: _REALTIMESHADOW_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -70,10 +70,10 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _GradientHeight: 10
-    - _GradientYStartPos: -15
+    - _GradientYStartPos: 0
     - _LM: 0
     - _LMPower: 0
-    - _LocalSpace: 1
+    - _LocalSpace: 0
     - _MainTexturePower: 0
     - _Metallic: 0
     - _Mode: 0
@@ -88,16 +88,16 @@ Material:
     m_Colors:
     - _AmbientColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color1_B: {r: 0.8773585, g: 0.8773585, b: 0.8773585, a: 1}
-    - _Color1_F: {r: 0.87843144, g: 0.87843144, b: 0.87843144, a: 1}
-    - _Color1_L: {r: 0.9433962, g: 0.9433962, b: 0.9433962, a: 1}
-    - _Color1_R: {r: 0.8018868, g: 0.8018868, b: 0.8018868, a: 1}
-    - _Color2_B: {r: 0.9056604, g: 0.71342117, b: 0.7795034, a: 1}
-    - _Color2_F: {r: 0.9058824, g: 0.7137255, b: 0.7803922, a: 1}
-    - _Color2_L: {r: 0.9528302, g: 0.885413, b: 0.90858763, a: 1}
-    - _Color2_R: {r: 0.8679245, g: 0.72463506, b: 0.75561655, a: 1}
-    - _Color_D: {r: 0.6901961, g: 0.28627452, b: 0.40392157, a: 1}
-    - _Color_T: {r: 0.990566, g: 0.990566, b: 0.990566, a: 1}
+    - _Color1_B: {r: 0.9725491, g: 0.90196085, b: 0.91372555, a: 1}
+    - _Color1_F: {r: 0.9716981, g: 0.9029459, b: 0.9154463, a: 1}
+    - _Color1_L: {r: 0.9725491, g: 0.90196085, b: 0.91372555, a: 1}
+    - _Color1_R: {r: 0.9725491, g: 0.90196085, b: 0.91372555, a: 1}
+    - _Color2_B: {r: 0.9725491, g: 0.90196085, b: 0.91372555, a: 1}
+    - _Color2_F: {r: 0.9725491, g: 0.90196085, b: 0.91372555, a: 1}
+    - _Color2_L: {r: 0.9725491, g: 0.90196085, b: 0.91372555, a: 1}
+    - _Color2_R: {r: 0.9725491, g: 0.90196085, b: 0.91372555, a: 1}
+    - _Color_D: {r: 0.8666667, g: 0.4627451, b: 0.5529412, a: 1}
+    - _Color_T: {r: 1, g: 0.9843137, b: 0.99215686, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _LMColor: {r: 1, g: 1, b: 1, a: 1}
     - _ShadowColor: {r: 0, g: 0, b: 0, a: 1}
