@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ElementSpawner : MonoBehaviour {
     public static ElementSpawner instance;
+    public bool continueSpawning;
+    [SerializeField] float seconds;
     ObjectPooler objPoolerInst;
     private void Awake()
     {
@@ -17,7 +19,7 @@ public class ElementSpawner : MonoBehaviour {
             Destroy(gameObject);
             return;
         }
-        
+        continueSpawning = true;
     }
     // Use this for initialization
     void Start () {
@@ -31,12 +33,16 @@ public class ElementSpawner : MonoBehaviour {
 	public void InstantiateEnviroment()
     {
         if(objPoolerInst != null)
+        {
             objPoolerInst.SpawnFromPool(PoolTypes.Enviroment.ToString(), Vector3.zero, Quaternion.identity);
+            StartCoroutine(SpawnObjects(seconds));
+        }
+            
     }
 
     public void InstantiateObstacles()
     {
-        int r = Random.Range((int)PoolTypes.SmallWall, (int)PoolTypes.ThornObtacle);
+        int r = Random.Range((int)PoolTypes.SmallWall, (int)PoolTypes.ThornObtacle + 1);
         if (objPoolerInst != null)
             switch (r)
             {
@@ -61,5 +67,14 @@ public class ElementSpawner : MonoBehaviour {
     public void InstantiateSpring()
     {
         objPoolerInst.SpawnFromPool(PoolTypes.Spring.ToString(), new Vector3(15, 0, 0), Quaternion.identity);
+    }
+    IEnumerator SpawnObjects(float SecondsBetweenSpawns)
+    {
+        yield return new WaitForSeconds(3f);
+        while (continueSpawning)
+        {
+            InstantiateObstacles();
+            yield return new WaitForSeconds(SecondsBetweenSpawns);
+        }
     }
 }

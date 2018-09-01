@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 65365444698873092}
   - component: {fileID: 114664880888297056}
   - component: {fileID: 114402981867551712}
+  - component: {fileID: 114502674990666886}
   m_Layer: 0
   m_Name: ThornObstacle
   m_TagString: Untagged
@@ -562,6 +563,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 3
+--- !u!114 &114502674990666886
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1214182441462364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51b97d36e45887548a5a83a713f1ba3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translation: {x: -0.1, y: 0, z: 0}
+  speed: 100
 --- !u!114 &114664880888297056
 MonoBehaviour:
   m_ObjectHideFlags: 1

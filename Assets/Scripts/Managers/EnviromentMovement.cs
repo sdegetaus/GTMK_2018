@@ -26,7 +26,7 @@ public class EnviromentMovement : MonoBehaviour , IPooledObject {
         {
             ElementSpawner.instance.InstantiateEnviroment();
         }
-        transform.Translate(translation * speed);
+        transform.Translate(translation * speed * Time.deltaTime);
         
     }
 }
