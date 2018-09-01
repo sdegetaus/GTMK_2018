@@ -22,6 +22,11 @@ public class EnviromentMovement : MonoBehaviour , IPooledObject {
     }
     private void FixedUpdate()
     {
+        if (transform.position.x <= -79.5f)
+        {
+            ElementSpawner.instance.InstantiateEnviroment();
+        }
         transform.Translate(translation * speed);
+        
     }
 }
