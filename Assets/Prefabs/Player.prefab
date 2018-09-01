@@ -19,6 +19,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4213386511438996}
+  - component: {fileID: 114115423007020344}
+  - component: {fileID: 135879431761130102}
+  - component: {fileID: 54722778689789166}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -36,9 +39,6 @@ GameObject:
   - component: {fileID: 4632794404547668}
   - component: {fileID: 33967048463074324}
   - component: {fileID: 23383025423118792}
-  - component: {fileID: 135580109290650176}
-  - component: {fileID: 114457876771279146}
-  - component: {fileID: 54569257790472478}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -115,12 +115,12 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1790801333338510}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &54569257790472478
+--- !u!54 &54722778689789166
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1790801333338510}
+  m_GameObject: {fileID: 1239506985260524}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -130,26 +130,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &114457876771279146
+--- !u!114 &114115423007020344
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1790801333338510}
+  m_GameObject: {fileID: 1239506985260524}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 956e4250638f03f4382f862531a085c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!135 &135580109290650176
+--- !u!135 &135879431761130102
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1790801333338510}
+  m_GameObject: {fileID: 1239506985260524}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.5, z: 0}
