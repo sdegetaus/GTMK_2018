@@ -41,7 +41,7 @@ public class Obstacle : MonoBehaviour, IPooledObject {
 
     public void OnObjectSpawn(Vector3 spawnTransform)
     {
-        int r = Random.Range(0, 2);
+        int r = Random.Range(0, 3);
         switch (r)
         {
             case 0:
