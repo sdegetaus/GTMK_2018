@@ -18,9 +18,9 @@ public class _SantiagoTest : MonoBehaviour {
 
     private void AddOutlineMaterial()
     {
-        Material[] matArray = rend.materials;
-        matArray[1] = _Assets.instance.outlineMat;
-        rend.materials = matArray;
+        //Material[] matArray = rend.materials;
+        //matArray[1] = _Assets.instance.outlineMat;
+        //rend.materials = matArray;
     }
 
 }
