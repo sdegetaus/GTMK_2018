@@ -6,10 +6,10 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Sky
-  m_Shader: {fileID: 4800000, guid: 32f82700d2f3c75449479a861f3b9c6e, type: 3}
+  m_Name: Outline
+  m_Shader: {fileID: 4800000, guid: b3a450d56d40b3a43abbd281007d4dda, type: 3}
   m_ShaderKeywords: 
-  m_LightmapFlags: 5
+  m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -59,19 +59,20 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _Exponent: 1
+    - _GlossMapScale: 1
     - _Glossiness: 0.5
-    - _Intensity: 1
+    - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
+    - _Outline: 0.04
     - _Parallax: 0.02
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color1: {r: 0.18039216, g: 0.49411765, b: 0.75686276, a: 1}
-    - _Color2: {r: 0.05644465, g: 0.1872134, b: 0.2647059, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _UpVector: {r: 0, g: 1, b: 0, a: 0}
+    - _OutlineColor: {r: 1, g: 1, b: 1, a: 1}
