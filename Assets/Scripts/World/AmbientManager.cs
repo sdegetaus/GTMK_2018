@@ -13,16 +13,21 @@ public class AmbientManager : MonoBehaviour
     [SerializeField] private float strenght;
     [SerializeField] private Color color;
 
+    private void Update()
+    {
+        UpdatedShaderValues(isOn);
+    }
+
     public void UpdatedShaderValues(bool isMenu)
     {
         if (isMenu) {
-            isOn = true;
             Shader.SetGlobalFloat(ambientEnable, BoolToFloat(isOn));
             Shader.SetGlobalFloat(ambientPower, strenght);
             Shader.SetGlobalColor(ambientColor, color);
         } else {
-            isOn = false;
             Shader.SetGlobalFloat(ambientEnable, BoolToFloat(isOn));
+            Shader.SetGlobalFloat(ambientPower, 0.0f);
+            Shader.SetGlobalColor(ambientColor, new Color(1,1,1));
         }
     }
 
