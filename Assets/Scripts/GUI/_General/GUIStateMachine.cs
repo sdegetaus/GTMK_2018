@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace XXXGame.GUI
 {
-    public enum GUIState { MainMenu, InGame, MaxGUIState }
+    public enum GUIState { MainMenu, About, InGame, Pause,  GameOver, MaxGUIState }
 
     public class GUIStateMachine : MonoBehaviour {
 
