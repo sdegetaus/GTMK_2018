@@ -2207,7 +2207,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4213386511438996, guid: a2266d0239bb88841af86af7888ebef5, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.81
       objectReference: {fileID: 0}
     - target: {fileID: 4213386511438996, guid: a2266d0239bb88841af86af7888ebef5, type: 2}
       propertyPath: m_LocalPosition.y
@@ -2235,7 +2235,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4213386511438996, guid: a2266d0239bb88841af86af7888ebef5, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 135879431761130102, guid: a2266d0239bb88841af86af7888ebef5,
         type: 2}
@@ -4136,12 +4136,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a130c758013c48b4c91a0a455997f4e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  continueSpawning: 0
   seconds:
-  - 0.5
-  - 1
-  - 1.25
-  waitSpawnerAtStartGame: 3
+  - 3
+  - 4
+  - 5
+  waitForSpawnerAtStartGame: 0
+  continueSpawning: 0
 --- !u!114 &1787923269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4572,7 +4572,7 @@ Transform:
   - {fileID: 1884393335}
   - {fileID: 638837745}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 30, y: 45, z: 0}
 --- !u!114 &2019724301
 MonoBehaviour:

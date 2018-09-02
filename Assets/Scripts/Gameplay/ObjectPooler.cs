@@ -58,6 +58,8 @@ public class ObjectPooler : MonoBehaviour {
                 pooledObj.OnObjectSpawn(new Vector3(40f, 0, 0)); // ->
             } else { 
                 pooledObj.OnObjectSpawn(new Vector3(_Cn.ObstacleStartingPos, 0, 0));
+                pooledObj.SetUpNumber(numberOnObject);
+                numberOnObject = (numberOnObject + 1) % numberOfControlsAvailable;
             }
         }
 

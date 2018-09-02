@@ -574,12 +574,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 3
-  numbers:
-  - {fileID: 21300000, guid: 5bdcb79a6a6092244ad6679f976fda6a, type: 3}
-  - {fileID: 21300000, guid: 777dc81675144aa458e7e52abcaaa63b, type: 3}
-  - {fileID: 21300000, guid: 67239b56b26dd244390ca35392381f67, type: 3}
-  - {fileID: 21300000, guid: 3bc169a99ec8adc489a95272e3b67526, type: 3}
-  - {fileID: 21300000, guid: ae909d5affb1e5f47a2f700fab72761c, type: 3}
+  obst: {fileID: 0}
+  upNumber: 0.2
 --- !u!114 &114816035356383764
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -592,4 +588,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   translation: {x: -0.1, y: 0, z: 0}
-  speed: 100
+  speed: 50

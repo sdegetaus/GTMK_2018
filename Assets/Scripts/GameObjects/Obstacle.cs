@@ -20,11 +20,17 @@ public class Obstacle : MonoBehaviour, IPooledObject {
     bool isJumpable;
     bool isMoveable;
     int number;
+    [SerializeField] int speed;
+    Material material;
+    ObstNum obstacleNum;
+    [SerializeField] GameObject obst;
+    
     [SerializeField] float upNumber;
     
-
+    
     private void Start()
     {
+        
         switch (type)
         {
             case ObstacleType.SmallWall:
@@ -80,8 +86,15 @@ public class Obstacle : MonoBehaviour, IPooledObject {
 
     public void SetUpNumber(int num)
     {
+        if (obst != null)
+            obstacleNum = obst.GetComponent<ObstNum>();
         PlayerController.selectionEvent += SelectObstacle;
-        number = num;
+        number = num+1;
+        if (obstacleNum != null)
+        {
+            obstacleNum.SetUpNumber(num);
+        }
+            
 
     }
 
@@ -95,6 +108,7 @@ public class Obstacle : MonoBehaviour, IPooledObject {
         if(num == number)
         {
             PlayerController.translationEvent += Translate;
+            PlayerController.placeEvent += PlaceObject;
             transform.Translate(Vector3.up * upNumber);
         }
     }
@@ -102,12 +116,14 @@ public class Obstacle : MonoBehaviour, IPooledObject {
     public void Translate(TranslationDir dir)
     {
         //Tenemos que definir los límites del movimiento
+        
         switch (dir)
         {
             case TranslationDir.Up:
-                if(transform.position.x < 5)
+                Debug.Log("EstasMoviendo el objeto arriba");
+                if (transform.position.x < 10)
                 {
-                   transform.Translate(Vector3.right * Time.deltaTime * 10); // el 10 es para que se mueva machin;
+                    transform.Translate(Vector3.right * Time.deltaTime * speed); // el speed es para que se mueva machin;
                 }
                 else
                 {
@@ -115,9 +131,11 @@ public class Obstacle : MonoBehaviour, IPooledObject {
                 }
                 break;
             case TranslationDir.Down:
-                if (transform.position.x > -5)
+                Debug.Log("EstasMoviendo el objeto abajo");
+                if (transform.position.x > -10)
                 {
-                    transform.Translate(Vector3.left * Time.deltaTime * 10); // el 10 es para que se mueva machin;
+                    transform.Translate(Vector3.left * Time.deltaTime * speed); // el speed es para que se mueva machin;
+                    Debug.Log("EstasMoviendo el objeto Izquierd");
                 }
                 else
                 {
@@ -127,7 +145,8 @@ public class Obstacle : MonoBehaviour, IPooledObject {
             case TranslationDir.Left:
                 if (transform.position.z < 1.5)
                 {
-                    transform.Translate(Vector3.forward * Time.deltaTime * 15); // el 10 es para que se mueva machin;
+                    Debug.Log("EstasMoviendo el objeto derecha");
+                    transform.Translate(Vector3.forward * Time.deltaTime * speed); // el speed es para que se mueva machin;
                 }
                 else
                 {
@@ -137,7 +156,7 @@ public class Obstacle : MonoBehaviour, IPooledObject {
             case TranslationDir.Right:
                 if (transform.position.z > -1.5)
                 {
-                    transform.Translate(Vector3.back * Time.deltaTime * 15); // el 10 es para que se mueva machin;
+                    transform.Translate(Vector3.back * Time.deltaTime * speed); // el speed es para que se mueva machin;
                 }
                 else
                 {
@@ -145,6 +164,14 @@ public class Obstacle : MonoBehaviour, IPooledObject {
                 }
                 break;
         }
+        
         //transform.Translate(translation * Time.deltaTime * 10); // el 10 es para que se mueva machin;
+    }
+    public void PlaceObject()
+    {
+        Debug.Log("Object has been placed");
+        transform.position = new Vector3(transform.position.x, 0, transform.position.z);
+        PlayerController.translationEvent -= Translate;
+        PlayerController.placeEvent -= PlaceObject;
     }
 }

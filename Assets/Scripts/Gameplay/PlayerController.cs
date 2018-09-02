@@ -6,7 +6,6 @@ namespace XXXGame.Gameplay {
     public partial class PlayerController : MonoBehaviour {
 
         public static PlayerController instance;
-        private bool selectionIsMade;
 
         #region Observer
         public delegate void SelectObstacle(int selectionMade);
@@ -22,8 +21,7 @@ namespace XXXGame.Gameplay {
 
         private void Awake() {
             instance = this;
-            selectionEvent += SelectionEvent;
-            placeEvent += placeEvent;
+            
         }
         private void Update()
         {
@@ -33,6 +31,7 @@ namespace XXXGame.Gameplay {
                 //Selecting the Spring
                 if (selectionEvent != null)
                     selectionEvent(6);
+                
             }
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
@@ -66,7 +65,7 @@ namespace XXXGame.Gameplay {
                     placeEvent();
             }
 
-            if (selectionIsMade)
+            if (translationEvent != null)
             {
                 if (Input.GetKeyDown(KeyCode.LeftArrow))
                 {
@@ -87,14 +86,7 @@ namespace XXXGame.Gameplay {
             }
 
         }
-        public void SelectionEvent(int num)
-        {
-            selectionIsMade = true;
-        }
 
-        public void PlaceEvent()
-        {
-            selectionIsMade = false;
-        }
+        
     }
 }
