@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class Obstacle : MonoBehaviour, IPooledObject {
@@ -16,8 +17,12 @@ public class Obstacle : MonoBehaviour, IPooledObject {
     bool isJumpable;
     bool isMoveable;
 
+    Image numberImage;
+    public Sprite[] spritesNumbers;
+
     private void Start()
     {
+        numberImage = GetComponentInChildren<Image>();
         switch (type)
         {
             case ObstacleType.SmallWall:
@@ -37,6 +42,7 @@ public class Obstacle : MonoBehaviour, IPooledObject {
                 isMoveable = false;
                 break;
         }
+
     }
 
     public void OnObjectSpawn(Vector3 spawnTransform)
@@ -68,5 +74,15 @@ public class Obstacle : MonoBehaviour, IPooledObject {
                 break;
         }
     
+    }
+
+    public void SetUpNumber(int num)
+    {
+        numberImage.sprite = spritesNumbers[num - 1];
+    }
+
+    public void Translate(Vector3 translation)
+    {
+
     }
 }

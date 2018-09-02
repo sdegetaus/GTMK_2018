@@ -16,13 +16,19 @@ public class EnviromentMovement : MonoBehaviour , IPooledObject {
         }
         else
         {
-            this.transform.position = new Vector3(40f, 0, 0);
+            this.transform.position = new Vector3(39f, 0, 0);
         }
         spawnCount++;
     }
+
+    public void SetUpNumber(int number)
+    {
+        throw new System.NotImplementedException();
+    }
+
     private void FixedUpdate()
     {
-        if (transform.position.x <= -78f)
+        if (transform.position.x <= -79f)
         {
             ElementSpawner.instance.InstantiateEnviroment();
         }
