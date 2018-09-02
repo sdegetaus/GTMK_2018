@@ -10,15 +10,7 @@ public class AudioManager : MonoBehaviour
     private AudioSource soundFXSource;
 
     public SoundClass[] sounds;
-
-    [SerializeField]
-    private GameObject MusicToggleOnGS;
-    [SerializeField]
-    private GameObject MusicToggleOffGS;
-    [SerializeField]
-    private GameObject MusicToggleOffM;
-    [SerializeField]
-    private GameObject MusicToggleOnM;
+    
 
     private bool clipHasPlayed;
 

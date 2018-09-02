@@ -176,8 +176,9 @@ public class Obstacle : MonoBehaviour, IPooledObject {
                     transform.position = new Vector3(transform.position.x, upNumber, -1.5f);
                 }
                 break;
+                
         }
-        
+        AudioManager.instance.Play("Movement");
         //transform.Translate(translation * Time.deltaTime * 10); // el 10 es para que se mueva machin;
     }
     public void PlaceObject()
