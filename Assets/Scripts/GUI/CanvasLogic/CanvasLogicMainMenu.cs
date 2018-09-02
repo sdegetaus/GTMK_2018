@@ -5,15 +5,12 @@ using UnityEngine.UI;
 
 public class CanvasLogicMainMenu : CanvasLogic {
 
-    // GUI ELEMENTS
-    // [SerializeField] private Something smth; 
-
     public override void OnEnter() {
-        print("MainMenu >> OnEnter()");
+        AmbientManager.instance.isOn = true;
     }
 
     public override void OnLeave() {
-        print("MainMenu >> OnLeave()");
+        AmbientManager.instance.isOn = false;
     }
 
 }

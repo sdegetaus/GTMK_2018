@@ -6,7 +6,7 @@ namespace XXXGame.GUI
 {
     public enum ClickType
     {
-        Prueba, Prueba2
+        ToMenuFromAbout, ToMenuFrom 
     }
 
     public class GUIClickEventReceiver : MonoBehaviour
@@ -30,12 +30,7 @@ namespace XXXGame.GUI
             }
 
             switch (clickType) {
-                case ClickType.Prueba:
-                    GUIStateMachine.instance.ChangeGUIState(GUIState.InGame);
-                    break;
-                case ClickType.Prueba2:
-                    GUIStateMachine.instance.ChangeGUIState(GUIState.MainMenu);
-                    break;
+                
             }
         }
     }

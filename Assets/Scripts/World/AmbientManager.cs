@@ -2,24 +2,28 @@
 using System.Collections;
 
 [ExecuteInEditMode]
-public class AmbientManager : MonoBehaviour
-{
+public class AmbientManager : MonoBehaviour {
+
+    static public AmbientManager instance;
+
     // Cacheing Shaders' ID
     static readonly int ambientEnable = Shader.PropertyToID("_LM");
     static readonly int ambientColor = Shader.PropertyToID("_LMColor");
     static readonly int ambientPower = Shader.PropertyToID("_LMPower");
 
-    [SerializeField] private bool isOn = false;
+    [HideInInspector] public bool isOn = false;
     [SerializeField] private float strenght;
     [SerializeField] private Color color;
 
-    private void Update()
-    {
+    private void Awake() {
+        instance = this;
+    }
+
+    private void Update() {
         UpdatedShaderValues(isOn);
     }
 
-    public void UpdatedShaderValues(bool isMenu)
-    {
+    public void UpdatedShaderValues(bool isMenu) {
         if (isMenu) {
             Shader.SetGlobalFloat(ambientEnable, BoolToFloat(isOn));
             Shader.SetGlobalFloat(ambientPower, strenght);
@@ -33,9 +37,9 @@ public class AmbientManager : MonoBehaviour
 
     private float BoolToFloat(bool b) {
         if(isOn) {
-            return 1;
+            return 1.0f;
         } else {
-            return 0;
+            return 0.0f;
         }
     }
 }
