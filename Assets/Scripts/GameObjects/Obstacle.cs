@@ -18,7 +18,7 @@ public class Obstacle : MonoBehaviour, IPooledObject {
     bool isMoveable;
 
     Image numberImage;
-    public Sprite[] numbers;
+    public Sprite[] spritesNumbers;
 
     private void Start()
     {
@@ -78,7 +78,7 @@ public class Obstacle : MonoBehaviour, IPooledObject {
 
     public void SetUpNumber(int num)
     {
-
+        numberImage.sprite = spritesNumbers[num - 1];
     }
 
     public void Translate(Vector3 translation)
