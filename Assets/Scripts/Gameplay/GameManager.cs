@@ -28,6 +28,8 @@ namespace XXXGame.Gameplay {
         public void StartGame() {
             score = 0;
             Ball.instance.StartThiShit();
+            ElementSpawner.instance.continueSpawning = true;
+            ElementSpawner.instance.SpawnObstacles();
             AmbientManager.instance.UpdateShaderValues(false);
             GUIStateMachine.instance.ChangeGUIState(GUIState.InGame);
             CanvasLogicInGame.instance.SetScore(0);

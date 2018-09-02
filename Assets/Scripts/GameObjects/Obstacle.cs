@@ -118,7 +118,7 @@ public class Obstacle : MonoBehaviour, IPooledObject {
                 PlayerController.selectionEvent -= SelectObstacle;
             }
         }
-        if(num == 0 && type.Equals(ObstacleType.Spring))
+        if(num == 6 && type.Equals(ObstacleType.Spring))
         {
             PlayerController.translationEvent += Translate;
             PlayerController.placeEvent += PlaceObject;

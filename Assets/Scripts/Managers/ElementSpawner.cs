@@ -34,10 +34,6 @@ public class ElementSpawner : MonoBehaviour {
 	public void InstantiateEnviroment() { 
         if (objPoolerInst != null) {
             objPoolerInst.SpawnFromPool(PoolTypes.Enviroment, Vector3.zero, Quaternion.identity);
-            if (!continueSpawning) {
-                StartCoroutine(SpawnObjects());
-            }
-            continueSpawning = true; // <-- ESTO!!
         }
     }
 
@@ -68,7 +64,13 @@ public class ElementSpawner : MonoBehaviour {
     public void InstantiateSpring() {
         objPoolerInst.SpawnFromPool(PoolTypes.Spring, new Vector3(_Cn.ObstacleStartingPos, 0, 0), Quaternion.identity);
     }
-
+    public void SpawnObstacles()
+    {
+        if (continueSpawning)
+        {
+            StartCoroutine(SpawnObjects());
+        }
+    }
     private IEnumerator SpawnObjects() {
         yield return new WaitForSeconds(waitForSpawnerAtStartGame);
         while (continueSpawning) {
