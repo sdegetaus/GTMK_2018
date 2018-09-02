@@ -43,7 +43,11 @@ public class Obstacle : MonoBehaviour, IPooledObject {
                 break;
             case ObstacleType.LargeWall:
                 isJumpable = false;
-                isMoveable = false;
+                isMoveable = true;
+                break;
+            case ObstacleType.Spring:
+                isJumpable = true;
+                isMoveable = true;
                 break;
             case ObstacleType.ThornObstacle:
                 isJumpable = true;
@@ -98,14 +102,23 @@ public class Obstacle : MonoBehaviour, IPooledObject {
 
     }
 
-    public void DeleteNumber()
-    {
-        number = 0;
-        PlayerController.selectionEvent -= SelectObstacle;
-    }
+    
     public void SelectObstacle(int num)
     {
         if(num == number)
+        {
+            if (isMoveable)
+            {
+                PlayerController.translationEvent += Translate;
+                PlayerController.placeEvent += PlaceObject;
+                transform.Translate(Vector3.up * upNumber);
+            }
+            else
+            {
+                PlayerController.selectionEvent -= SelectObstacle;
+            }
+        }
+        if(num == 0 && type.Equals(ObstacleType.Spring))
         {
             PlayerController.translationEvent += Translate;
             PlayerController.placeEvent += PlaceObject;
@@ -121,7 +134,7 @@ public class Obstacle : MonoBehaviour, IPooledObject {
         {
             case TranslationDir.Up:
                 Debug.Log("EstasMoviendo el objeto arriba");
-                if (transform.position.x < 10)
+                if (transform.position.x < 5)
                 {
                     transform.Translate(Vector3.right * Time.deltaTime * speed); // el speed es para que se mueva machin;
                 }
@@ -132,7 +145,7 @@ public class Obstacle : MonoBehaviour, IPooledObject {
                 break;
             case TranslationDir.Down:
                 Debug.Log("EstasMoviendo el objeto abajo");
-                if (transform.position.x > -10)
+                if (transform.position.x > -5)
                 {
                     transform.Translate(Vector3.left * Time.deltaTime * speed); // el speed es para que se mueva machin;
                     Debug.Log("EstasMoviendo el objeto Izquierd");
