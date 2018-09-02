@@ -125,7 +125,7 @@ namespace XXXGame.Gameplay {
         public void Deactivate() {
             deactivateObjects();
             //selectionEvent = null;
-            selectionMade = false;
+            selectionMade = false;  
             translationEvent = null;
             placeEvent += PlaceSelection;
             placeByForceEvent = null;
