@@ -27,6 +27,6 @@ public class EnviromentMovement : MonoBehaviour , IPooledObject {
         if (transform.position.x <= -79f) {
             ElementSpawner.instance.InstantiateEnviroment();
         }
-        transform.Translate(translation * speed * Time.deltaTime);
+        transform.Translate(translation * ElementSpawner.instance.speedOfMovement * Time.deltaTime);
     }
 }

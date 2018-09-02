@@ -2207,7 +2207,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4213386511438996, guid: a2266d0239bb88841af86af7888ebef5, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.81
+      value: 2.18
       objectReference: {fileID: 0}
     - target: {fileID: 4213386511438996, guid: a2266d0239bb88841af86af7888ebef5, type: 2}
       propertyPath: m_LocalPosition.y
@@ -2240,10 +2240,15 @@ Prefab:
     - target: {fileID: 135879431761130102, guid: a2266d0239bb88841af86af7888ebef5,
         type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1239506985260524, guid: a2266d0239bb88841af86af7888ebef5, type: 2}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114784639561306680, guid: a2266d0239bb88841af86af7888ebef5,
+        type: 2}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3508,7 +3513,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 0
-  m_Text: GAME NAME
+  m_Text: 'Kenisis
+
+'
 --- !u!222 &1438293181
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4109,22 +4116,60 @@ MonoBehaviour:
   sounds:
   - name: MainTheme
     clip: {fileID: 8300000, guid: 2f6c07e7f131cea47a1556066236c4fd, type: 3}
-    volume: 1
+    volume: 0.7
     pitch: 1
-    priority: 90
+    priority: 0
     loop: 1
     source: {fileID: 0}
-  - name: SecondTheme
-    clip: {fileID: 0}
-    volume: 1
+  - name: IntroSongb
+    clip: {fileID: 8300000, guid: 3949b5660fae55e409dc3fdfc6a3c143, type: 3}
+    volume: 0.7
     pitch: 1
-    priority: 90
+    priority: 0
     loop: 0
     source: {fileID: 0}
-  MusicToggleOnGS: {fileID: 0}
-  MusicToggleOffGS: {fileID: 0}
-  MusicToggleOffM: {fileID: 0}
-  MusicToggleOnM: {fileID: 0}
+  - name: Loop
+    clip: {fileID: 8300000, guid: cebadb9fed6ad8d4c8c0744a557ef9dd, type: 3}
+    volume: 0.7
+    pitch: 1
+    priority: 0
+    loop: 1
+    source: {fileID: 0}
+  - name: Movement
+    clip: {fileID: 8300000, guid: b88f82b930db06c4ba93ed65e724e0a2, type: 3}
+    volume: 1
+    pitch: 1
+    priority: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: JumpA
+    clip: {fileID: 8300000, guid: 0f9a6eb0512269847a892b94a989e8b2, type: 3}
+    volume: 1
+    pitch: 1
+    priority: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: JumpB
+    clip: {fileID: 8300000, guid: 1d1abdad6d69b254389d9a3c7cd87465, type: 3}
+    volume: 1
+    pitch: 0
+    priority: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: JumpC
+    clip: {fileID: 8300000, guid: 93456f999da47fc43bf78da0d0f4d926, type: 3}
+    volume: 1
+    pitch: 1
+    priority: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: JumpD
+    clip: {fileID: 8300000, guid: f1296132415cee74b9ae76f8985443d2, type: 3}
+    volume: 1
+    pitch: 1
+    priority: 0
+    loop: 0
+    source: {fileID: 0}
 --- !u!114 &1787923268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4141,6 +4186,7 @@ MonoBehaviour:
   - 4
   - 5
   waitForSpawnerAtStartGame: 0
+  speedOfMovement: 50
   continueSpawning: 0
 --- !u!114 &1787923269
 MonoBehaviour:
@@ -4565,7 +4611,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2019724299}
-  m_LocalRotation: {x: 0.23911765, y: 0.3696438, z: -0.09904577, w: 0.89239913}
+  m_LocalRotation: {x: 0.2432104, y: 0.33036605, z: -0.08852133, w: 0.9076734}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4573,7 +4619,7 @@ Transform:
   - {fileID: 638837745}
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 30, y: 45, z: 0}
+  m_LocalEulerAnglesHint: {x: 30, y: 40, z: 0}
 --- !u!114 &2019724301
 MonoBehaviour:
   m_ObjectHideFlags: 0

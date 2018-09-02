@@ -6,8 +6,9 @@ public class ElementSpawner : MonoBehaviour {
 
     [SerializeField] float[] seconds;
     [SerializeField] private float waitForSpawnerAtStartGame;
-
+    
     public static ElementSpawner instance;
+    public  float speedOfMovement;
     public bool continueSpawning;
     private ObjectPooler objPoolerInst;
 

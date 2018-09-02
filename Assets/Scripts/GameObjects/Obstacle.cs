@@ -20,7 +20,6 @@ public class Obstacle : MonoBehaviour, IPooledObject {
     bool isJumpable;
     bool isMoveable;
     int number;
-    [SerializeField] int speed;
     Material material;
     ObstNum obstacleNum;
     [SerializeField] GameObject obst;
@@ -136,7 +135,7 @@ public class Obstacle : MonoBehaviour, IPooledObject {
                 Debug.Log("EstasMoviendo el objeto arriba");
                 if (transform.position.x < 5)
                 {
-                    transform.Translate(Vector3.right * Time.deltaTime * speed); // el speed es para que se mueva machin;
+                    transform.Translate(Vector3.right * Time.deltaTime * ElementSpawner.instance.speedOfMovement); // el ElementSpawner.instance.speedOfMovement es para que se mueva machin;
                 }
                 else
                 {
@@ -147,7 +146,7 @@ public class Obstacle : MonoBehaviour, IPooledObject {
                 Debug.Log("EstasMoviendo el objeto abajo");
                 if (transform.position.x > -5)
                 {
-                    transform.Translate(Vector3.left * Time.deltaTime * speed); // el speed es para que se mueva machin;
+                    transform.Translate(Vector3.left * Time.deltaTime * ElementSpawner.instance.speedOfMovement); // el ElementSpawner.instance.speedOfMovement es para que se mueva machin;
                     Debug.Log("EstasMoviendo el objeto Izquierd");
                 }
                 else
@@ -159,7 +158,7 @@ public class Obstacle : MonoBehaviour, IPooledObject {
                 if (transform.position.z < 1.5)
                 {
                     Debug.Log("EstasMoviendo el objeto derecha");
-                    transform.Translate(Vector3.forward * Time.deltaTime * speed); // el speed es para que se mueva machin;
+                    transform.Translate(Vector3.forward * Time.deltaTime * ElementSpawner.instance.speedOfMovement); // el ElementSpawner.instance.speedOfMovement es para que se mueva machin;
                 }
                 else
                 {
@@ -169,7 +168,7 @@ public class Obstacle : MonoBehaviour, IPooledObject {
             case TranslationDir.Right:
                 if (transform.position.z > -1.5)
                 {
-                    transform.Translate(Vector3.back * Time.deltaTime * speed); // el speed es para que se mueva machin;
+                    transform.Translate(Vector3.back * Time.deltaTime * ElementSpawner.instance.speedOfMovement); // el ElementSpawner.instance.speedOfMovement es para que se mueva machin;
                 }
                 else
                 {
