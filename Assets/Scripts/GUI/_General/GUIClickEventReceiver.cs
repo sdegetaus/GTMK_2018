@@ -6,7 +6,11 @@ namespace XXXGame.GUI
 {
     public enum ClickType
     {
-        ToMenuFromAbout, ToMenuFrom 
+        ToMenuFromAbout, ToMenuFromPause, ToMenuFromGameOver, PauseGame, Replay, Resume, StartGame, About,
+
+        // Social
+        ToSantiago, ToPaco, ToArturo, ToAndres, ToRaquel
+
     }
 
     public class GUIClickEventReceiver : MonoBehaviour
@@ -30,7 +34,40 @@ namespace XXXGame.GUI
             }
 
             switch (clickType) {
-                
+                case ClickType.ToMenuFromAbout:
+                    GUIStateMachine.instance.ChangeGUIState(GUIState.MainMenu);
+                    break;
+                case ClickType.ToMenuFromPause:
+                    GUIStateMachine.instance.ChangeGUIState(GUIState.MainMenu);
+                    break;
+                case ClickType.ToMenuFromGameOver:
+                    GUIStateMachine.instance.ChangeGUIState(GUIState.MainMenu);
+                    break;
+                case ClickType.PauseGame:
+                    GUIStateMachine.instance.ChangeGUIState(GUIState.Pause);
+                    break;
+                case ClickType.Replay:
+                    GUIStateMachine.instance.ChangeGUIState(GUIState.InGame);
+                    break;
+                case ClickType.Resume:
+                    GUIStateMachine.instance.ChangeGUIState(GUIState.InGame);
+                    break;
+                case ClickType.StartGame:
+                    GUIStateMachine.instance.ChangeGUIState(GUIState.InGame);
+                    break;
+                case ClickType.About:
+                    GUIStateMachine.instance.ChangeGUIState(GUIState.About);
+                    break;
+                case ClickType.ToSantiago:
+                    break;
+                case ClickType.ToPaco:
+                    break;
+                case ClickType.ToArturo:
+                    break;
+                case ClickType.ToAndres:
+                    break;
+                case ClickType.ToRaquel:
+                    break;
             }
         }
     }
