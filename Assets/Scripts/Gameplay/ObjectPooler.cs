@@ -43,7 +43,7 @@ public class ObjectPooler : MonoBehaviour
         }
     }
     
-
+    // PACO -> tag: utilizar enum, no string // Cuándo se desactivan?
     public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation)
     {
         if (!poolDictionary.ContainsKey(tag))
@@ -63,7 +63,7 @@ public class ObjectPooler : MonoBehaviour
             if (tag.Equals(PoolTypes.Enviroment.ToString())) { 
                 pooledObj.OnObjectSpawn(new Vector3(40f, 0, 0));
             } else { 
-                pooledObj.OnObjectSpawn(new Vector3(30f, 0, 0));
+                pooledObj.OnObjectSpawn(new Vector3(_Cn.ObstacleStartingPos, 0, 0));
             }
         }
 

@@ -4141,6 +4141,7 @@ MonoBehaviour:
   - 0.5
   - 1
   - 1.25
+  waitSpawnerAtStartGame: 3
 --- !u!114 &1787923269
 MonoBehaviour:
   m_ObjectHideFlags: 0
