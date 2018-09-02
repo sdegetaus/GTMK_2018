@@ -68,18 +68,22 @@ public class ElementSpawner : MonoBehaviour {
             }
             
     }
-    public void InstantiateSpring()
-    {
+
+    public void InstantiateSpring() {
         objPoolerInst.SpawnFromPool(PoolTypes.Spring.ToString(), new Vector3(16, 0, 0), Quaternion.identity);
     }
-    IEnumerator SpawnObjects()
-    {
+
+    private IEnumerator SpawnObjects() {
         yield return new WaitForSeconds(3f);
-        while (continueSpawning)
-        {
-            
+        while (continueSpawning) {
             InstantiateObstacles();
             yield return new WaitForSeconds(seconds[(int)Random.Range(0,seconds.Length)]);
         }
     }
+
+    //// Global Accessor
+    //public void SpawnerStopper() {
+    //    StopCoroutine(SpawnObjects());
+    //}
+
 }

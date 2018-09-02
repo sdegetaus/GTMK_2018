@@ -164,7 +164,7 @@ public class Ball : MonoBehaviour {
         }
     }
 
-    public void StopEverythingDamit() {
+    public void StopEverythingDamnIt() {
         StopAllCoroutines();
         lanePositionImage.enabled = false;
         lanePositionImage.sprite = null;

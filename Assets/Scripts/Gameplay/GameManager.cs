@@ -34,7 +34,8 @@ namespace XXXGame.Gameplay {
         }
 
         public void StopGame() {
-            Ball.instance.StopEverythingDamit(); // Ball Mover Stop
+            Ball.instance.StopEverythingDamnIt(); // Ball Mover Stop
+            //ElementSpawner.instance.SpawnerStopper();
         }
 
         public void PauseGame() {
