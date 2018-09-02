@@ -139,7 +139,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 4
-  numbers:
+  upNumber: 0
+  spritesNumbers:
   - {fileID: 21300000, guid: 5bdcb79a6a6092244ad6679f976fda6a, type: 3}
   - {fileID: 21300000, guid: 777dc81675144aa458e7e52abcaaa63b, type: 3}
   - {fileID: 21300000, guid: 67239b56b26dd244390ca35392381f67, type: 3}

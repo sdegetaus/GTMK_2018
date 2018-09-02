@@ -2,27 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using XXXGame.Gameplay;
 
+
+public enum ObstacleType
+{
+    SmallWall,
+    MediumWall,
+    LargeWall,
+    ThornObstacle,
+    Spring
+}
 
 public class Obstacle : MonoBehaviour, IPooledObject {
-    public enum ObstacleType
-    {
-        SmallWall,
-        MediumWall,
-        LargeWall,
-        ThornObstacle,
-        Spring
-    }
+    
     [SerializeField] ObstacleType type;
     bool isJumpable;
     bool isMoveable;
-
-    Image numberImage;
-    public Sprite[] spritesNumbers;
+    int number;
+    [SerializeField] float upNumber;
+    
 
     private void Start()
     {
-        numberImage = GetComponentInChildren<Image>();
         switch (type)
         {
             case ObstacleType.SmallWall:
@@ -78,11 +80,71 @@ public class Obstacle : MonoBehaviour, IPooledObject {
 
     public void SetUpNumber(int num)
     {
-        numberImage.sprite = spritesNumbers[num - 1];
+        PlayerController.selectionEvent += SelectObstacle;
+        number = num;
+
     }
 
-    public void Translate(Vector3 translation)
+    public void DeleteNumber()
     {
+        number = 0;
+        PlayerController.selectionEvent -= SelectObstacle;
+    }
+    public void SelectObstacle(int num)
+    {
+        if(num == number)
+        {
+            PlayerController.translationEvent += Translate;
+            transform.Translate(Vector3.up * upNumber);
+        }
+    }
 
+    public void Translate(TranslationDir dir)
+    {
+        //Tenemos que definir los límites del movimiento
+        switch (dir)
+        {
+            case TranslationDir.Up:
+                if(transform.position.x < 5)
+                {
+                   transform.Translate(Vector3.right * Time.deltaTime * 10); // el 10 es para que se mueva machin;
+                }
+                else
+                {
+                    transform.position = new Vector3(5, upNumber, transform.position.z);
+                }
+                break;
+            case TranslationDir.Down:
+                if (transform.position.x > -5)
+                {
+                    transform.Translate(Vector3.left * Time.deltaTime * 10); // el 10 es para que se mueva machin;
+                }
+                else
+                {
+                    transform.position = new Vector3(-5, upNumber, transform.position.z);
+                }
+                break;
+            case TranslationDir.Left:
+                if (transform.position.z < 1.5)
+                {
+                    transform.Translate(Vector3.forward * Time.deltaTime * 15); // el 10 es para que se mueva machin;
+                }
+                else
+                {
+                    transform.position = new Vector3(transform.position.x, upNumber, 1.5f);
+                }
+                break;
+            case TranslationDir.Right:
+                if (transform.position.z > -1.5)
+                {
+                    transform.Translate(Vector3.back * Time.deltaTime * 15); // el 10 es para que se mueva machin;
+                }
+                else
+                {
+                    transform.position = new Vector3(transform.position.x, upNumber, -1.5f);
+                }
+                break;
+        }
+        //transform.Translate(translation * Time.deltaTime * 10); // el 10 es para que se mueva machin;
     }
 }

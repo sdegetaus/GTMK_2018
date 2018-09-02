@@ -1,6 +1,7 @@
 using UnityEngine;
 
 namespace XXXGame.Gameplay {
+    public enum TranslationDir {Left, Right, Up, Down}
 
     public partial class PlayerController : MonoBehaviour {
 
@@ -11,7 +12,7 @@ namespace XXXGame.Gameplay {
         public delegate void SelectObstacle(int selectionMade);
         public static event SelectObstacle selectionEvent;
 
-        public delegate void MoveSelectedObstacle(Vector3 translation);
+        public delegate void MoveSelectedObstacle(TranslationDir dir);
         public static event MoveSelectedObstacle translationEvent;
 
         public delegate void PlaceObstacle();
@@ -68,19 +69,19 @@ namespace XXXGame.Gameplay {
             {
                 if (Input.GetKeyDown(KeyCode.LeftArrow))
                 {
-                    translationEvent(Vector3.left);
+                    translationEvent(TranslationDir.Left);
                 }
                 if (Input.GetKeyDown(KeyCode.RightArrow))
                 {
-                    translationEvent(Vector3.right);
+                    translationEvent(TranslationDir.Right);
                 }
                 if (Input.GetKeyDown(KeyCode.UpArrow))
                 {
-                    translationEvent(Vector3.up);
+                    translationEvent(TranslationDir.Up);
                 }
                 if (Input.GetKeyDown(KeyCode.DownArrow))
                 {
-                    translationEvent(Vector3.down);
+                    translationEvent(TranslationDir.Down);
                 }
             }
 

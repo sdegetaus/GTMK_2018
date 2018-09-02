@@ -20,7 +20,7 @@ public class Pool
 public class ObjectPooler : MonoBehaviour
 {
     public static ObjectPooler instance;
-    public static int numberOnObject;
+    public int numberOnObject;
     [SerializeField] int numberOfControlsAvailable;
     public List<Pool> pools;
     public Dictionary<string, Queue<GameObject>> poolDictionary;
@@ -29,6 +29,7 @@ public class ObjectPooler : MonoBehaviour
     {
         instance = this;
         poolDictionary = new Dictionary<string, Queue<GameObject>>();
+        numberOnObject = 0;
 
         foreach (Pool pool in pools)
         {
@@ -56,14 +57,19 @@ public class ObjectPooler : MonoBehaviour
         objectToSpawn.SetActive(true);
         objectToSpawn.transform.position = position;
         objectToSpawn.transform.rotation = rotation;
-
+        
         IPooledObject pooledObj = objectToSpawn.GetComponent<IPooledObject>();
         if(pooledObj != null)
         {
             if (tag.Equals(PoolTypes.Enviroment.ToString()))
                 pooledObj.OnObjectSpawn(new Vector3(40f, 0, 0));
             else
+            {
                 pooledObj.OnObjectSpawn(new Vector3(15f, 0, 0));
+                pooledObj.SetUpNumber(numberOnObject);
+                numberOnObject = (numberOnObject + 1) % numberOfControlsAvailable;
+            }
+                
         }
 
         poolDictionary[tag].Enqueue(objectToSpawn);
