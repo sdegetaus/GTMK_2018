@@ -104,36 +104,28 @@ public class Ball : MonoBehaviour {
 
         //Debug.Log("1. Current: " + currentBallState + "; Next: " + nextBallState);
 
-        //countDownImage.enabled = true;
-        //countDownImage.sprite = countDownSprites[0];
-
         yield return new WaitForSeconds(ballStateChangeInterval);
-        //StartCoroutine(DoCountDown());
-        //Debug.Log(DoCountDown().Current);
-        //yield return new WaitUntil(() => DoCountDown().Current == null);
-        //Debug.Log(DoCountDown().Current);
-        //Debug.Log(DoCountDown().Current);
-
-        //yield return StartCoroutine(DoCountDown());
-
-        //StartCoroutine(DoCountDown());
-
-        // Sprite Clear
-        //lanePositionImage.enabled = false;
-        //yield return new WaitForSeconds(0.5f);
 
         StartCoroutine(MoveBall(nextBallState));
+        //StartCoroutine(EverybodyFuckingRelax());
     }
 
     private IEnumerator DoCountDown() {
+        countDownImage.enabled = true;
         for (int i = 0; i < countDownSprites.Length; i++) {
             countDownImage.sprite = countDownSprites[i];
             yield return new WaitForSeconds(ballStateChangeInterval / 3);
         }
+    }
 
-        //Reset Values
-        //countDownImage.enabled = false;
-        //countDownImage.sprite = null;
+    private IEnumerator EverybodyFuckingRelax()
+    {
+        countDownImage.enabled = false;
+        lanePositionImage.enabled = false;
+        Debug.Log("Begin");
+        yield return new WaitForSeconds(4.0f);
+        Debug.Log("End");
+        //StartCoroutine(BeginInfiniteBallStateChange());
     }
 
     private IEnumerator MoveBall(BallState lane) {
