@@ -14,7 +14,7 @@ public class EnviromentMovement : MonoBehaviour , IPooledObject {
         if(spawnCount <= 2) {
             this.transform.position = spawnTransform * (spawnCount % 3); //hardcoded 3 should be the size of the pool.
         } else {
-            this.transform.position = new Vector3(39f, 0, 0);
+            this.transform.position = new Vector3(40f, 0, 0);
         }
         spawnCount++;
     }
@@ -24,7 +24,7 @@ public class EnviromentMovement : MonoBehaviour , IPooledObject {
     }
 
     private void FixedUpdate() {
-        if (transform.position.x <= -80f) {
+        if (transform.position.x <= -79f) {
             ElementSpawner.instance.InstantiateEnviroment();
         }
         transform.Translate(translation * speed * Time.deltaTime);

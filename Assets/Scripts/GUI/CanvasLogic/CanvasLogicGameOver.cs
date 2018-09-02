@@ -10,7 +10,6 @@ public class CanvasLogicGameOver : CanvasLogic {
 
     public override void OnEnter() {
         scoreCountText.text = GameManager.instance.GetScore().ToString("#,#");
-        //.Format("{0:#,###0}", score)
     }
 
 }
