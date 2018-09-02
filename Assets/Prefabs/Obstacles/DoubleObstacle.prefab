@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 223124927691082812}
   - component: {fileID: 222883842493342466}
   - component: {fileID: 114591961463337678}
+  - component: {fileID: 114585002894811416}
   m_Layer: 0
   m_Name: NumberOnObstacle
   m_TagString: Untagged
@@ -303,6 +304,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
+--- !u!114 &114585002894811416
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1353032472957444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0320e3b5771dbb642a9b9a4daa0bcce9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114591961463337678
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -20,7 +20,7 @@ public class Pool
 public class ObjectPooler : MonoBehaviour
 {
     public static ObjectPooler instance;
-    public static int numberOnObject
+    public static int numberOnObject;
     public List<Pool> pools;
     public Dictionary<string, Queue<GameObject>> poolDictionary;
 
