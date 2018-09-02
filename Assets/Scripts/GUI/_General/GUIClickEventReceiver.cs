@@ -59,12 +59,15 @@ namespace XXXGame.GUI
                     GUIStateMachine.instance.ChangeGUIState(GUIState.About);
                     break;
                 case ClickType.ToSantiago:
+                    Application.OpenURL("http://taus.mx");
                     break;
                 case ClickType.ToPaco:
                     break;
                 case ClickType.ToArturo:
+                    Application.OpenURL("https://www.instagram.com/arturo_rivera.s/");
                     break;
                 case ClickType.ToAndres:
+                    Application.OpenURL("https://www.instagram.com/apaulmusic/");
                     break;
                 case ClickType.ToRaquel:
                     break;
