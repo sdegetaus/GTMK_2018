@@ -17,6 +17,8 @@ namespace XXXGame.Gameplay {
 
         public delegate void PlaceObstacle();
         public static event PlaceObstacle placeEvent;
+        public delegate void PlaceObstacleByForce();
+        public static event PlaceObstacleByForce placeByForceEvent;
         #endregion
 
 
@@ -82,14 +84,14 @@ namespace XXXGame.Gameplay {
                 {
                     translationEvent(TranslationDir.Right);
                 }
-                if (Input.GetKeyDown(KeyCode.UpArrow))
-                {
-                    translationEvent(TranslationDir.Up);
-                }
-                if (Input.GetKeyDown(KeyCode.DownArrow))
-                {
-                    translationEvent(TranslationDir.Down);
-                }
+                //if (Input.GetKeyDown(KeyCode.UpArrow))
+                //{
+                //    translationEvent(TranslationDir.Up);
+                //}
+                //if (Input.GetKeyDown(KeyCode.DownArrow))
+                //{
+                //    translationEvent(TranslationDir.Down);
+                //}
             }
 
         }
@@ -101,6 +103,11 @@ namespace XXXGame.Gameplay {
         public void PlaceSelection()
         {
             selectionMade = false;
+        }
+        public void PlaceEventByForce()
+        {
+            if (placeByForceEvent != null)
+                placeEvent();
         }
         public void ResetEvents() {
             if(placeEvent != null) {

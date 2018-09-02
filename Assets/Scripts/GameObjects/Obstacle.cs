@@ -19,6 +19,7 @@ public class Obstacle : MonoBehaviour, IPooledObject {
     [SerializeField] ObstacleType type;
     bool isJumpable;
     bool isMoveable;
+    bool isSelected;
     int number;
     Material material;
     ObstNum obstacleNum;
@@ -30,6 +31,7 @@ public class Obstacle : MonoBehaviour, IPooledObject {
 
 
     private void Start() {
+        isSelected = false;
         switch (type)
         {
             case ObstacleType.SmallWall:
@@ -123,13 +125,18 @@ public class Obstacle : MonoBehaviour, IPooledObject {
         {
             PlayerController.translationEvent += Translate;
             PlayerController.placeEvent += PlaceObject;
+            PlayerController.placeByForceEvent += PlaceObjectByForce;
             PlayerController.placeEvent += RemoveOutlineMaterial;
             transform.Translate(Vector3.up * upNumber);
             AddOutlineMaterial();
         }
-
+        isSelected = true;
     }
-
+    public void PlaceObjectByForce()
+    {
+        if (isSelected && transform.position.x < -5)
+            PlaceObject();
+    }
     public  void AddOutlineMaterial() {
         for (int i = 0; i < rend.Length; i++) {
             List<Material> matArray = new List<Material>();
@@ -202,9 +209,12 @@ public class Obstacle : MonoBehaviour, IPooledObject {
     }
     public void PlaceObject()
     {
-        Debug.Log("Object has been placed");
+        isSelected = false;
         transform.position = new Vector3(transform.position.x, 0, transform.position.z);
         PlayerController.translationEvent -= Translate;
         PlayerController.placeEvent -= PlaceObject;
+        PlayerController.placeByForceEvent -= PlaceObjectByForce;
     }
+
+    
 }
