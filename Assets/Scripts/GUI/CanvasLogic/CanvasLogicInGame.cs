@@ -14,14 +14,7 @@ public class CanvasLogicInGame : CanvasLogic {
     }
 
     public void SetScore(int score) {
-        scoreCount.text = score.ToString();
+        scoreCount.text = score.ToString("#,#");
     }
 
-    //public override void OnEnter() {
-    //    print("InGame >> OnEnter()");
-    //}
-
-    //public override void OnLeave() {
-    //    print("InGame >> OnLeave()");
-    //}
 }

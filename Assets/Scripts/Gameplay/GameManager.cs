@@ -47,6 +47,11 @@ namespace XXXGame.Gameplay {
             isGamePaused = false;
         }
 
+        public void SetGameOver() {
+            StopGame();
+            GUIStateMachine.instance.ChangeGUIState(GUIState.GameOver);
+        }
+
         private void CountScore() {
             if (GUIStateMachine.instance.GetCurrentGUIState() == GUIState.InGame) {
                 if (!isGamePaused) {
@@ -54,6 +59,10 @@ namespace XXXGame.Gameplay {
                     CanvasLogicInGame.instance.SetScore(score);
                 }
             }
+        }
+
+        public int GetScore() {
+            return score;
         }
     }
 }

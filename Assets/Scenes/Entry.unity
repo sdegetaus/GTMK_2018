@@ -2400,6 +2400,7 @@ GameObject:
   - component: {fileID: 1046494510}
   - component: {fileID: 1046494509}
   - component: {fileID: 1046494508}
+  - component: {fileID: 1046494511}
   m_Layer: 0
   m_Name: CanvasGameOver
   m_TagString: Untagged
@@ -2488,6 +2489,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1046494511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1046494506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26d368c8055d97b4199f2766ae5495b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreCountText: {fileID: 2086914056}
 --- !u!1 &1057144788
 GameObject:
   m_ObjectHideFlags: 0
@@ -3238,7 +3251,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 120}
   m_SizeDelta: {x: -600, y: 220}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1412388456
@@ -4686,7 +4699,7 @@ GameObject:
   - component: {fileID: 2086914057}
   - component: {fileID: 2086914056}
   m_Layer: 0
-  m_Name: Text
+  m_Name: ScoreText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
