@@ -197,7 +197,7 @@ public class Obstacle : MonoBehaviour, IPooledObject {
             case TranslationDir.Right:
                 if (transform.position.z > -1.5)
                 {
-                    transform.Translate(Vector3.back * 1.5f); // el ElementSpawner.instance.speedOfMovement es para que se mueva machin;
+                    transform.Translate(Vector3.back * 1.5f); /
                 }
                 else
                 {
