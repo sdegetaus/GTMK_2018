@@ -48,6 +48,7 @@ public class Ball : MonoBehaviour {
     //Global Accessor For All
     public void StartThiShit() {
         // Ball State Begin
+        ResetBallPos();
         StartCoroutine(BeginInfiniteBallStateChange());
     }
 

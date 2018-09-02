@@ -81,7 +81,7 @@ namespace XXXGame.Gameplay {
 
             GUIStateMachine.instance.ChangeGUIState(GUIState.InGame);
 
-            Ball.instance.ResetBallPos();
+            //Ball.instance.ResetBallPos();
 
             score = 0;
             CanvasLogicInGame.instance.SetScore(0);

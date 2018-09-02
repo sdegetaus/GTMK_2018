@@ -161,7 +161,7 @@ public class Obstacle : MonoBehaviour, IPooledObject {
         switch (dir)
         {
             case TranslationDir.Up:
-                Debug.Log("EstasMoviendo el objeto arriba");
+                //Debug.Log("EstasMoviendo el objeto arriba");
                 if (transform.position.x < 5)
                 {
                     transform.Translate(Vector3.right); // el ElementSpawner.instance.speedOfMovement es para que se mueva machin;
@@ -172,11 +172,11 @@ public class Obstacle : MonoBehaviour, IPooledObject {
                 }
                 break;
             case TranslationDir.Down:
-                Debug.Log("EstasMoviendo el objeto abajo");
+                //Debug.Log("EstasMoviendo el objeto abajo");
                 if (transform.position.x > -5)
                 {
                     transform.Translate(Vector3.left); // el ElementSpawner.instance.speedOfMovement es para que se mueva machin;
-                    Debug.Log("EstasMoviendo el objeto Izquierd");
+                    //Debug.Log("EstasMoviendo el objeto Izquierd");
                 }
                 else
                 {
@@ -186,7 +186,7 @@ public class Obstacle : MonoBehaviour, IPooledObject {
             case TranslationDir.Left:
                 if (transform.position.z < 1.5)
                 {
-                    Debug.Log("EstasMoviendo el objeto derecha");
+                    //Debug.Log("EstasMoviendo el objeto derecha");
                     transform.Translate(Vector3.forward * 1.5f); // el ElementSpawner.instance.speedOfMovement es para que se mueva machin;
                 }
                 else
