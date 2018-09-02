@@ -191,17 +191,19 @@ public class Obstacle : MonoBehaviour, IPooledObject {
                 }
                 else
                 {
+                    if(transform.position.z >= 1.5)
                     transform.position = new Vector3(transform.position.x, upNumber, 1.5f);
                 }
                 break;
             case TranslationDir.Right:
                 if (transform.position.z > -1.5)
                 {
-                    transform.Translate(Vector3.back * 1.5f); /
+                    transform.Translate(Vector3.back * 1.5f); 
                 }
                 else
                 {
-                    transform.position = new Vector3(transform.position.x, upNumber, -1.5f);
+                    if(transform.position.z <= -1.5)
+                        transform.position = new Vector3(transform.position.x, upNumber, -1.5f);
                 }
                 break;
                 
