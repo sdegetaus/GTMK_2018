@@ -10,7 +10,9 @@ namespace XXXGame.GUI
         ToMenuFromAbout, ToMenuFromPause, ToMenuFromGameOver, PauseGame, Replay, Resume, StartGame, About,
 
         // Social
-        ToSantiago, ToPaco, ToArturo, ToAndres, ToRaquel
+        ToSantiago, ToPaco, ToArturo, ToAndres, ToRaquel,
+
+        CloseGame
 
     }
 
@@ -80,8 +82,10 @@ namespace XXXGame.GUI
                 case ClickType.ToAndres:
                     Application.OpenURL("https://www.instagram.com/apaulmusic/");
                     break;
-                case ClickType.ToRaquel:
+                case ClickType.CloseGame:
+                    GameManager.instance.QuitGame();
                     break;
+                    
             }
         }
     }

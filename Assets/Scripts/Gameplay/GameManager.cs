@@ -23,6 +23,11 @@ namespace XXXGame.Gameplay {
 
         private void Update() {
             CountScore();
+
+            if (Input.GetKey("escape")) {
+                QuitGame();
+            }
+
         }
 
         public void StartGame() {
@@ -77,6 +82,10 @@ namespace XXXGame.Gameplay {
             score = 0;
             CanvasLogicInGame.instance.SetScore(0);
             Ball.instance.StartThiShit();
+        }
+
+        public void QuitGame() {
+            Application.Quit();
         }
     }
 }
