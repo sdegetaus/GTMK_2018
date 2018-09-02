@@ -46,6 +46,10 @@ namespace XXXGame.GUI
             guiState = state;
         }
 
+        public GUIState GetCurrentGUIState() {
+            return guiState;
+        }
+
         public void ShowCanvas(GUIState state, bool show) {
 
             if ((int)state >= canvases.Length) {

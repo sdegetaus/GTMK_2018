@@ -27,7 +27,10 @@ public class _Cn {
 
     //------ PLAYER ------
 
-    //------ GAMEPLAY ------1.6 0 -1.6
+    //------ GAMEPLAY ------
+
+    public const float ObstacleStartingPos = 30.0f;
+    
     public const float RIGHTLANECUBE = -1.6f;
     public const float MIDDLELANECUBE = 0f;
     public const float LEFTLANECUBE = 1.6f;

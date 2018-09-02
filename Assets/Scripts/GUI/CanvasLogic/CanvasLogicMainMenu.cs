@@ -2,19 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using XXXGame.Gameplay;
+using XXXGame.GUI;
 
 public class CanvasLogicMainMenu : CanvasLogic {
 
-    private void Start() {
-        AmbientManager.instance.isOn = true;
-    }
 
+
+    // Read Space Input
+    private void Update() {
+        if (Input.GetKey("space")) {
+            GameManager.instance.StartGame();
+        }
+    }
+     
     public override void OnEnter() {
-        AmbientManager.instance.isOn = true;
+        AmbientManager.instance.UpdateShaderValues(true);
     }
 
-    public override void OnLeave() {
-        AmbientManager.instance.isOn = false;
-    }
+    //public override void OnLeave() {
+
+    //}
 
 }

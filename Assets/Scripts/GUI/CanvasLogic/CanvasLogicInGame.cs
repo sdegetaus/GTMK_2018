@@ -5,15 +5,16 @@ using UnityEngine.UI;
 
 public class CanvasLogicInGame : CanvasLogic {
 
-    // GUI ELEMENTS
-    // [SerializeField] private Something smth; 
+    static public CanvasLogicInGame instance;
 
-    public override void OnEnter() {
-        print("InGame >> OnEnter()");
+    [SerializeField] private Text scoreCount;
+
+    private void Awake() {
+        instance = this;
     }
 
-    public override void OnLeave() {
-        print("InGame >> OnLeave()");
+    public void SetScore(int score) {
+        scoreCount.text = score.ToString("#,#");
     }
 
 }
