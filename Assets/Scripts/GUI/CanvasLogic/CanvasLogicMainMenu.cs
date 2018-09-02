@@ -7,8 +7,6 @@ using XXXGame.GUI;
 
 public class CanvasLogicMainMenu : CanvasLogic {
 
-
-
     // Read Space Input
     private void Update() {
         if (Input.GetKey("space")) {

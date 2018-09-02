@@ -2251,6 +2251,11 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114784639561306680, guid: a2266d0239bb88841af86af7888ebef5,
+        type: 2}
+      propertyPath: ballStateChangeInterval
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a2266d0239bb88841af86af7888ebef5, type: 2}
   m_IsPrefabParent: 0

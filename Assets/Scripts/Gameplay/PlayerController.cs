@@ -86,10 +86,10 @@ namespace XXXGame.Gameplay {
             }
 
         }
-        public void ResetEvents()
-        {
-            if(placeEvent != null)
+        public void ResetEvents() {
+            if(placeEvent != null) {
                 placeEvent();
+            }
             placeEvent = null;
             selectionEvent = null;
             translationEvent = null;
