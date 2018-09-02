@@ -19,6 +19,9 @@ namespace XXXGame.Gameplay {
         public static event PlaceObstacle placeEvent;
         public delegate void PlaceObstacleByForce();
         public static event PlaceObstacleByForce placeByForceEvent;
+
+        public delegate void DeactivateObjetcs();
+        public static event DeactivateObjetcs deactivateObjects;
         #endregion
 
 
@@ -106,18 +109,28 @@ namespace XXXGame.Gameplay {
         }
         public void PlaceEventByForce()
         {
-            if (placeByForceEvent != null)
+            if (placeByForceEvent != null) {
                 placeEvent();
+            }
         }
         public void ResetEvents() {
             if(placeEvent != null) {
                 placeEvent();
             }
             placeEvent = null;
-            selectionEvent = null;
+            //selectionEvent = null;
             translationEvent = null;
         }
 
+        public void Deactivate() {
+            deactivateObjects();
+            //selectionEvent = null;
+            selectionMade = false;
+            translationEvent = null;
+            placeEvent += PlaceSelection;
+            placeByForceEvent = null;
+            deactivateObjects = null;
+        }
+
     }
-    
 }

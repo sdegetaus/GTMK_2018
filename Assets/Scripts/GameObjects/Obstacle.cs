@@ -60,6 +60,8 @@ public class Obstacle : MonoBehaviour, IPooledObject {
 
     public void OnObjectSpawn(Vector3 spawnTransform)
     {
+        PlayerController.deactivateObjects += Deactivate;
+
         int r = Random.Range(0, 3);
         switch (r)
         {
@@ -91,12 +93,12 @@ public class Obstacle : MonoBehaviour, IPooledObject {
 
     public void SetUpNumber(int num)
     {
-        if (obst != null)
+        if (obst != null) {
             obstacleNum = obst.GetComponent<ObstNum>();
+        }
         PlayerController.selectionEvent += SelectObstacle;
         number = num+1;
-        if (obstacleNum != null)
-        {
+        if (obstacleNum != null) {
             obstacleNum.SetUpNumber(num);
         }
             
@@ -216,5 +218,8 @@ public class Obstacle : MonoBehaviour, IPooledObject {
         PlayerController.placeByForceEvent -= PlaceObjectByForce;
     }
 
-    
+    public void Deactivate() {
+        gameObject.SetActive(false);
+        PlayerController.deactivateObjects -= Deactivate;
+    }
 }

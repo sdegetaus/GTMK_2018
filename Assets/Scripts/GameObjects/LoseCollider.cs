@@ -9,6 +9,7 @@ public class LoseCollider : MonoBehaviour {
         ElementSpawner.instance.continueSpawning = false;
         PlayerController.instance.ResetEvents();
         GameManager.instance.SetGameOver();
-        //SceneManager.LoadScene((int)Scenes.Entry);
+        PlayerController.instance.Deactivate();
+        AmbientManager.instance.UpdateShaderValues(true);
     }
 }

@@ -76,11 +76,16 @@ namespace XXXGame.Gameplay {
         public void Replay() {
             ElementSpawner.instance.continueSpawning = true;
             ElementSpawner.instance.SpawnObstacles();
+
             AmbientManager.instance.UpdateShaderValues(false);
+
             GUIStateMachine.instance.ChangeGUIState(GUIState.InGame);
+
             Ball.instance.ResetBallPos();
+
             score = 0;
             CanvasLogicInGame.instance.SetScore(0);
+
             Ball.instance.StartThiShit();
         }
 
