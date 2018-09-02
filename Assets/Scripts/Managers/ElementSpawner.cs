@@ -5,7 +5,7 @@ using UnityEngine;
 public class ElementSpawner : MonoBehaviour {
     public static ElementSpawner instance;
     public bool continueSpawning;
-    [SerializeField] float seconds;
+    [SerializeField] float[] seconds;
     ObjectPooler objPoolerInst;
     private void Awake()
     {
@@ -19,11 +19,12 @@ public class ElementSpawner : MonoBehaviour {
             Destroy(gameObject);
             return;
         }
-        continueSpawning = true;
+        
     }
     // Use this for initialization
     void Start () {
         objPoolerInst = ObjectPooler.instance;
+        continueSpawning = false;
         for (int i = 0; i <= 2; i++)
         {
             InstantiateEnviroment();
@@ -32,10 +33,13 @@ public class ElementSpawner : MonoBehaviour {
 	
 	public void InstantiateEnviroment()
     {
-        if(objPoolerInst != null)
+        
+        if (objPoolerInst != null)
         {
             objPoolerInst.SpawnFromPool(PoolTypes.Enviroment.ToString(), Vector3.zero, Quaternion.identity);
-            StartCoroutine(SpawnObjects(seconds));
+            if(!continueSpawning)
+                StartCoroutine(SpawnObjects());
+            continueSpawning = true;
         }
             
     }
@@ -66,15 +70,16 @@ public class ElementSpawner : MonoBehaviour {
     }
     public void InstantiateSpring()
     {
-        objPoolerInst.SpawnFromPool(PoolTypes.Spring.ToString(), new Vector3(15, 0, 0), Quaternion.identity);
+        objPoolerInst.SpawnFromPool(PoolTypes.Spring.ToString(), new Vector3(16, 0, 0), Quaternion.identity);
     }
-    IEnumerator SpawnObjects(float SecondsBetweenSpawns)
+    IEnumerator SpawnObjects()
     {
         yield return new WaitForSeconds(3f);
         while (continueSpawning)
         {
+            
             InstantiateObstacles();
-            yield return new WaitForSeconds(SecondsBetweenSpawns);
+            yield return new WaitForSeconds(seconds[(int)Random.Range(0,seconds.Length)]);
         }
     }
 }
