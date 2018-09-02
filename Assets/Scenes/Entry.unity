@@ -2943,6 +2943,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a76d8270c11f7c4cbd19210293b6a4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numberOfControlsAvailable: 5
   pools:
   - tag: 0
     objectPrefab: {fileID: 1852146773434364, guid: c4c6e536b1995144d8bfa6b6af121467,

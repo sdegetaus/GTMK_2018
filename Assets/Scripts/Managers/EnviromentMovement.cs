@@ -20,6 +20,12 @@ public class EnviromentMovement : MonoBehaviour , IPooledObject {
         }
         spawnCount++;
     }
+
+    public void SetUpNumber(int number)
+    {
+        throw new System.NotImplementedException();
+    }
+
     private void FixedUpdate()
     {
         if (transform.position.x <= -78f)

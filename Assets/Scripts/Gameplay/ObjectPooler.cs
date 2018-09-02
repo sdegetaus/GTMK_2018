@@ -21,6 +21,7 @@ public class ObjectPooler : MonoBehaviour
 {
     public static ObjectPooler instance;
     public static int numberOnObject;
+    [SerializeField] int numberOfControlsAvailable;
     public List<Pool> pools;
     public Dictionary<string, Queue<GameObject>> poolDictionary;
 

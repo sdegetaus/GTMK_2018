@@ -158,6 +158,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  numbers:
+  - {fileID: 21300000, guid: 5bdcb79a6a6092244ad6679f976fda6a, type: 3}
+  - {fileID: 21300000, guid: 777dc81675144aa458e7e52abcaaa63b, type: 3}
+  - {fileID: 21300000, guid: 67239b56b26dd244390ca35392381f67, type: 3}
+  - {fileID: 21300000, guid: 3bc169a99ec8adc489a95272e3b67526, type: 3}
+  - {fileID: 21300000, guid: ae909d5affb1e5f47a2f700fab72761c, type: 3}
 --- !u!114 &114386111219870694
 MonoBehaviour:
   m_ObjectHideFlags: 1

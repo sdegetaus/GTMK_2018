@@ -8,6 +8,11 @@ public class Spring : MonoBehaviour, IPooledObject {
         throw new System.NotImplementedException();
     }
 
+    public void SetUpNumber(int number)
+    {
+        throw new System.NotImplementedException();
+    }
+
     // Use this for initialization
     void Start () {
 		
