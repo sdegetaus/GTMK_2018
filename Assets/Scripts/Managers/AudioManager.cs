@@ -47,7 +47,9 @@ public class AudioManager : MonoBehaviour
             s.source.priority = s.priority;
         }
 
-        //musicSource = Array.Find(sounds, sound => sound.name == Sound.MainTheme.ToString()).source;
+        musicSource = Array.Find(sounds, sound => sound.name == "MainTheme").source; //Estaría bueno implementar enums
+        musicSource.Play();
+        clipHasPlayed = true;
     }
 
     public void Play(string name)

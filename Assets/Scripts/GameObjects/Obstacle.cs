@@ -37,6 +37,7 @@ public class Obstacle : MonoBehaviour, IPooledObject {
                 isMoveable = false;
                 break;
         }
+
     }
 
     public void OnObjectSpawn(Vector3 spawnTransform)
@@ -68,5 +69,10 @@ public class Obstacle : MonoBehaviour, IPooledObject {
                 break;
         }
     
+    }
+
+    public void Translate(Vector3 translation)
+    {
+
     }
 }

@@ -2980,7 +2980,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicSource: {fileID: 0}
-  sounds: []
+  sounds:
+  - name: MainTheme
+    clip: {fileID: 8300000, guid: 2f6c07e7f131cea47a1556066236c4fd, type: 3}
+    volume: 1
+    pitch: 1
+    priority: 90
+    loop: 1
+    source: {fileID: 0}
+  - name: SecondTheme
+    clip: {fileID: 0}
+    volume: 1
+    pitch: 1
+    priority: 90
+    loop: 0
+    source: {fileID: 0}
   MusicToggleOnGS: {fileID: 0}
   MusicToggleOffGS: {fileID: 0}
   MusicToggleOffM: {fileID: 0}
