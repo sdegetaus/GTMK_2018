@@ -39,7 +39,7 @@ public class ElementSpawner : MonoBehaviour {
     }
 
     public void InstantiateObstacles() {
-        int rnd = Random.Range((int)PoolTypes.SmallWall, (int)PoolTypes.ThornObtacle + 1);
+        int rnd = Random.Range((int)PoolTypes.SmallWall, (int)PoolTypes.LargeWall + 1);
 
         if (objPoolerInst != null) {
             switch (rnd) {
@@ -52,12 +52,12 @@ public class ElementSpawner : MonoBehaviour {
                 case (int)PoolTypes.LargeWall:
                     objPoolerInst.SpawnFromPool(PoolTypes.LargeWall, new Vector3(_Cn.ObstacleStartingPos, 0, 0), Quaternion.identity);
                     break;
-                case (int)PoolTypes.Spring:
-                    objPoolerInst.SpawnFromPool(PoolTypes.Spring, new Vector3(_Cn.ObstacleStartingPos, 0, 0), Quaternion.identity);
-                    break;
-                case (int)PoolTypes.ThornObtacle:
-                    objPoolerInst.SpawnFromPool(PoolTypes.ThornObtacle, new Vector3(_Cn.ObstacleStartingPos, 0, 0), Quaternion.identity);
-                    break;
+                //case (int)PoolTypes.Spring:
+                //    objPoolerInst.SpawnFromPool(PoolTypes.Spring, new Vector3(_Cn.ObstacleStartingPos, 0, 0), Quaternion.identity);
+                //    break;
+                //case (int)PoolTypes.ThornObtacle:
+                //    objPoolerInst.SpawnFromPool(PoolTypes.ThornObtacle, new Vector3(_Cn.ObstacleStartingPos, 0, 0), Quaternion.identity);
+                //    break;
             }
         }
     }
@@ -76,7 +76,10 @@ public class ElementSpawner : MonoBehaviour {
         yield return new WaitForSeconds(waitForSpawnerAtStartGame);
         while (continueSpawning) {
             InstantiateObstacles();
+            
             yield return new WaitForSeconds(seconds[(int)Random.Range(0,seconds.Length)]);
+            if (speedOfMovement >= 200)
+                speedOfMovement += 2f;
         }
     }
 

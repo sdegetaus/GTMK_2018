@@ -4297,14 +4297,6 @@ MonoBehaviour:
     objectPrefab: {fileID: 1801663581362094, guid: a33de6101a4d45949a0a47f88200c5dd,
       type: 2}
     size: 10
-  - tag: 4
-    objectPrefab: {fileID: 1568416551872062, guid: 71a9d9b95126a3e4f8f3e6ac89d0364b,
-      type: 2}
-    size: 10
-  - tag: 5
-    objectPrefab: {fileID: 1746494174317786, guid: 43318c08fd9db2b4e819d0d7ea004c1c,
-      type: 2}
-    size: 10
 --- !u!114 &1787923267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4386,9 +4378,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   seconds:
-  - 3
-  - 4
-  - 5
+  - 0.5
+  - 1
+  - 1.5
+  - 0
   waitForSpawnerAtStartGame: 0
   speedOfMovement: 60
   continueSpawning: 0
