@@ -25,11 +25,11 @@ public class Obstacle : MonoBehaviour, IPooledObject {
     [SerializeField] GameObject obst;
     
     [SerializeField] float upNumber;
-    
-    
-    private void Start()
-    {
-        
+
+    [SerializeField] private Renderer[] rend;
+
+
+    private void Start() {
         switch (type)
         {
             case ObstacleType.SmallWall:
@@ -110,7 +110,9 @@ public class Obstacle : MonoBehaviour, IPooledObject {
             {
                 PlayerController.translationEvent += Translate;
                 PlayerController.placeEvent += PlaceObject;
+                PlayerController.placeEvent += RemoveOutlineMaterial;
                 transform.Translate(Vector3.up * upNumber);
+                AddOutlineMaterial();
             }
             else
             {
@@ -121,7 +123,25 @@ public class Obstacle : MonoBehaviour, IPooledObject {
         {
             PlayerController.translationEvent += Translate;
             PlayerController.placeEvent += PlaceObject;
+            PlayerController.placeEvent += RemoveOutlineMaterial;
             transform.Translate(Vector3.up * upNumber);
+            AddOutlineMaterial();
+        }
+
+    }
+
+    public  void AddOutlineMaterial() {
+        for (int i = 0; i < rend.Length; i++) {
+            List<Material> matArray = new List<Material>();
+            matArray.Add(_Assets.instance.outlineMat);
+            matArray.Add(_Assets.instance.normalObstacleMat);
+            rend[i].materials = matArray.ToArray();
+        }
+    }
+
+    public void RemoveOutlineMaterial() {
+        for (int i = 0; i < rend.Length; i++) {
+            rend[i].material = _Assets.instance.normalObstacleMat;
         }
     }
 

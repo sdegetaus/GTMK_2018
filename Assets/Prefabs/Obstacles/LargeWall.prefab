@@ -337,6 +337,10 @@ MonoBehaviour:
   type: 2
   obst: {fileID: 1691921335324126}
   upNumber: 0.2
+  rend:
+  - {fileID: 23046209778401766}
+  - {fileID: 23312237913165012}
+  - {fileID: 23821929264101370}
 --- !u!114 &114255194665348876
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -4057,6 +4057,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7401adb6c176cd94e842ea37f257126f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalObstacleMat: {fileID: 2100000, guid: dd8edb30f3cc5344d8ddd11918e07aa6, type: 2}
   outlineMat: {fileID: 2100000, guid: fc5389b4d7af8e84cb115ea6c58a56fe, type: 2}
 --- !u!114 &1787923265
 MonoBehaviour:

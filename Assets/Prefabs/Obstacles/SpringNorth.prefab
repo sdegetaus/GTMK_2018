@@ -141,3 +141,5 @@ MonoBehaviour:
   type: 4
   obst: {fileID: 0}
   upNumber: 0.2
+  rend:
+  - {fileID: 23005098758256436}

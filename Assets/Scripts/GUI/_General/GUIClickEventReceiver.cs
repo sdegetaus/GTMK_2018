@@ -55,8 +55,7 @@ namespace XXXGame.GUI
                     GameManager.instance.PauseGame();
                     break;
                 case ClickType.Replay:
-                    AmbientManager.instance.UpdateShaderValues(false);
-                    GUIStateMachine.instance.ChangeGUIState(GUIState.InGame);
+                    GameManager.instance.Replay();
                     break;
                 case ClickType.Resume:
                     AmbientManager.instance.UpdateShaderValues(false);

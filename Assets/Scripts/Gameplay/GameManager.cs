@@ -67,5 +67,12 @@ namespace XXXGame.Gameplay {
         public int GetScore() {
             return score;
         }
+
+        public void Replay() {
+            ElementSpawner.instance.continueSpawning = true;
+            ElementSpawner.instance.SpawnObstacles();
+            AmbientManager.instance.UpdateShaderValues(false);
+            GUIStateMachine.instance.ChangeGUIState(GUIState.InGame);
+        }
     }
 }
