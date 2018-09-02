@@ -22,7 +22,7 @@ public class EnviromentMovement : MonoBehaviour , IPooledObject {
     }
     private void FixedUpdate()
     {
-        if (transform.position.x <= -79.5f)
+        if (transform.position.x <= -78f)
         {
             ElementSpawner.instance.InstantiateEnviroment();
         }

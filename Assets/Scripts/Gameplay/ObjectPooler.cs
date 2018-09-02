@@ -9,6 +9,7 @@ public class Pool
     public GameObject objectPrefab;
     public int size;
 
+
     public Pool(GameObject obj, int amt)
     {
         objectPrefab = obj;
@@ -19,6 +20,7 @@ public class Pool
 public class ObjectPooler : MonoBehaviour
 {
     public static ObjectPooler instance;
+    public static int numberOnObject
     public List<Pool> pools;
     public Dictionary<string, Queue<GameObject>> poolDictionary;
 
