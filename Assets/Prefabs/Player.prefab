@@ -38,6 +38,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4213386511438996}
   - component: {fileID: 114115423007020344}
+  - component: {fileID: 114784639561306680}
   - component: {fileID: 135879431761130102}
   - component: {fileID: 54722778689789166}
   m_Layer: 0
@@ -187,6 +188,22 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114784639561306680
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1239506985260524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8058148b3426e2a4987ca4579f5d097d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  directionSprites:
+  - {fileID: 21300000, guid: d298ef21c94caf84e91c1b72dadfb6fa, type: 3}
+  - {fileID: 21300000, guid: 364af43d7ab4fd749869cf77d04d543f, type: 3}
+  - {fileID: 21300000, guid: b0ac25998bb67b549993609d2ef34e49, type: 3}
+  directionImage: {fileID: 114629712580670948}
 --- !u!135 &135879431761130102
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -240,6 +257,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: -90}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1.916, y: 0.319}
+  m_AnchoredPosition: {x: 2, y: 0.1}
   m_SizeDelta: {x: 2, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
