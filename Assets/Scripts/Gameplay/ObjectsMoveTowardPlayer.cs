@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ObjectsMoveTowardPlayer : MonoBehaviour {
     [SerializeField]private Vector3 translation;
-     [SerializeField]private float speed;
 
     private void Start()
     {
@@ -12,6 +11,6 @@ public class ObjectsMoveTowardPlayer : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        transform.Translate(translation * speed * Time.deltaTime);
+        transform.Translate(translation * ElementSpawner.instance.speedOfMovement * Time.deltaTime);
     }
 }
