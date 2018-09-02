@@ -7,6 +7,8 @@ public enum BallState { Middle, Right, None, Left }
 
 public class Ball : MonoBehaviour {
 
+    static public Ball instance;
+
     //Inspector
     [Header("Time Controller:")]
     [SerializeField] private float ballStateChangeInterval;
@@ -31,11 +33,20 @@ public class Ball : MonoBehaviour {
     private BallState nextBallState; // For signaling
     private BallState currentBallState; // The one in
 
+
+    private void Awake() {
+        instance = this;    
+    }
+
     private void Start() {
         // Sprite Clear
         lanePositionImage.enabled = false;
         lanePositionImage.sprite = null;
+        countDownImage.enabled = false;
+    }
 
+    //Global Accessor For All
+    public void StartThiShit() {
         // Ball State Begin
         StartCoroutine(BeginInfiniteBallStateChange());
     }
@@ -130,7 +141,7 @@ public class Ball : MonoBehaviour {
 
     private IEnumerator MoveBall(BallState lane) {
         Vector3 target = SetNextBallPos(lane);
-        while (Vector3.Distance(transform.position, target) > 0.05f) {
+        while (Vector3.Distance(transform.position, target) > 0.04f) {
             transform.position = Vector3.Lerp(transform.position, target, smoothing * Time.deltaTime);
             yield return null;
         }
@@ -151,6 +162,13 @@ public class Ball : MonoBehaviour {
             default:
                 return middleLane;
         }
+    }
+
+    public void StopEverythingDamit() {
+        StopAllCoroutines();
+        lanePositionImage.enabled = false;
+        lanePositionImage.sprite = null;
+        countDownImage.enabled = false;
     }
 
     ////DEBUG

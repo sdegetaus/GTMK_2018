@@ -11,16 +11,13 @@ public class AmbientManager : MonoBehaviour {
     static readonly int ambientColor = Shader.PropertyToID("_LMColor");
     static readonly int ambientPower = Shader.PropertyToID("_LMPower");
 
-    [HideInInspector] public bool isOn = false;
+    //[HideInInspector]
+    public bool isOn = true;
     [SerializeField] private float strenght;
     [SerializeField] private Color color;
 
     private void Awake() {
         instance = this;
-    }
-
-    private void Update() {
-        UpdateShaderValues(isOn);
     }
 
     public void UpdateShaderValues(bool isMenu) {

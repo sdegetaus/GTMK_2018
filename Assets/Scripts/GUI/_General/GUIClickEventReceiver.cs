@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using XXXGame.Gameplay;
 
 namespace XXXGame.GUI
 {
@@ -35,27 +36,38 @@ namespace XXXGame.GUI
 
             switch (clickType) {
                 case ClickType.ToMenuFromAbout:
+                    AmbientManager.instance.UpdateShaderValues(true);
                     GUIStateMachine.instance.ChangeGUIState(GUIState.MainMenu);
                     break;
                 case ClickType.ToMenuFromPause:
+                    GameManager.instance.StopGame();
+                    AmbientManager.instance.UpdateShaderValues(true);
                     GUIStateMachine.instance.ChangeGUIState(GUIState.MainMenu);
+                    GameManager.instance.ResumeGame();
                     break;
                 case ClickType.ToMenuFromGameOver:
+                    AmbientManager.instance.UpdateShaderValues(true);
                     GUIStateMachine.instance.ChangeGUIState(GUIState.MainMenu);
                     break;
                 case ClickType.PauseGame:
+                    AmbientManager.instance.UpdateShaderValues(true);
                     GUIStateMachine.instance.ChangeGUIState(GUIState.Pause);
+                    GameManager.instance.PauseGame();
                     break;
                 case ClickType.Replay:
+                    AmbientManager.instance.UpdateShaderValues(false);
                     GUIStateMachine.instance.ChangeGUIState(GUIState.InGame);
                     break;
                 case ClickType.Resume:
+                    AmbientManager.instance.UpdateShaderValues(false);
                     GUIStateMachine.instance.ChangeGUIState(GUIState.InGame);
+                    GameManager.instance.ResumeGame();
                     break;
                 case ClickType.StartGame:
-                    GUIStateMachine.instance.ChangeGUIState(GUIState.InGame);
+                    GameManager.instance.StartGame();
                     break;
                 case ClickType.About:
+                    AmbientManager.instance.UpdateShaderValues(true);
                     GUIStateMachine.instance.ChangeGUIState(GUIState.About);
                     break;
                 case ClickType.ToSantiago:
