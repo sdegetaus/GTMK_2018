@@ -46,6 +46,9 @@ namespace XXXGame.GUI
                     AmbientManager.instance.UpdateShaderValues(true);
                     GUIStateMachine.instance.ChangeGUIState(GUIState.MainMenu);
                     GameManager.instance.ResumeGame();
+                    ElementSpawner.instance.continueSpawning = false;
+                    PlayerController.instance.ResetEvents();
+                    PlayerController.instance.Deactivate();
                     break;
                 case ClickType.ToMenuFromGameOver:
                     AmbientManager.instance.UpdateShaderValues(true);
