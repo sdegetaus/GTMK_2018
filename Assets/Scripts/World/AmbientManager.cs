@@ -20,10 +20,10 @@ public class AmbientManager : MonoBehaviour {
     }
 
     private void Update() {
-        UpdatedShaderValues(isOn);
+        UpdateShaderValues(isOn);
     }
 
-    public void UpdatedShaderValues(bool isMenu) {
+    public void UpdateShaderValues(bool isMenu) {
         if (isMenu) {
             Shader.SetGlobalFloat(ambientEnable, BoolToFloat(isOn));
             Shader.SetGlobalFloat(ambientPower, strenght);
@@ -34,6 +34,21 @@ public class AmbientManager : MonoBehaviour {
             Shader.SetGlobalColor(ambientColor, new Color(1,1,1));
         }
     }
+
+    //public void FadeOutShader()
+    //{
+    //    Debug.Log("Begin");
+
+    //    while(strenght > 0)
+    //    {
+    //        strenght -= 0.1f * Time.deltaTime;
+    //        Debug.Log(strenght);
+    //    }
+
+    //    isOn = false;
+
+    //    Debug.Log("End");
+    //}
 
     private float BoolToFloat(bool b) {
         if(isOn) {
