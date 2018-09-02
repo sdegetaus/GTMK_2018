@@ -3,11 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CanvasLogicMainMenu : CanvasLogic {
-
-    private void Start() {
-        AmbientManager.instance.isOn = true;
-    }
+public class CanvasLogicAbout : CanvasLogic {
 
     public override void OnEnter() {
         AmbientManager.instance.isOn = true;
