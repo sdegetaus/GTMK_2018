@@ -120,11 +120,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114784639561306680, guid: a2266d0239bb88841af86af7888ebef5,
-        type: 2}
-      propertyPath: lanePositionSprites.Array.size
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4213386511438996, guid: a2266d0239bb88841af86af7888ebef5, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -135,7 +130,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4213386511438996, guid: a2266d0239bb88841af86af7888ebef5, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 1.6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4213386511438996, guid: a2266d0239bb88841af86af7888ebef5, type: 2}
       propertyPath: m_LocalRotation.x
@@ -159,27 +154,9 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114784639561306680, guid: a2266d0239bb88841af86af7888ebef5,
         type: 2}
-      propertyPath: lanePositionSprites.Array.data[0]
-      value: 
-      objectReference: {fileID: 21300000, guid: d298ef21c94caf84e91c1b72dadfb6fa,
-        type: 3}
-    - target: {fileID: 114784639561306680, guid: a2266d0239bb88841af86af7888ebef5,
-        type: 2}
-      propertyPath: lanePositionSprites.Array.data[2]
-      value: 
-      objectReference: {fileID: 21300000, guid: b0ac25998bb67b549993609d2ef34e49,
-        type: 3}
-    - target: {fileID: 114784639561306680, guid: a2266d0239bb88841af86af7888ebef5,
-        type: 2}
-      propertyPath: lanePositionSprites.Array.data[1]
-      value: 
-      objectReference: {fileID: 21300000, guid: 364af43d7ab4fd749869cf77d04d543f,
-        type: 3}
-    - target: {fileID: 114784639561306680, guid: a2266d0239bb88841af86af7888ebef5,
-        type: 2}
-      propertyPath: lanePositionImage
-      value: 
-      objectReference: {fileID: 2066471301}
+      propertyPath: ballStateChangeInterval
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a2266d0239bb88841af86af7888ebef5, type: 2}
   m_IsPrefabParent: 0
@@ -1673,9 +1650,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMat: {fileID: 0}
---- !u!114 &2066471301 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114629712580670948, guid: a2266d0239bb88841af86af7888ebef5,
-    type: 2}
-  m_PrefabInternal: {fileID: 214506711}
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
