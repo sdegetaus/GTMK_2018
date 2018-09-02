@@ -73,9 +73,10 @@ namespace XXXGame.Gameplay {
             ElementSpawner.instance.SpawnObstacles();
             AmbientManager.instance.UpdateShaderValues(false);
             GUIStateMachine.instance.ChangeGUIState(GUIState.InGame);
-            Ball.instance.StartThiShit();
+            Ball.instance.ResetBallPos();
             score = 0;
             CanvasLogicInGame.instance.SetScore(0);
+            Ball.instance.StartThiShit();
         }
     }
 }

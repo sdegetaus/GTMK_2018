@@ -22,7 +22,7 @@ public class Ball : MonoBehaviour {
     [SerializeField] private Image countDownImage;
 
     // Lane Constants
-    private readonly Vector3 middleLane = Vector3.zero;
+    private readonly Vector3 middleLane = new Vector3(0, 0, 0);
     private readonly Vector3 rightLane = new Vector3(0, 0, -1.6f);
     private readonly Vector3 leftLane = new Vector3(0, 0, 1.6f);
 
@@ -143,8 +143,13 @@ public class Ball : MonoBehaviour {
         Vector3 target = SetNextBallPos(lane);
         while (Vector3.Distance(transform.position, target) > 0.04f) {
             transform.position = Vector3.Lerp(transform.position, target, smoothing * Time.deltaTime);
+            //transform.position = new Vector3(0, transform.position.y, transform.position.z);
             yield return null;
         }
+
+
+
+            //transform.Translate(target * Time.deltaTime);
         currentBallState = lane;
         yield return new WaitForSeconds(ballStateChangeInterval);
     }
@@ -162,6 +167,10 @@ public class Ball : MonoBehaviour {
             default:
                 return middleLane;
         }
+    }
+
+    public void ResetBallPos() {
+        StartCoroutine(MoveBall(BallState.Middle));
     }
 
     public void StopEverythingDamnIt() {

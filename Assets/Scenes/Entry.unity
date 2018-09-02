@@ -2207,7 +2207,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4213386511438996, guid: a2266d0239bb88841af86af7888ebef5, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 2.18
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4213386511438996, guid: a2266d0239bb88841af86af7888ebef5, type: 2}
       propertyPath: m_LocalPosition.y
@@ -4192,7 +4192,7 @@ MonoBehaviour:
   - 4
   - 5
   waitForSpawnerAtStartGame: 0
-  speedOfMovement: 50
+  speedOfMovement: 60
   continueSpawning: 0
 --- !u!114 &1787923269
 MonoBehaviour:
