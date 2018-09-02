@@ -12,7 +12,7 @@ public class EnviromentMovement : MonoBehaviour , IPooledObject {
     public void OnObjectSpawn(Vector3 spawnTransform)
     {
         if(spawnCount <= 2) {
-            this.transform.position = spawnTransform * (spawnCount % 3); //hardcoded 3 should be the size of the pool.
+            this.transform.position = spawnTransform * (spawnCount % 3) - new Vector3(1.809f,0,0); //hardcoded 3 should be the size of the pool. // PACO por aquí está el pedo de la separación
         } else {
             this.transform.position = new Vector3(40f, 0, 0);
         }

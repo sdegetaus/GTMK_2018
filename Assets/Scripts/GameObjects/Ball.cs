@@ -170,17 +170,4 @@ public class Ball : MonoBehaviour {
         lanePositionImage.sprite = null;
         countDownImage.enabled = false;
     }
-
-    ////DEBUG
-    //public void MoveLeft() {
-    //    StartCoroutine(MoveBall(BallState.Left));
-    //}
-
-    //public void MoveRight() {
-    //    StartCoroutine(MoveBall(BallState.Right));
-    //}
-
-    //public void MoveMiddle() {
-    //    StartCoroutine(MoveBall(BallState.Middle));
-    //}
 }
