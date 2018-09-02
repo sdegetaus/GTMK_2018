@@ -19,13 +19,30 @@ public class Ball : MonoBehaviour
 
     private float smoothing = 3.0f;
 
-    //private void Start() {
-        
-    //}
+    private BallState ballState;
 
-    //private void SetRandomBallPosition() {
+    private void Start() {
+        SetRandomBallPos();
+    }
 
-    //}
+    public void SetRandomBallPos() {
+        int rnd = Random.Range(0, 3);
+        Debug.Log(rnd);
+        switch (rnd) {
+            case 0:
+                ballState = BallState.Middle;
+                lanePositionImage.sprite = lanePositionSprites[0];
+                break;
+            case 1:
+                ballState = BallState.Right;
+                lanePositionImage.sprite = lanePositionSprites[1];
+                break;
+            case 2:
+                ballState = BallState.Left;
+                lanePositionImage.sprite = lanePositionSprites[2];
+                break;
+        }
+    }
 
     private IEnumerator MoveBall(BallState lane) {
         Vector3 target = SetNextBallPos(lane);
