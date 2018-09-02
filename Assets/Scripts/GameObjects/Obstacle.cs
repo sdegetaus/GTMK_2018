@@ -191,7 +191,7 @@ public class Obstacle : MonoBehaviour, IPooledObject {
                 }
                 else
                 {
-                    transform.position = new Vector3(transform.position.x, upNumber, 1.5f);
+                    transform.position = new Vector3(transform.position.x, upNumber, -1.5f);
                 }
                 break;
             case TranslationDir.Right:
@@ -201,7 +201,7 @@ public class Obstacle : MonoBehaviour, IPooledObject {
                 }
                 else
                 {
-                    transform.position = new Vector3(transform.position.x, upNumber, -1.5f);
+                    transform.position = new Vector3(transform.position.x, upNumber, 1.5f);
                 }
                 break;
                 
