@@ -54,7 +54,7 @@ public class ObjectPooler : MonoBehaviour {
 
         if(pooledObj != null) {
             if (tag == PoolTypes.Enviroment) { 
-                pooledObj.OnObjectSpawn(new Vector3(39.0f, 0, 0)); // ->
+                pooledObj.OnObjectSpawn(new Vector3(40f, 0, 0)); // ->
             } else { 
                 pooledObj.OnObjectSpawn(new Vector3(_Cn.ObstacleStartingPos, 0, 0));
                 pooledObj.SetUpNumber(numberOnObject);
