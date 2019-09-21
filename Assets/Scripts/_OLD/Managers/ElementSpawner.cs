@@ -44,13 +44,13 @@ public class ElementSpawner : MonoBehaviour {
         if (objPoolerInst != null) {
             switch (rnd) {
                 case (int)PoolTypes.SmallWall:
-                    objPoolerInst.SpawnFromPool(PoolTypes.SmallWall, new Vector3(_Cn.ObstacleStartingPos, 0, 0), Quaternion.identity);
+                    objPoolerInst.SpawnFromPool(PoolTypes.SmallWall, new Vector3(Consts.ObstacleStartingPos, 0, 0), Quaternion.identity);
                     break;
                 case (int)PoolTypes.MediumWall:
-                    objPoolerInst.SpawnFromPool(PoolTypes.MediumWall, new Vector3(_Cn.ObstacleStartingPos, 0, 0), Quaternion.identity);
+                    objPoolerInst.SpawnFromPool(PoolTypes.MediumWall, new Vector3(Consts.ObstacleStartingPos, 0, 0), Quaternion.identity);
                     break;
                 case (int)PoolTypes.LargeWall:
-                    objPoolerInst.SpawnFromPool(PoolTypes.LargeWall, new Vector3(_Cn.ObstacleStartingPos, 0, 0), Quaternion.identity);
+                    objPoolerInst.SpawnFromPool(PoolTypes.LargeWall, new Vector3(Consts.ObstacleStartingPos, 0, 0), Quaternion.identity);
                     break;
                 //case (int)PoolTypes.Spring:
                 //    objPoolerInst.SpawnFromPool(PoolTypes.Spring, new Vector3(_Cn.ObstacleStartingPos, 0, 0), Quaternion.identity);
@@ -63,7 +63,7 @@ public class ElementSpawner : MonoBehaviour {
     }
 
     public void InstantiateSpring() {
-        objPoolerInst.SpawnFromPool(PoolTypes.Spring, new Vector3(_Cn.ObstacleStartingPos, 0, 0), Quaternion.identity);
+        objPoolerInst.SpawnFromPool(PoolTypes.Spring, new Vector3(Consts.ObstacleStartingPos, 0, 0), Quaternion.identity);
     }
     public void SpawnObstacles()
     {
