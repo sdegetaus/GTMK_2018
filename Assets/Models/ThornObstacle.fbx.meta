@@ -1,46 +1,116 @@
 fileFormatVersion: 2
 guid: 78170f2484f52e9488d0bf6f6c5ffdd7
 ModelImporter:
-  serializedVersion: 22
-  fileIDToRecycleName:
-    100000: Base
-    100002: Cone
-    100004: Cone_1
-    100006: Cone_2
-    100008: Cone_3
-    100010: Cone_4
-    100012: //RootNode
-    100014: Thorns
-    400000: Base
-    400002: Cone
-    400004: Cone_1
-    400006: Cone_2
-    400008: Cone_3
-    400010: Cone_4
-    400012: //RootNode
-    400014: Thorns
-    2100000: No Name
-    2300000: Base
-    2300002: Cone
-    2300004: Cone_1
-    2300006: Cone_2
-    2300008: Cone_3
-    2300010: Cone_4
-    3300000: Base
-    3300002: Cone
-    3300004: Cone_1
-    3300006: Cone_2
-    3300008: Cone_3
-    3300010: Cone_4
-    4300000: Cone_4
-    4300002: Cone_3
-    4300004: Cone_2
-    4300006: Cone_1
-    4300008: Cone
-    4300010: Base
+  serializedVersion: 25
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: Base
+  - first:
+      1: 100002
+    second: Cone
+  - first:
+      1: 100004
+    second: Cone_1
+  - first:
+      1: 100006
+    second: Cone_2
+  - first:
+      1: 100008
+    second: Cone_3
+  - first:
+      1: 100010
+    second: Cone_4
+  - first:
+      1: 100012
+    second: //RootNode
+  - first:
+      1: 100014
+    second: Thorns
+  - first:
+      4: 400000
+    second: Base
+  - first:
+      4: 400002
+    second: Cone
+  - first:
+      4: 400004
+    second: Cone_1
+  - first:
+      4: 400006
+    second: Cone_2
+  - first:
+      4: 400008
+    second: Cone_3
+  - first:
+      4: 400010
+    second: Cone_4
+  - first:
+      4: 400012
+    second: //RootNode
+  - first:
+      4: 400014
+    second: Thorns
+  - first:
+      21: 2100000
+    second: No Name
+  - first:
+      23: 2300000
+    second: Base
+  - first:
+      23: 2300002
+    second: Cone
+  - first:
+      23: 2300004
+    second: Cone_1
+  - first:
+      23: 2300006
+    second: Cone_2
+  - first:
+      23: 2300008
+    second: Cone_3
+  - first:
+      23: 2300010
+    second: Cone_4
+  - first:
+      33: 3300000
+    second: Base
+  - first:
+      33: 3300002
+    second: Cone
+  - first:
+      33: 3300004
+    second: Cone_1
+  - first:
+      33: 3300006
+    second: Cone_2
+  - first:
+      33: 3300008
+    second: Cone_3
+  - first:
+      33: 3300010
+    second: Cone_4
+  - first:
+      43: 4300000
+    second: Cone_4
+  - first:
+      43: 4300002
+    second: Cone_3
+  - first:
+      43: 4300004
+    second: Cone_2
+  - first:
+      43: 4300006
+    second: Cone_1
+  - first:
+      43: 4300008
+    second: Cone
+  - first:
+      43: 4300010
+    second: Base
   externalObjects: {}
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -66,23 +136,27 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 1
+    isReadable: 0
   meshes:
     lODScreenPercentages: []
     globalScale: 1
-    meshCompression: 0
+    meshCompression: 3
     addColliders: 0
-    importVisibility: 1
-    importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    useSRGBMaterialColor: 1
+    importVisibility: 0
+    importBlendShapes: 0
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
     preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
@@ -94,10 +168,14 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
-  importAnimation: 1
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -107,8 +185,8 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
