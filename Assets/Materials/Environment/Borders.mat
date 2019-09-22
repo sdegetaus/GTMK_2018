@@ -136,4 +136,4 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _LMColor: {r: 1, g: 1, b: 1, a: 1}
     - _ShadowColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
-    - _SpecColor: {r: 0.65160936, g: 0.57564974, b: 0.8301887, a: 0}
+    - _SpecColor: {r: 0.83642966, g: 0.7688679, b: 1, a: 0}
