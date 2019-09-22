@@ -117,7 +117,7 @@ Material:
     - _RealtimeShadow: 1
     - _ReceiveShadows: 1
     - _Shininess: 0
-    - _Smoothness: 0
+    - _Smoothness: 0.554
     - _SmoothnessSource: 1
     - _SmoothnessTextureChannel: 0
     - _SpecSource: 0
@@ -128,7 +128,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _AmbientColor: {r: 1, g: 1, b: 1, a: 1}
-    - _BaseColor: {r: 1, g: 0.6569657, b: 0.5058824, a: 0}
+    - _BaseColor: {r: 0.31078678, g: 0.6792453, b: 0.62858224, a: 0.554}
     - _Color: {r: 1, g: 0, b: 0, a: 1}
     - _Color1_B: {r: 0.9725491, g: 0.90196085, b: 0.91372555, a: 1}
     - _Color1_F: {r: 0.9716981, g: 0.9029459, b: 0.9154463, a: 1}
@@ -140,9 +140,9 @@ Material:
     - _Color2_R: {r: 0.9725491, g: 0.90196085, b: 0.91372555, a: 1}
     - _Color_D: {r: 0.8666667, g: 0.4627451, b: 0.5529412, a: 1}
     - _Color_T: {r: 1, g: 0.9843137, b: 0.99215686, a: 1}
-    - _EmissionColor: {r: 0.933033, g: 0.4921657, b: 0, a: 1}
+    - _EmissionColor: {r: 0.9433962, g: 0.4413913, b: 0, a: 1}
     - _LMColor: {r: 1, g: 1, b: 1, a: 1}
     - _OutlineColor: {r: 0.9528302, g: 0.28315237, b: 0.28315237, a: 1}
     - _Pos: {r: 31.93, g: 10.68, b: 6.66, a: 27.56}
     - _ShadowColor: {r: 0.78039217, g: 0.4509804, b: 0.5137255, a: 1}
-    - _SpecColor: {r: 0.33962262, g: 0.040523116, b: 0, a: 1}
+    - _SpecColor: {r: 0, g: 0, b: 0, a: 1}

@@ -2,7 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public enum PoolTypes {
+public enum PoolTag {
+    LaneGroup,
+    Arrows
+}
+
+public enum __PoolTypes {
     Enviroment,
     SmallWall,
     MediumWall,
@@ -12,5 +17,12 @@ public enum PoolTypes {
 }
 
 public class Consts {
-    public const float ObstacleStartingPos = 30.0f;
+
+    public const int totalLanes = 3;
+
+    public const float lanesStartingPosition = -40.0f;
+    public const float lanesSeparation = 40.0f;
+
+    public const string scriptableObjectBasePath = "Custom/";
+
 }

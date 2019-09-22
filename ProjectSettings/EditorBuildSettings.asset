@@ -14,7 +14,4 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/GameScreen.unity
     guid: d5bbaea06082184409a50e78fdf085d9
-  - enabled: 1
-    path: Assets/__Tests/_TesterScene.unity
-    guid: 93a2c9d111d643448bc1fb5c774ad401
   m_configObjects: {}
