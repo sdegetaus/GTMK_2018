@@ -171,7 +171,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8296853234808359985
 Transform:
   m_ObjectHideFlags: 0
@@ -194,7 +194,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4933760296963588077}
   serializedVersion: 6
-  lengthInSec: 5
+  lengthInSec: 1
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -269,7 +269,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 20
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -322,7 +322,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.2
+      scalar: 1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -374,23 +374,23 @@ ParticleSystem:
         m_RotationOrder: 4
     startColor:
       serializedVersion: 2
-      minMaxState: 1
-      minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0, g: 0.11297083, b: 1, a: 1}
+      minMaxState: 2
+      minColor: {r: 1, g: 0.8160377, b: 0.8663065, a: 0.49019608}
+      maxColor: {r: 0.9528302, g: 0.7685564, b: 0.7918813, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 1, g: 0, b: 0, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
+        key0: {r: 0.7803922, g: 0.24705884, b: 0.43529415, a: 1}
+        key1: {r: 0.7641093, g: 0.23869732, b: 0.42209178, a: 1}
+        key2: {r: 0.7317417, g: 0.22207613, b: 0.3958478, a: 0}
+        key3: {r: 0.4901961, g: 0.098039225, b: 0.20000002, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
+        ctime1: 15806
+        ctime2: 47224
+        ctime3: 65535
         ctime4: 0
         ctime5: 0
         ctime6: 0
@@ -404,7 +404,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-        m_NumColorKeys: 2
+        m_NumColorKeys: 4
         m_NumAlphaKeys: 2
       minGradient:
         serializedVersion: 2
@@ -439,7 +439,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 0.2
-      minScalar: 0.01
+      minScalar: 0.001
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -814,12 +814,12 @@ ParticleSystem:
     serializedVersion: 6
     enabled: 1
     type: 4
-    angle: 15
+    angle: 20
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
-    radiusThickness: 1
+    radiusThickness: 0
     donutRadius: 0.2
-    m_Position: {x: 0, y: 0.1, z: 0}
+    m_Position: {x: -0.3, y: 0.1, z: 0}
     m_Rotation: {x: -30, y: -90, z: 0}
     m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
@@ -896,9 +896,9 @@ ParticleSystem:
     m_TextureColorAffectsParticles: 1
     m_TextureAlphaAffectsParticles: 1
     m_TextureBilinearFiltering: 0
-    randomDirectionAmount: 0
-    sphericalDirectionAmount: 0
-    randomPositionAmount: 0
+    randomDirectionAmount: 1
+    sphericalDirectionAmount: 0.03
+    randomPositionAmount: 0.001
     radius:
       value: 0.0001
       mode: 0
@@ -957,13 +957,13 @@ ParticleSystem:
           m_PostInfinity: 2
           m_RotationOrder: 4
     arc:
-      value: 360
+      value: 180
       mode: 0
       spread: 0
       speed:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 1
+        scalar: -1.4
         minScalar: 1
         maxCurve:
           serializedVersion: 2
@@ -1019,7 +1019,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 20
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -1125,7 +1125,7 @@ ParticleSystem:
     m_BurstCount: 0
     m_Bursts: []
   SizeModule:
-    enabled: 0
+    enabled: 1
     curve:
       serializedVersion: 2
       minMaxState: 1
@@ -1136,21 +1136,21 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 0
-          inSlope: 0
-          outSlope: 1
+          value: 0.48181817
+          inSlope: 1.3552879
+          outSlope: 1.3552879
           tangentMode: 0
           weightedMode: 0
           inWeight: 0.33333334
-          outWeight: 0.33333334
+          outWeight: 0.10061601
         - serializedVersion: 3
           time: 1
-          value: 1
-          inSlope: 1
-          outSlope: 0
+          value: 0
+          inSlope: -4.4272714
+          outSlope: -4.4272714
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.33333334
+          inWeight: 0.18480498
           outWeight: 0.33333334
         m_PreInfinity: 2
         m_PostInfinity: 2
@@ -1449,7 +1449,7 @@ ParticleSystem:
         m_RotationOrder: 4
     separateAxes: 0
   ColorModule:
-    enabled: 0
+    enabled: 1
     gradient:
       serializedVersion: 2
       minMaxState: 1
@@ -1458,8 +1458,8 @@ ParticleSystem:
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 1, g: 1, b: 1, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
+        key1: {r: 1, g: 1, b: 1, a: 0}
+        key2: {r: 0, g: 0, b: 0, a: 1}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
@@ -1473,9 +1473,9 @@ ParticleSystem:
         ctime5: 0
         ctime6: 0
         ctime7: 0
-        atime0: 0
+        atime0: 31611
         atime1: 65535
-        atime2: 0
+        atime2: 64957
         atime3: 0
         atime4: 0
         atime5: 0
@@ -4884,16 +4884,16 @@ ParticleSystemRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_RenderMode: 0
-  m_SortMode: 0
-  m_MinParticleSize: 0
-  m_MaxParticleSize: 0.5
+  m_SortMode: 1
+  m_MinParticleSize: 0.001
+  m_MaxParticleSize: 1
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
   m_LengthScale: 2
-  m_SortingFudge: 0
+  m_SortingFudge: 6.88
   m_NormalDirection: 1
   m_ShadowBias: 0
-  m_RenderAlignment: 0
+  m_RenderAlignment: 3
   m_Pivot: {x: 0, y: 0, z: 0}
   m_Flip: {x: 0, y: 0, z: 0}
   m_UseCustomVertexStreams: 0

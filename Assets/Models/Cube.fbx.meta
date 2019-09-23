@@ -80,9 +80,9 @@ ModelImporter:
     secondaryUVPackMargin: 1
     useFileScale: 1
   tangentSpace:
-    normalSmoothAngle: 45
-    normalImportMode: 1
-    tangentImportMode: 3
+    normalSmoothAngle: 0
+    normalImportMode: 0
+    tangentImportMode: 2
     normalCalculationMode: 4
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
