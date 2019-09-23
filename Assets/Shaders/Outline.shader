@@ -41,12 +41,8 @@
 		Pass
 		{
 			Name "BASE"
-
-			//Tags { "LightMode" = "DepthOnly" }
-
 			ColorMask 0
 			ZWrite On
- 
 		}
  
 		Pass
@@ -62,11 +58,11 @@
 			Cull Front
 			ZTest On
 			
-			//Stencil {
-			//	Ref 2
-			//	Comp always
-			//	Pass replace
-			//}
+			/*Stencil {
+				Ref 2
+				Comp always
+				Pass replace
+			}*/
 
 			CGPROGRAM
 

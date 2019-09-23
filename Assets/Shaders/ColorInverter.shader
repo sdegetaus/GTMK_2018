@@ -51,12 +51,12 @@
 				"LightMode" = "LightweightForward"
 			}
 
-			//Stencil {
-			//	Ref 2
-			//	Comp equal
-			//	Pass keep
-			//	ZFail decrWrap
-			//}
+			/*Stencil {
+				Ref 2
+				Comp equal
+				Pass keep
+				ZFail decrWrap
+			}*/
 		
             CGPROGRAM
             

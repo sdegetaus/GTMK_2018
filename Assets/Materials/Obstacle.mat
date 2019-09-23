@@ -127,7 +127,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _AmbientColor: {r: 1, g: 1, b: 1, a: 1}
-    - _BaseColor: {r: 0.3773585, g: 0.21935889, b: 0.09077963, a: 0}
+    - _BaseColor: {r: 0.2735849, g: 0.17983176, b: 0.12259701, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Color1: {r: 1, g: 1, b: 1, a: 0}
     - _Color1_B: {r: 1, g: 0.882353, b: 0.91372555, a: 1}
@@ -141,9 +141,9 @@ Material:
     - _Color2_R: {r: 1, g: 0.740566, b: 0.8089199, a: 1}
     - _Color_D: {r: 1, g: 0.4575472, b: 0.59727, a: 1}
     - _Color_T: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 0.46934795, g: 0, b: 1, a: 1}
+    - _EmissionColor: {r: 0.8113208, g: 0.5503221, b: 0.52429694, a: 1}
     - _LMColor: {r: 1, g: 1, b: 1, a: 1}
     - _OutlineColor: {r: 1, g: 0, b: 0, a: 1}
     - _ShadowColor: {r: 0.78039217, g: 0.4509804, b: 0.5137255, a: 1}
-    - _SpecColor: {r: 1, g: 1, b: 1, a: 0}
+    - _SpecColor: {r: 0.6509434, g: 0.4424407, b: 0.4206568, a: 1}
     - _UpVector: {r: 0, g: 1, b: 0, a: 0}

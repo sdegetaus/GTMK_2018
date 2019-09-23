@@ -42,7 +42,13 @@
 
         Pass
         {
-			
+			/*Stencil{
+				Ref 2
+				Comp notequal
+				Pass keep
+				ZFail decrWrap
+			}*/
+
             CGPROGRAM
 
             #pragma vertex vert
