@@ -32,6 +32,7 @@ public class GameManager : Singleton<GameManager> {
     }
 
     public void RunOver() {
+        CameraController.Shake();
         IsRunPlaying = false;
         spawner.StopSpawning();
     }

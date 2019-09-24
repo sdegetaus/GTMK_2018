@@ -102,16 +102,16 @@ public class Spawner : MonoBehaviour {
     // TEMP, TODO:
     private float? GetNewLanePosition() {
 
-        float? lanePosition = null;
+        float? newLanePosition = null;
 
         if (Helper.IsProbableBy(33)) {
-            lanePosition = -Consts.laneSeparation;
+            newLanePosition = -Consts.laneSeparation;
             count_left++;
         } else if (Helper.IsProbableBy(33)) {
-            lanePosition = Consts.laneSeparation;
+            newLanePosition = Consts.laneSeparation;
             count_right++;
         } else {
-            lanePosition = 0;
+            newLanePosition = 0;
             count_0++;
         }
 
@@ -122,6 +122,6 @@ public class Spawner : MonoBehaviour {
 
         totalCount++;
 
-        return lanePosition;
+        return newLanePosition;
     }
 }
