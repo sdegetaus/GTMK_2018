@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class SpawnGroup<GroupType, GroupEnum> : MonoBehaviour
+public abstract class BaseGroup<GroupType, GroupEnum> : MonoBehaviour
     where GroupType : Component
     where GroupEnum : Enum
     {
@@ -18,8 +18,6 @@ public abstract class SpawnGroup<GroupType, GroupEnum> : MonoBehaviour
     [SerializeField]
     protected FloatVariable globalSpeed = null;
 
-    public abstract void OnCollision();
-
     protected void Update() {
 
         if (!GameManager.IsRunPlaying) return;
@@ -32,6 +30,11 @@ public abstract class SpawnGroup<GroupType, GroupEnum> : MonoBehaviour
     public virtual void Init() {
         UnactivateAll();
         SetRandomObstacle();
+    }
+
+    public void UnsetActiveItem(GroupEnum item) {
+        int enumToInt = (int)Enum.Parse(typeof(GroupEnum), item.ToString());
+        objects[enumToInt].gameObject.SetActive(false);
     }
 
     protected void SetActiveItem(GroupEnum item) {

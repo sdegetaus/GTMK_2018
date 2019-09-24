@@ -63,7 +63,7 @@ public class Spawner : MonoBehaviour {
     private IEnumerator SpawningCoroutine() {
 
         while (true) {
-            //Debug.Log("This shit is running...");
+
             // Collectible Spawning...
             if (Helper.IsProbableBy(5)) {
                 count_collectible++;

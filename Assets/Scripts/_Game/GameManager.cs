@@ -2,9 +2,9 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : Singleton<GameManager> {
 
-    public static GameManager instance;
+    // Static Variables
     public static bool IsRunPlaying = false;
 
     [Header("Variables")]
@@ -13,11 +13,10 @@ public class GameManager : MonoBehaviour {
     public RandomFloatVariable obstacleSpawnYieldTime = null;
 
     [Header("Class References")]
-    public Pooler pooler;
-    public Spawner spawner;
+    public Pooler pooler = null;
+    public Spawner spawner = null;
 
     private void Awake() {
-        instance = this;
         Application.targetFrameRate = 60;
     }
 
@@ -30,10 +29,6 @@ public class GameManager : MonoBehaviour {
             spawner.BeginSpawning(pooler);
             IsRunPlaying = true;
         });
-    }
-
-    private void Update() {
-        runScore.value += Time.deltaTime;
     }
 
     public void RunOver() {

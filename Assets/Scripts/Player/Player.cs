@@ -11,13 +11,21 @@ public class Player : MonoBehaviour {
     [Header("Settings")]
     public float movementTransition;
 
+    [Header("Variables")]
+    [SerializeField]
+    private FloatVariable runScore = null;
+
     // Private Variables
     private LeanTweenType tweenType = LeanTweenType.easeOutQuad;
 
     private void Update() {
 
-        if (isMoving || !GameManager.IsRunPlaying) return;
-        
+        if (!GameManager.IsRunPlaying) return;
+
+        runScore.value += Time.deltaTime;
+
+        if (isMoving) return;
+
         if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A)) {
             MoveLeft();
             return;
@@ -30,9 +38,13 @@ public class Player : MonoBehaviour {
 
     }
 
-    private void MoveLeft() => Move(CheckLaneLimit(lanePosition - 1));
+    private void MoveLeft() => Move(
+        CheckLaneLimit(lanePosition - 1)
+    );
 
-    private void MoveRight() => Move(CheckLaneLimit(lanePosition + 1));
+    private void MoveRight() => Move(
+        CheckLaneLimit(lanePosition + 1)
+    );
     
     private Lane CheckLaneLimit(Lane toLane) {
         if (toLane < 0) return lanePosition;

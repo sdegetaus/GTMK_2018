@@ -62,11 +62,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: 1_CollectibleTest1
       objectReference: {fileID: 0}
-    - target: {fileID: 8181287512062919926, guid: efe4e46e331829242aeb8cdd6098c042,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8181287512062919927, guid: efe4e46e331829242aeb8cdd6098c042,
         type: 3}
       propertyPath: m_LocalPosition.x

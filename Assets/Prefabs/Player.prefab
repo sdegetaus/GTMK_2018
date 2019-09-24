@@ -49,8 +49,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lanePosition: 1
   isMoving: 0
-  isJumping: 0
   movementTransition: 0.2
+  runScore: {fileID: 11400000, guid: 74339a6faffde0947a4ee4b899b3c654, type: 2}
 --- !u!135 &135879431761130102
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -2,11 +2,4 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObstacleGroup : SpawnGroup<Obstacle, ObstacleEnum> {
-
-    // TODO:
-    public override void OnCollision() {
-        throw new System.NotImplementedException();
-    }
-
-}
+public class ObstacleGroup : BaseGroup<Obstacle, ObstacleEnum> { }
