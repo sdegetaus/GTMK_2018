@@ -7,21 +7,20 @@ public enum PoolTag {
     Arrows
 }
 
-public enum __PoolTypes {
-    Enviroment,
-    SmallWall,
-    MediumWall,
-    LargeWall,
-    Spring,
-    ThornObtacle
+public enum Lane {
+    Left,
+    Middle,
+    Right
 }
 
 public class Consts {
 
     public const int totalLanes = 3;
 
-    public const float lanesStartingPosition = -40.0f;
-    public const float lanesSeparation = 40.0f;
+    public const float laneGroupStartingPosition = -40.0f;
+    public const float laneGroupSeparation = 40.0f;
+
+    public const float laneSeparation = 1.6f;
 
     public const string scriptableObjectBasePath = "Custom/";
 

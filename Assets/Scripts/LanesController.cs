@@ -14,7 +14,7 @@ public class LanesController : MonoBehaviour {
         pooler.InitializePool(() => {
             for (int i = 0; i < Consts.totalLanes; i++) {
                 GameObject lane = pooler.Spawn(PoolTag.LaneGroup,
-                    new Vector3(Consts.lanesStartingPosition + (Consts.lanesSeparation * i), 0.0f)
+                    new Vector3(Consts.laneGroupStartingPosition + (Consts.laneGroupSeparation * i), 0.0f)
                 );
                 lane.AddComponent(typeof(ObstacleMover));
             }
@@ -22,7 +22,7 @@ public class LanesController : MonoBehaviour {
     }
 
     public void SpawnToBack() {
-        pooler.Spawn(PoolTag.LaneGroup, new Vector3(Consts.lanesSeparation, 0.0f));
+        pooler.Spawn(PoolTag.LaneGroup, new Vector3(Consts.laneGroupSeparation, 0.0f));
     }
 
 }

@@ -239,7 +239,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4913445075667076, guid: 2a6a967f497c98c4289f7e03f73ff18f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4913445075667076, guid: 2a6a967f497c98c4289f7e03f73ff18f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -621,10 +621,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 1239506985260524, guid: a2266d0239bb88841af86af7888ebef5, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4213386511438996, guid: a2266d0239bb88841af86af7888ebef5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -668,6 +664,11 @@ PrefabInstance:
     - target: {fileID: 4213386511438996, guid: a2266d0239bb88841af86af7888ebef5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 326599259588132496, guid: a2266d0239bb88841af86af7888ebef5,
+        type: 3}
+      propertyPath: tweenType
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2266d0239bb88841af86af7888ebef5, type: 3}
@@ -821,7 +822,7 @@ PrefabInstance:
     - target: {fileID: 3196214882808289471, guid: becc94d5fa177d240b87c13b35aed476,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 3196214882808289471, guid: becc94d5fa177d240b87c13b35aed476,
         type: 3}
