@@ -10,32 +10,21 @@ public class ObstacleGroup : MonoBehaviour {
     [SerializeField]
     private ObstacleEnum activeObstacleEnum;
 
-    public bool move = false;
-
     [Space]
 
     [SerializeField]
-    private FloatVariable globalSpeed;
+    private FloatVariable globalSpeed = null;
 
-    private ObstacleMover obstacleMover;
-
-    private void Start() {
-        obstacleMover = GetComponent<ObstacleMover>();
-    }
 
     private void Update() {
-
-        Vector3 x = transform.position.With(
+        transform.position = transform.position.With(
             x: transform.position.x + globalSpeed.value * Time.deltaTime
         );
-
-        transform.position = x;
     }
 
     public void Init() {
         UnactivateAll();
         SetRandomObstacle();
-        move = true;
     }
 
     private void SetActiveObstacle(ObstacleEnum obstacle) {

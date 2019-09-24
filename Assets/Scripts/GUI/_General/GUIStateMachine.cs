@@ -10,17 +10,17 @@ public enum GUIState {
 
 public class GUIStateMachine : MonoBehaviour {
 
-    [SerializeField] private List<CanvasLogic> canvases = new List<CanvasLogic>();
+    //[SerializeField] private List<CanvasLogic> canvases = new List<CanvasLogic>();
 
-    [SerializeField] private GUIState currentState = GUIState.Test01;
-    [SerializeField] private GUIState lastState = GUIState.Test01;
+    ////[SerializeField] private GUIState currentState = GUIState.Test01;
+    ////[SerializeField] private GUIState lastState = GUIState.Test01;
 
-    private void Start() {
-        //ShowCanvas(GUIState.MainMenu, show: true);
-        //for (GUIState i = GUIState.MainMenu + 1; i < GUIState.MaxGUIState; i++) {
-        //    ShowCanvas(i, show: false);
-        //}
-    }
+    //private void Start() {
+    //    //ShowCanvas(GUIState.MainMenu, show: true);
+    //    //for (GUIState i = GUIState.MainMenu + 1; i < GUIState.MaxGUIState; i++) {
+    //    //    ShowCanvas(i, show: false);
+    //    //}
+    //}
 
     //public void ChangeGUIState(GUIState state) {
     //    if (state == guiState) {

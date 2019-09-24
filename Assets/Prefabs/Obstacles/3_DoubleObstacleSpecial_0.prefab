@@ -243,7 +243,7 @@ GameObject:
   - component: {fileID: 8113837741848245929}
   - component: {fileID: 6646719909944021873}
   m_Layer: 0
-  m_Name: 1_DoubleObstacleSpecial_0
+  m_Name: 3_DoubleObstacleSpecial_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -277,8 +277,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Size: {x: 2, y: 1, z: 1}
+  m_Center: {x: 0.5, y: 0.5, z: 0}
 --- !u!114 &6646719909944021873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,4 +291,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ea34b29b4f6e0a4180c2cd7027da8f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstacleEnum: 1
+  obstacleEnum: 3

@@ -6,7 +6,7 @@ using UnityEngine;
 public class ObstacleManager : MonoBehaviour {
 
     // Private Variables
-    private GameManager gameManager;
+    private GameManager gameManager = null;
     private Pooler pooler = null;
 
     [Space]
@@ -37,7 +37,6 @@ public class ObstacleManager : MonoBehaviour {
     }
 
     private IEnumerator ObstacleSpawningCoroutine() {
-
 
         while (true) {
 

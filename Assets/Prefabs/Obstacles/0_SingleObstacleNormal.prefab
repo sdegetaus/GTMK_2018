@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 65460287885537392}
   - component: {fileID: 252708151814328237}
   m_Layer: 0
-  m_Name: SingleObstacle
+  m_Name: 0_SingleObstacleNormal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

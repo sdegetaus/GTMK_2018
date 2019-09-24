@@ -22,8 +22,7 @@ public static class Consts {
 
     public const int totalLanes = 3;
 
-    public const float laneGroupStartingPosition = -40.0f;
-    public const float laneGroupSeparation = 40.0f;
+    public const float arrowsSeparation = 30.0f;
 
     public const float laneSeparation = 1.6f;
 

@@ -73,4 +73,8 @@ public class Player : MonoBehaviour {
             }
         ).setEase(tweenType);
     }
+
+    private void OnTriggerEnter(Collider other) {
+        Debug.Log("Trigger");
+    }
 }
