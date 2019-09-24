@@ -7,36 +7,41 @@ using UnityEngine.Events;
 public class Pooler : MonoBehaviour {
 
     [Serializable]
-    public class Pool {
+    public struct Pool {
         public PoolTag type;
         public int count;
         public GameObject prefab;
     }
 
-    [SerializeField] private List<Pool> pools = new List<Pool>();
+    public Pool obstacleGroupPool;
+
+    private List<Pool> pools = new List<Pool>();
     private Dictionary<PoolTag, Queue<GameObject>> poolGroup = new Dictionary<PoolTag, Queue<GameObject>>();
+
+    private void Start() {
+        pools.Clear();
+        pools.Add(obstacleGroupPool);
+    }
 
     public void InitializePool(UnityAction finishedCallback = null) =>
         StartCoroutine(
             InitializePoolCoroutine(finishedCallback)
         );
 
-    private IEnumerator InitializePoolCoroutine(UnityAction finishedCallback = null) {
+    private IEnumerator InitializePoolCoroutine(UnityAction onFinished = null) {
 
-        if (pools.Count == 0) yield break;
-
-        foreach (Pool pool in pools) {
-            Queue<GameObject> poolObject = new Queue<GameObject>();
-            for (int i = 0; i < pool.count; i++) {
-                GameObject obj = Instantiate(pool.prefab);
-                obj.name += " " + i;
-                obj.SetActive(false);
-                poolObject.Enqueue(obj);
-            }
-            poolGroup.Add(pool.type, poolObject);
+        // initialize obstacleGroupPool
+        Queue<GameObject> poolObject = new Queue<GameObject>();
+        for (int i = 0; i < obstacleGroupPool.count; i++) {
+            GameObject obj = Instantiate(obstacleGroupPool.prefab, transform);
+            obj.name += " " + i;
+            obj.SetActive(false);
+            poolObject.Enqueue(obj);
             yield return new WaitForEndOfFrame();
         }
-        finishedCallback?.Invoke();
+        poolGroup.Add(obstacleGroupPool.type, poolObject);
+        
+        onFinished?.Invoke();
     }
 
     public GameObject Spawn(PoolTag tag, Vector3 position = default) {

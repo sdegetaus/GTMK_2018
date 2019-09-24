@@ -7,11 +7,18 @@ public class Player : MonoBehaviour {
     [Header("Status")]
     public Lane lanePosition = Lane.Middle;
     public bool isMoving = false;
+    public bool isJumping = false;
+
+    [Header("Settings")]
+    public float movementTime;
 
     // Private Variables
     private LeanTweenType tweenType = LeanTweenType.easeOutQuad;
 
     private void Update() {
+
+        // TODO:
+        //if (isJumping) return;
 
         if (isMoving) return;
         
@@ -24,6 +31,7 @@ public class Player : MonoBehaviour {
             MoveRight();
             return;
         }
+
     }
 
     private void MoveLeft() => Move(CheckLaneLimit(lanePosition - 1));
@@ -57,7 +65,7 @@ public class Player : MonoBehaviour {
                 break;
         }
 
-        LeanTween.moveZ(gameObject, to, 0.5f)
+        LeanTween.moveZ(gameObject, to, movementTime)
             .setOnComplete(() => {
                 gameObject.transform.position = gameObject.transform.position.With(z: to);
                 lanePosition = newLanePosition;

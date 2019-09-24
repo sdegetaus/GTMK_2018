@@ -48,6 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lanePosition: 1
   isMoving: 0
+  isJumping: 0
+  movementTime: 0.2
 --- !u!135 &135879431761130102
 SphereCollider:
   m_ObjectHideFlags: 0
