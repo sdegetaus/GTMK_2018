@@ -49,15 +49,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cebcaa3884ce4aa4783941bbfdb6f801, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstacles:
+  objects:
   - {fileID: 8840600277588660515}
   - {fileID: 8733839534747427773}
   - {fileID: 3919477389010602591}
   - {fileID: 4100956172017153934}
   - {fileID: 4206526457278334941}
   - {fileID: 7071484468737414459}
-  activeObstacleEnum: 0
-  move: 0
+  activeObject: 0
   globalSpeed: {fileID: 11400000, guid: 41e3fbab2c4509246a98e0217cc2740d, type: 2}
 --- !u!1001 &2113317760151055745
 PrefabInstance:

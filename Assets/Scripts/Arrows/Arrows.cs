@@ -15,6 +15,8 @@ public class Arrows : MonoBehaviour {
 
     private void Update() {
 
+        if (!GameManager.IsRunPlaying) return;
+
         transform.position = transform.position.With(
             x: transform.position.x + globalSpeed.value * Time.deltaTime
         );

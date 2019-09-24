@@ -1,6 +1,8 @@
-﻿public enum PoolTag {
+﻿
+public enum PoolTag {
+    ObstacleGroup,
+    CollectibleGroup,
     Arrows,
-    ObstacleGroup
 }
 
 public enum Lane {
@@ -18,6 +20,11 @@ public enum ObstacleEnum {
     DoubleSpecial_2
 }
 
+public enum CollectibleEnum {
+    CollectibleTest0,
+    CollectibleTest1
+}
+
 public static class Consts {
 
     public const int totalLanes = 3;
@@ -26,7 +33,7 @@ public static class Consts {
 
     public const float laneSeparation = 1.6f;
 
-    public const float obstacleSpawnPoint = 30f;
+    public const float globalSpawnPoint = 30f;
 
     public const string scriptableObjectBasePath = "Custom/";
 

@@ -11,9 +11,9 @@ public static class Helper {
         return V;
     }
 
-    public static bool IsProbableBy(int probability) {
+    public static bool IsProbableBy(int percent) {
         float range = UnityEngine.Random.Range(1, 100);
-        if (range <= probability) return true;
+        if (range <= percent) return true;
         return false;
     }
 

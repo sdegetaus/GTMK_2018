@@ -7,20 +7,16 @@ public class Player : MonoBehaviour {
     [Header("Status")]
     public Lane lanePosition = Lane.Middle;
     public bool isMoving = false;
-    public bool isJumping = false;
 
     [Header("Settings")]
-    public float movementTime;
+    public float movementTransition;
 
     // Private Variables
     private LeanTweenType tweenType = LeanTweenType.easeOutQuad;
 
     private void Update() {
 
-        // TODO:
-        //if (isJumping) return;
-
-        if (isMoving) return;
+        if (isMoving || !GameManager.IsRunPlaying) return;
         
         if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A)) {
             MoveLeft();
@@ -65,16 +61,12 @@ public class Player : MonoBehaviour {
                 break;
         }
 
-        LeanTween.moveZ(gameObject, to, movementTime)
+        LeanTween.moveZ(gameObject, to, movementTransition)
             .setOnComplete(() => {
                 gameObject.transform.position = gameObject.transform.position.With(z: to);
                 lanePosition = newLanePosition;
                 isMoving = false;
             }
         ).setEase(tweenType);
-    }
-
-    private void OnTriggerEnter(Collider other) {
-        Debug.Log("Trigger");
     }
 }

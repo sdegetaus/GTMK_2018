@@ -5,15 +5,16 @@ using System.Collections.Generic;
 public class GameManager : MonoBehaviour {
 
     public static GameManager instance;
+    public static bool IsRunPlaying = false;
 
     [Header("Variables")]
+    public FloatVariable runScore = null;
     public FloatVariable globalSpeed = null;
     public RandomFloatVariable obstacleSpawnYieldTime = null;
 
     [Header("Class References")]
     public Pooler pooler;
-    public ObstacleManager obstacleManager;
-    public ArrowsManager arrowsManager;
+    public Spawner spawner;
 
     private void Awake() {
         instance = this;
@@ -26,9 +27,22 @@ public class GameManager : MonoBehaviour {
 
     public void StartRun() {
         pooler.InitializePool(() => {
-            obstacleManager.ObstacleSpawning(pooler);
-            arrowsManager.ArrowsSpawning(pooler);
+            spawner.BeginSpawning(pooler);
+            IsRunPlaying = true;
         });
+    }
+
+    private void Update() {
+        runScore.value += Time.deltaTime;
+    }
+
+    public void RunOver() {
+        IsRunPlaying = false;
+        spawner.StopSpawning();
+    }
+
+    public void CollectibleCollected(CollectibleEnum collectibleEnum) {
+        Debug.Log("Collectible Collected! " + collectibleEnum);
     }
 
 }

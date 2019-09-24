@@ -15,6 +15,7 @@ public class Pooler : MonoBehaviour {
 
     [Header("Pools")]
     public Pool obstacleGroupPool;
+    public Pool collectibleGroupPool;
     public Pool arrowsPool;
 
     // Private Variables
@@ -27,49 +28,17 @@ public class Pooler : MonoBehaviour {
     private void Start() {
         pools.Clear();
         pools.Add(obstacleGroupPool);
+        pools.Add(collectibleGroupPool);
         pools.Add(arrowsPool);
     }
+
+    #region Public Methods
 
     public void InitializePool(UnityAction finishedCallback = null) {
         gameManager = GameManager.instance;
         StartCoroutine(
             InitializePoolCoroutine(finishedCallback)
         );
-    }
-
-    private IEnumerator InitializePoolCoroutine(UnityAction onFinished = null) {
-
-        // initialize obstacleGroupPool
-        Queue<GameObject> poolObject = new Queue<GameObject>();
-        Transform poolObjectsTransform = (!Helper.IsMobile()) ? gameManager.obstacleManager.gameObject.transform : null;
-
-        for (int i = 0; i < obstacleGroupPool.count; i++) {
-            GameObject obj = Instantiate(obstacleGroupPool.prefab, poolObjectsTransform);
-            obj.name += " " + i;
-            obj.SetActive(false);
-            poolObject.Enqueue(obj);
-            yield return new WaitForEndOfFrame();
-        }
-        poolGroup.Add(obstacleGroupPool.type, poolObject);
-
-        yield return null;
-
-        // initialize arrowsPool
-        poolObject = new Queue<GameObject>();
-        poolObjectsTransform = (!Helper.IsMobile()) ? gameManager.arrowsManager.gameObject.transform : null;
-
-        for (int i = 0; i < arrowsPool.count; i++) {
-            GameObject obj = Instantiate(arrowsPool.prefab, poolObjectsTransform);
-            obj.name += " " + i;
-            obj.SetActive(false);
-            poolObject.Enqueue(obj);
-            yield return new WaitForEndOfFrame();
-        }
-        poolGroup.Add(arrowsPool.type, poolObject);
-
-        yield return null;
-
-        onFinished?.Invoke();
     }
 
     public GameObject Spawn(PoolTag tag, Vector3 position = default) {
@@ -88,5 +57,53 @@ public class Pooler : MonoBehaviour {
         poolGroup[tag].Enqueue(objectToSpawn);
 
         return objectToSpawn;
+    }
+
+    #endregion
+
+    private IEnumerator InitializePoolCoroutine(UnityAction onFinished = null) {
+
+        Transform poolObjectsTransform = (!Helper.IsMobile()) ? gameManager.spawner.gameObject.transform : null;
+
+        // initialize obstacleGroupPool
+        Queue<GameObject> poolObject = new Queue<GameObject>();
+
+        for (int i = 0; i < obstacleGroupPool.count; i++) {
+            GameObject obj = Instantiate(obstacleGroupPool.prefab, poolObjectsTransform);
+            obj.SetActive(false);
+            poolObject.Enqueue(obj);
+            yield return new WaitForEndOfFrame();
+        }
+        poolGroup.Add(obstacleGroupPool.type, poolObject);
+
+        yield return null;
+
+        // initialize collectiblePool
+        poolObject = new Queue<GameObject>();
+
+        for (int i = 0; i < collectibleGroupPool.count; i++) {
+            GameObject obj = Instantiate(collectibleGroupPool.prefab, poolObjectsTransform);
+            obj.SetActive(false);
+            poolObject.Enqueue(obj);
+            yield return new WaitForEndOfFrame();
+        }
+        poolGroup.Add(collectibleGroupPool.type, poolObject);
+
+        yield return null;
+
+        // initialize arrowsPool
+        poolObject = new Queue<GameObject>();
+
+        for (int i = 0; i < arrowsPool.count; i++) {
+            GameObject obj = Instantiate(arrowsPool.prefab, poolObjectsTransform);
+            obj.SetActive(false);
+            poolObject.Enqueue(obj);
+            yield return new WaitForEndOfFrame();
+        }
+        poolGroup.Add(arrowsPool.type, poolObject);
+
+        yield return null;
+
+        onFinished?.Invoke();
     }
 }

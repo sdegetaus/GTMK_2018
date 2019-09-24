@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObstacleGroup : SpawnGroup<Obstacle, ObstacleEnum> {
+public class CollectibleGroup : SpawnGroup<Collectible, CollectibleEnum> {
 
-    // TODO:
     public override void OnCollision() {
         throw new System.NotImplementedException();
     }
