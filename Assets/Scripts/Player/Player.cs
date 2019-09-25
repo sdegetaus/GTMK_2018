@@ -18,6 +18,22 @@ public class Player : MonoBehaviour {
     // Private Variables
     private LeanTweenType tweenType = LeanTweenType.easeOutQuad;
 
+    // Class References
+    private Events events;
+
+    private void Start() {
+        events = Events.instance;
+        events.OnRunOver.RegisterListener(OnRunOver);
+    }
+
+    #region Event Handlers
+
+    private void OnRunOver() {
+        LeanTween.cancel(gameObject);
+    }
+
+    #endregion
+
     private void Update() {
 
         if (!GameManager.IsRunPlaying) return;

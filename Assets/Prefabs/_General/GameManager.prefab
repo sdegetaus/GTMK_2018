@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 240168107284753066}
   - component: {fileID: 240168107284753069}
   - component: {fileID: 240168107284753067}
+  - component: {fileID: 979238039}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -49,7 +50,7 @@ MonoBehaviour:
   globalSpeed: {fileID: 11400000, guid: 41e3fbab2c4509246a98e0217cc2740d, type: 2}
   obstacleSpawnYieldTime: {fileID: 11400000, guid: 681db8829b0bf4147802a72e2bfbbcf7,
     type: 2}
-  pooler: {fileID: 240168107284753069}
+  pools: {fileID: 240168107284753069}
   spawner: {fileID: 240168107284753067}
 --- !u!114 &240168107284753069
 MonoBehaviour:
@@ -99,3 +100,20 @@ MonoBehaviour:
   perc_collectible: 0
   count_collectible: 0
   totalCount: 0
+--- !u!114 &979238039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240168107284753065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36572ade750b5534fb9cc20aa9fd6298, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnPoolLoaded: {fileID: 11400000, guid: 4d72c3814dd5da34ab9686eefa19ab65, type: 2}
+  OnRunStarted: {fileID: 11400000, guid: f3ec353d2281c084bbd476c2b3210465, type: 2}
+  OnRunOver: {fileID: 11400000, guid: a76ecd68c565b5f48b591283a4ff5b8f, type: 2}
+  OnRunPaused: {fileID: 11400000, guid: ed0c58156f9bc414bb7211d440fe4065, type: 2}
+  OnRunResumed: {fileID: 11400000, guid: 8406dbd5688dacd4ba8c7d2234240ebb, type: 2}

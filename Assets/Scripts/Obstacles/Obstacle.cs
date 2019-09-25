@@ -5,7 +5,7 @@ using UnityEngine;
 public class Obstacle : MonoBehaviour, ICollide {
 
     public void OnTriggerEnter(Collider other) {
-        GameManager.instance.RunOver();
+        Events.instance.OnRunOver.Raise();
     }
 
 }

@@ -2,9 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
-public class Pooler : MonoBehaviour {
+public class Pools : MonoBehaviour {
 
     [Serializable]
     public struct Pool {
@@ -34,10 +33,10 @@ public class Pooler : MonoBehaviour {
 
     #region Public Methods
 
-    public void InitializePool(UnityAction finishedCallback = null) {
+    public void InitializePool() {
         gameManager = GameManager.instance;
         StartCoroutine(
-            InitializePoolCoroutine(finishedCallback)
+            InitializePoolCoroutine()
         );
     }
 
@@ -61,7 +60,7 @@ public class Pooler : MonoBehaviour {
 
     #endregion
 
-    private IEnumerator InitializePoolCoroutine(UnityAction onFinished = null) {
+    private IEnumerator InitializePoolCoroutine() {
 
         Transform poolObjectsTransform = (!Helper.IsMobile()) ? gameManager.spawner.gameObject.transform : null;
 
@@ -104,6 +103,6 @@ public class Pooler : MonoBehaviour {
 
         yield return null;
 
-        onFinished?.Invoke();
+        Events.instance.OnPoolLoaded.Raise();
     }
 }

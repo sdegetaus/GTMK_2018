@@ -11,13 +11,18 @@ public static class Consts {
     /// <summary>
     /// Useful to log GUIState changes.
     /// </summary>
-    public const bool debugGUIChange = debugOn;
+    public const bool debugGUIChange = false;
 
     /// <summary>
     /// Whether to let the Player move by itself,
     /// or be able to control it yourself using WASD / Arrows
     /// </summary>
     public const bool debugPlayerMovement = debugOn;
+
+    /// <summary>
+    /// Option to log the events being invoked.
+    /// </summary>
+    public const bool debugLogEvents = false;
 
     #endregion
 

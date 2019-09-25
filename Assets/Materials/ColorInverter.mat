@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BgColorInverter
+  m_Name: ColorInverter
   m_Shader: {fileID: 4800000, guid: 7ed60d9687aea3d4f8f05c66df4f439f, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -60,7 +60,7 @@ Material:
     - _GlossyReflections: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
-    - _Power: 1
+    - _Power: 0.77
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Smoothness: 0.5

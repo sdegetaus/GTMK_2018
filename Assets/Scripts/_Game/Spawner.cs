@@ -7,7 +7,7 @@ public class Spawner : MonoBehaviour {
 
     // Private Variables
     private GameManager gameManager = null;
-    private Pooler pooler = null;
+    private Pools pools = null;
 
     private Coroutine spawningCoroutine = null;
 
@@ -38,36 +38,43 @@ public class Spawner : MonoBehaviour {
 
     private void Start() {
         gameManager = GameManager.instance;
+        pools = gameManager.pools;
+
+        Events.instance.OnPoolLoaded.RegisterListener(OnPoolLoaded); 
+        Events.instance.OnRunOver.RegisterListener(OnRunOver);
     }
 
-    public void BeginSpawning(Pooler pooler) {
+    #region Event Handlers
 
-        this.pooler = pooler;
-
-        // initialize arrows
-        List<Arrows> arrows = new List<Arrows>(pooler.arrowsPool.count);
-        for (int i = 0; i < pooler.arrowsPool.count; i++) {
-            pooler.Spawn(
+    private void OnPoolLoaded() {
+        for (int i = 0; i < pools.arrowsPool.count; i++) {
+            pools.Spawn(
                 PoolTag.Arrows,
                 Vector3.zero.With(x: Consts.arrowsSeparation * i)
             );
         }
-
-        spawningCoroutine = StartCoroutine(SpawningCoroutine());
     }
 
-    public void StopSpawning() {
-        StopCoroutine(spawningCoroutine);
+    private void OnRunOver() {
+        if (spawningCoroutine != null) {
+            StopCoroutine(spawningCoroutine);
+        }
     }
 
-    private IEnumerator SpawningCoroutine() {
+    #endregion
+
+    public void StartSpawning() {
+        spawningCoroutine = StartCoroutine(EndlessSpawning());
+    }
+
+    private IEnumerator EndlessSpawning() {
 
         while (true) {
 
             // Collectible Spawning...
             if (Helper.IsProbableBy(5)) {
                 count_collectible++;
-                CollectibleGroup collectibleGroup = pooler.Spawn(
+                CollectibleGroup collectibleGroup = pools.Spawn(
                     PoolTag.CollectibleGroup,
                     Vector3.zero.With(
                         x: Consts.globalSpawnPoint,
@@ -83,7 +90,7 @@ public class Spawner : MonoBehaviour {
             }
 
             // Obstacle Spawning...
-            ObstacleGroup obstacleGroup = pooler.Spawn(
+            ObstacleGroup obstacleGroup = pools.Spawn(
                 PoolTag.ObstacleGroup,
                 Vector3.zero.With(
                     x: Consts.globalSpawnPoint,

@@ -9,23 +9,40 @@ public class CameraController : Singleton<CameraController> {
     [Header("Shake Properties")]
 
     [Range(0f, 1f)]
-    public float duration;
+    public float duration = 0.5f;
 
     [Range(0f, 1f)]
-    public float amount;
-
-    public LeanTweenType tweenType;
+    public float amount = 0.2f;
 
     // Private Variables
-    private Vector3 originalPosition;
+    private Vector3 originalPosition = default;
+    public LeanTweenType tweenType = LeanTweenType.notUsed;
+
+    // Class References
+    private Events events = null;
 
     private void Start() {
         originalPosition = camera.transform.localPosition;
+
+        events = Events.instance;
+
+        events.OnRunOver.RegisterListener(OnRunOver);
     }
 
-    public static void Shake() {
-        instance.StopAllCoroutines();
-        instance.StartCoroutine(instance.ShakeCoroutine());
+    #region Event Handlers
+
+    private void OnRunOver() {
+        Shake();
+        //ZoomTo(Vector3.zero, 0.25f, 4f);
+    }
+
+    #endregion
+
+    public void Shake() {
+        StopAllCoroutines();
+        StartCoroutine(
+            instance.ShakeCoroutine()
+        );
     }
 
     private IEnumerator ShakeCoroutine() {
@@ -41,12 +58,12 @@ public class CameraController : Singleton<CameraController> {
     }
 
     // TODO:
-    public static void ZoomTo(Vector3 target, float time, float zoom) {
-        LeanTween.move(instance.gameObject, target, time).setEase(instance.tweenType);
-        LeanTween.value(instance.camera.gameObject, instance.camera.orthographicSize, zoom, time)
+    public void ZoomTo(Vector3 target, float time, float zoom) {
+        LeanTween.move(gameObject, target, time).setEase(tweenType);
+        LeanTween.value(camera.gameObject, camera.orthographicSize, zoom, time)
             .setOnUpdate((float flt) => {
-                instance.camera.orthographicSize = flt;
+                camera.orthographicSize = flt;
             }
-        );
+        ).setEase(tweenType);
     }
 }

@@ -58,11 +58,11 @@
 			Cull Front
 			ZTest On
 			
-			/*Stencil {
+			Stencil {
 				Ref 2
 				Comp always
 				Pass replace
-			}*/
+			}
 
 			CGPROGRAM
 

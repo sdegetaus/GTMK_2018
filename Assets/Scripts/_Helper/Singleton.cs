@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Linq;
 
 public abstract class Singleton<T> : MonoBehaviour where T : Component {
 
