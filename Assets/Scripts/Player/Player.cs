@@ -17,19 +17,28 @@ public class Player : MonoBehaviour {
 
     // Private Variables
     private LeanTweenType tweenType = LeanTweenType.easeOutQuad;
+    private bool fromStart = false;
+
 
     // Class References
     private Events events;
 
     private void Start() {
         events = Events.instance;
+        events.OnRunStarted.RegisterListener(OnRunStarted);
         events.OnRunOver.RegisterListener(OnRunOver);
     }
 
     #region Event Handlers
 
+    private void OnRunStarted() {
+        fromStart = true;
+        Move(Lane.Middle);
+    }
+
     private void OnRunOver() {
         LeanTween.cancel(gameObject);
+        isMoving = false;
     }
 
     #endregion
@@ -54,13 +63,9 @@ public class Player : MonoBehaviour {
 
     }
 
-    private void MoveLeft() => Move(
-        CheckLaneLimit(lanePosition - 1)
-    );
+    private void MoveLeft() => Move(CheckLaneLimit(lanePosition - 1));
 
-    private void MoveRight() => Move(
-        CheckLaneLimit(lanePosition + 1)
-    );
+    private void MoveRight() => Move(CheckLaneLimit(lanePosition + 1));
     
     private Lane CheckLaneLimit(Lane toLane) {
         if (toLane < 0) return lanePosition;
@@ -70,7 +75,7 @@ public class Player : MonoBehaviour {
 
     private void Move(Lane toLane) {
 
-        if (lanePosition == toLane) return;
+        if (lanePosition == toLane && fromStart == false) return;
 
         float to = 0.0f;
         Lane newLanePosition = toLane;
@@ -94,6 +99,7 @@ public class Player : MonoBehaviour {
                 gameObject.transform.position = gameObject.transform.position.With(z: to);
                 lanePosition = newLanePosition;
                 isMoving = false;
+                fromStart = false;
             }
         ).setEase(tweenType);
     }

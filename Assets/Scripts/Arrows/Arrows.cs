@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class Arrows : MonoBehaviour {
@@ -20,8 +21,14 @@ public class Arrows : MonoBehaviour {
 
     #region Event Handlers
 
+    private void OnRunStarted() {
+        arrowsMovementCoroutine = StartCoroutine(ArrowsMovementCoroutine());
+    }
+
     private void OnRunOver() {
         StopCoroutine(arrowsMovementCoroutine);
+        arrowsMovementCoroutine = null;
+        Events.instance.OnRunStarted.RegisterListener(OnRunStarted);
     }
 
     #endregion
