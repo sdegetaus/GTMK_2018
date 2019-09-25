@@ -45,9 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 3799078541207221550}
-  duration: 0.5
-  amount: 0.2
-  tweenType: 0
+  shakeAmount: 0.25
+  tween: {fileID: 11400000, guid: db14e04c66605934494132931ec26411, type: 2}
 --- !u!1 &3799078541207221547
 GameObject:
   m_ObjectHideFlags: 0

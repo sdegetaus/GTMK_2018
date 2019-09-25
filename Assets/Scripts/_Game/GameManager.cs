@@ -46,12 +46,11 @@ public class GameManager : Singleton<GameManager> {
 
     private void OnRunStarted() {
         guiManager.ChangeGUIState(GUIState.InGame);
-        spawner.StartSpawning();
         IsRunPlaying = true;
     }
 
     private void OnRunOver() {
-        guiManager.ChangeGUIState(GUIState.RunOver);
+        guiManager.ChangeGUIState(GUIState.RunOver, false);
         IsRunPlaying = false;
     }
 
@@ -62,9 +61,11 @@ public class GameManager : Singleton<GameManager> {
             return;
         }
 
-        guiManager.ChangeGUIState(GUIState.Pause);
+        guiManager.ChangeGUIState(GUIState.Pause, ChangeGUIStateMode.Additive, true, () => {
+            Time.timeScale = 0;
+        });
+
         IsRunPaused = true;
-        Time.timeScale = 0;
 
     }
 
@@ -75,9 +76,10 @@ public class GameManager : Singleton<GameManager> {
             return;
         }
 
-        guiManager.ChangeGUIState(GUIState.InGame);
-        IsRunPaused = false;
+        guiManager.ChangeGUIState(GUIState.InGame, false);
         Time.timeScale = 1;
+
+        IsRunPaused = false;
 
     }
 
@@ -85,7 +87,7 @@ public class GameManager : Singleton<GameManager> {
 
     // TODO:
     public void CollectibleCollected(CollectibleEnum collectibleEnum) {
-        Debug.Log("Collectible Collected! " + collectibleEnum);
+        Debug.Log("Collectible Collected!");
     }
 
 }

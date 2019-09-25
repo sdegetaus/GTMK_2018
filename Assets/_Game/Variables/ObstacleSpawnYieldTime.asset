@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bb431c47dcc4a745b5109ccaa2a446e, type: 3}
   m_Name: ObstacleSpawnYieldTime
   m_EditorClassIdentifier: 
-  _value: 1
+  _value: 0
   min: 1
-  max: 1.25
+  max: 1.5

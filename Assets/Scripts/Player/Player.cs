@@ -19,7 +19,6 @@ public class Player : MonoBehaviour {
     private LeanTweenType tweenType = LeanTweenType.easeOutQuad;
     private bool fromStart = false;
 
-
     // Class References
     private Events events;
 
@@ -43,29 +42,15 @@ public class Player : MonoBehaviour {
 
     #endregion
 
-    private void Update() {
-
-        if (!GameManager.IsRunPlaying) return;
-
-        runScore.value += Time.deltaTime;
-
+    public void MoveLeft() {
         if (isMoving) return;
-
-        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A)) {
-            MoveLeft();
-            return;
-        }
-
-        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D)) {
-            MoveRight();
-            return;
-        }
-
+        Move(CheckLaneLimit(lanePosition - 1));
     }
 
-    private void MoveLeft() => Move(CheckLaneLimit(lanePosition - 1));
-
-    private void MoveRight() => Move(CheckLaneLimit(lanePosition + 1));
+    public void MoveRight() {
+        if (isMoving) return;
+        Move(CheckLaneLimit(lanePosition + 1));
+    }
     
     private Lane CheckLaneLimit(Lane toLane) {
         if (toLane < 0) return lanePosition;

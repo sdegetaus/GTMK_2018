@@ -90,6 +90,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4213386511438996}
   - component: {fileID: 326599259588132496}
+  - component: {fileID: 8204388293736819087}
   - component: {fileID: 135879431761130102}
   - component: {fileID: 239286539}
   m_Layer: 0
@@ -132,6 +133,18 @@ MonoBehaviour:
   isMoving: 0
   movementTransition: 0.2
   runScore: {fileID: 11400000, guid: 74339a6faffde0947a4ee4b899b3c654, type: 2}
+--- !u!114 &8204388293736819087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1239506985260524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0db4fd4797ea6e47beae45ecb20b469, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &135879431761130102
 SphereCollider:
   m_ObjectHideFlags: 0

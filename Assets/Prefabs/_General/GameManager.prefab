@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 240168107284753066}
   - component: {fileID: 240168107284753069}
   - component: {fileID: 240168107284753067}
+  - component: {fileID: 4353679057414407496}
   - component: {fileID: 979238039}
   m_Layer: 0
   m_Name: GameManager
@@ -72,7 +73,7 @@ MonoBehaviour:
       type: 3}
   collectibleGroupPool:
     type: 1
-    count: 4
+    count: 5
     prefab: {fileID: 8895147645864798333, guid: 779d9a2df5fe3d34788c3fdb88ff1a6a,
       type: 3}
   arrowsPool:
@@ -101,6 +102,19 @@ MonoBehaviour:
   perc_collectible: 0
   count_collectible: 0
   totalCount: 0
+--- !u!114 &4353679057414407496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240168107284753065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f9bbd29091d3de479a83f49c6ef9a1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  runScore: {fileID: 11400000, guid: 74339a6faffde0947a4ee4b899b3c654, type: 2}
 --- !u!114 &979238039
 MonoBehaviour:
   m_ObjectHideFlags: 0

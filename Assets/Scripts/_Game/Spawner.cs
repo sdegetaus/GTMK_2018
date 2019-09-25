@@ -41,8 +41,10 @@ public class Spawner : MonoBehaviour {
         pools = gameManager.pools;
 
         Events.instance.OnPoolLoaded.RegisterListener(OnPoolLoaded); 
+        Events.instance.OnRunStarted.RegisterListener(OnRunStarted);
         Events.instance.OnRunOver.RegisterListener(OnRunOver);
     }
+
 
     #region Event Handlers
 
@@ -55,6 +57,10 @@ public class Spawner : MonoBehaviour {
         }
     }
 
+    private void OnRunStarted() {
+        StartSpawning();
+    }
+
     private void OnRunOver() {
         if (spawningCoroutine != null) {
             StopCoroutine(spawningCoroutine);
@@ -64,10 +70,12 @@ public class Spawner : MonoBehaviour {
     #endregion
 
     public void StartSpawning() {
-        spawningCoroutine = StartCoroutine(EndlessSpawning());
+        if (spawningCoroutine == null) {
+            spawningCoroutine = StartCoroutine(EndlessSpawning());
+        }
     }
 
-    private IEnumerator EndlessSpawning() {
+private IEnumerator EndlessSpawning() {
 
         while (true) {
 

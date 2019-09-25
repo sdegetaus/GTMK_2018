@@ -7,16 +7,14 @@ public class CameraController : Singleton<CameraController> {
     private new Camera camera = null;
 
     [Header("Shake Properties")]
-
     [Range(0f, 1f)]
-    public float duration = 0.5f;
+    public float shakeAmount = 0.2f;
 
-    [Range(0f, 1f)]
-    public float amount = 0.2f;
+    [Header("Tween Presets"), SerializeField]
+    private TweenPreset tween = null;
 
     // Private Variables
     private Vector3 originalCameraPosition = default;
-    public LeanTweenType tweenType = LeanTweenType.notUsed;
 
     // Class References
     private Events events = null;
@@ -34,14 +32,18 @@ public class CameraController : Singleton<CameraController> {
     #region Event Handlers
 
     private void OnRunStarted() {
-        ZoomTo(Vector3.zero.With(x: 10f), 0.25f, 6f);
+        ZoomTo(
+            Vector3.zero.With(x: 10f),
+            tween.time,
+            6f
+        );
     }
 
     private void OnRunOver() {
         Shake();
         ZoomTo(
             GameManager.instance.player.gameObject.transform.position.With(y: 0.5f),
-            0.25f,
+            tween.time,
             3f
         );
     }
@@ -56,24 +58,23 @@ public class CameraController : Singleton<CameraController> {
     }
 
     private IEnumerator ShakeCoroutine() {
-        float _duration = duration;
-        float endTime = Time.time + duration;
+        float time = tween.time;
+        float endTime = Time.time + time;
         while (Time.time < endTime) {
-            camera.transform.localPosition = originalCameraPosition + Random.insideUnitSphere * amount;
-            duration -= Time.deltaTime;
+            camera.transform.localPosition = originalCameraPosition + Random.insideUnitSphere * shakeAmount;
+            time -= Time.deltaTime;
             yield return null;
         }
         camera.transform.localPosition = originalCameraPosition;
-        duration = _duration;
     }
 
     // TODO:
     public void ZoomTo(Vector3 target, float time, float zoom) {
-        LeanTween.move(gameObject, target, time).setEase(tweenType);
+        LeanTween.move(gameObject, target, time).setEase(tween.tweenType);
         LeanTween.value(camera.gameObject, camera.orthographicSize, zoom, time)
             .setOnUpdate((float flt) => {
                 camera.orthographicSize = flt;
             }
-        ).setEase(tweenType);
+        ).setEase(tween.tweenType);
     }
 }

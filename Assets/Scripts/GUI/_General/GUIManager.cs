@@ -1,12 +1,13 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.Events;
 
 public class GUIManager : Singleton<GUIManager> {
 
     [Header("GUI State"), SerializeField]
     private GUIState currentState, lastState = GUIState.MainMenu;
 
-    [Header("Canvases"), SerializeField]
+    [SerializeField]
     private List<CanvasLogic> canvases = new List<CanvasLogic>();
 
     [Space, SerializeField]
@@ -15,16 +16,16 @@ public class GUIManager : Singleton<GUIManager> {
     private void Start() {
 
         // make sure the main menu canvas is shown first
-        ShowCanvas(GUIState.MainMenu, true);
+        ShowCanvas(GUIState.MainMenu, true, true);
 
         // make sure all the other canvases are hidden
         for (GUIState i = GUIState.MainMenu + 1; i < GUIState.MaxGUIState; i++) {
-            ShowCanvas(i, false);
+            ShowCanvas(i, false, false);
         }
 
     }
 
-    private void ShowCanvas(GUIState state, bool show) {
+    private void ShowCanvas(GUIState state, bool show, bool fade, UnityAction onFadeFinished = null) {
 
         if ((int)state >= canvases.Count) {
             Debug.LogError("Enlarge array of canvases in the Game Inspector");
@@ -44,22 +45,42 @@ public class GUIManager : Singleton<GUIManager> {
         // make sure the gameobject is active
         canvasLogic.gameObject.SetActive(true);
 
-        // we are hiding the canvas
-        canvasLogic.canvas.enabled = show;
+        if (fade) {
+
+            float alpha = 0f;
+            LeanTweenType tweenType = LeanTweenType.easeInCubic;
+
+            if (show) {
+                alpha = 1f;
+                tweenType = LeanTweenType.easeOutCubic;
+            }
+
+            LeanTween.alphaCanvas(canvasLogic.canvasGroup, alpha, 0.5f)
+                .setOnComplete(() => {
+                    // hiding the canvas
+                    canvasLogic.canvas.enabled = show;
+                    onFadeFinished?.Invoke();
+                    Debug.Log((onFadeFinished != null) ? "Invoked" : "");
+                })
+                .setEase(tweenType);
+
+        } else {
+            // hiding the canvas
+            canvasLogic.canvas.enabled = show;
+        }
+
 
         // finally call the onEnter method within the enabled canvasLogic
         if (show == true) canvasLogic.OnEnter();
     }
 
-    public void ChangeGUIState(GUIState toState) {
+    public void ChangeGUIState(GUIState toState, bool fade = true, UnityAction onFadeFinished = null) {
 
         // if already on the same state, return
         if (toState == currentState) return;
 
         if (isAdditive) {
             HideAllCanvases();
-            // revert canvas order
-            canvases[(int)currentState].canvas.sortingOrder -= 1;
             isAdditive = false;
         }
 
@@ -68,10 +89,10 @@ public class GUIManager : Singleton<GUIManager> {
         }
 
         // hide previous state
-        ShowCanvas(currentState, false);
+        ShowCanvas(currentState, false, fade);
 
         // show new one
-        ShowCanvas(toState, true);
+        ShowCanvas(toState, true, fade, onFadeFinished);
 
         lastState = currentState;
         currentState = toState;
@@ -80,7 +101,7 @@ public class GUIManager : Singleton<GUIManager> {
 
     #region ChangeGUIState Overloads
 
-    public void ChangeGUIState(GUIState toState, ChangeGUIStateMode mode, bool inFront = true) {
+    public void ChangeGUIState(GUIState toState, ChangeGUIStateMode mode, bool fade = true, UnityAction onFadeFinished = null) {
 
         // same state, return
         if (toState == currentState) return;
@@ -88,7 +109,7 @@ public class GUIManager : Singleton<GUIManager> {
         // if the mode is equal to Single,
         // then switch to the first overload of this method (see above)
         if (mode == ChangeGUIStateMode.Single) {
-            ChangeGUIState(toState);
+            ChangeGUIState(toState, fade, onFadeFinished);
             return;
         }
 
@@ -96,13 +117,13 @@ public class GUIManager : Singleton<GUIManager> {
             Debug.LogFormat("Change GUIState from {0} to {1} additively.", currentState, toState);
         }
 
-        if (inFront) canvases[(int)toState].canvas.sortingOrder = 1 + canvases[(int)lastState].canvas.sortingOrder;
+        //if (inFront) canvases[(int)toState].canvas.sortingOrder = 1 + canvases[(int)lastState].canvas.sortingOrder;
 
         // Note: no need to hide the currentState
         // as this overload gets it merged
 
         // show new one
-        ShowCanvas(toState, true);
+        ShowCanvas(toState, true, fade, onFadeFinished);
 
         lastState = currentState;
         currentState = toState;
@@ -116,12 +137,12 @@ public class GUIManager : Singleton<GUIManager> {
 
     public void HideAllCanvases() {
         for (GUIState i = GUIState.MainMenu; i < GUIState.MaxGUIState; i++) {
-            ShowCanvas(i, false);
+            ShowCanvas(i, false, false);
         }
     }
 
     public void HideCurrentCanvas() {
-        ShowCanvas(currentState, false);
+        ShowCanvas(currentState, false, false);
     }
 
     public void ChangeToPreviousState() {

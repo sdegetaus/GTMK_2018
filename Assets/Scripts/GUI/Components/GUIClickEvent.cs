@@ -16,7 +16,7 @@ public enum ClickType {
 
     // RunOver: 400 - 499
     BackToMainMenu = 400,
-    Replay = 405,
+    RestartRun = 405,
 
     // Settings: 500 - 599
 

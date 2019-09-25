@@ -5,12 +5,10 @@ using UnityEngine;
 
 public class CanvasPersistent : CanvasLogic {
 
+    [Header("Cinematic Effect")]
     [SerializeField]
-    private List<RectTransform> cinematicMasks = new List<RectTransform>();
-
-    public LeanTweenType tweenType;
-    public float time;
-    public float to;
+    private GUICinematicEffect cinematicEffect = null;
+    
 
     private void Start() {
         Events.instance.OnRunStarted.RegisterListener(OnRunStarted);
@@ -18,13 +16,11 @@ public class CanvasPersistent : CanvasLogic {
     }
 
     private void OnRunStarted() {
-        LeanTween.move(cinematicMasks[0], Vector3.zero.With(y: to), time).setEase(tweenType);
-        LeanTween.move(cinematicMasks[1], Vector3.zero.With(y: -to), time).setEase(tweenType);
+        cinematicEffect.FadeOut();
     }
 
     private void OnRunOver() {
-        LeanTween.move(cinematicMasks[0], Vector3.zero, time).setEase(tweenType);
-        LeanTween.move(cinematicMasks[1], Vector3.zero, time).setEase(tweenType);
+        cinematicEffect.FadeIn();
     }
 
 }
