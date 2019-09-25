@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class BaseGroup<GroupType, GroupEnum> : MonoBehaviour
-    where GroupType : Component
+public abstract class BaseGroup<Type, GroupEnum> : MonoBehaviour
+    where Type : Component
     where GroupEnum : Enum
     {
 
     [SerializeField]
-    protected List<GroupType> objects = new List<GroupType>();
+    protected List<Type> objects = new List<Type>();
 
     [SerializeField]
     protected GroupEnum activeObject;
@@ -48,7 +48,7 @@ public abstract class BaseGroup<GroupType, GroupEnum> : MonoBehaviour
     }
 
     protected void UnactivateAll() {
-        foreach (GroupType item in objects) {
+        foreach (Type item in objects) {
             item.gameObject.SetActive(false);
         }
     }

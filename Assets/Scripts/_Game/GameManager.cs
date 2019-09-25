@@ -13,6 +13,7 @@ public class GameManager : Singleton<GameManager> {
     public RandomFloatVariable obstacleSpawnYieldTime = null;
 
     [Header("Class References")]
+    public Player player = null;
     public Pooler pooler = null;
     public Spawner spawner = null;
 

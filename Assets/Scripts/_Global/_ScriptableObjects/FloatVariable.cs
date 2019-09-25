@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = Consts.scriptableObjectBasePath + "Variables/Float")]
+[CreateAssetMenu(menuName = Consts.scriptableObjectBasePath + "Variables/Float")]
 public class FloatVariable : ScriptableObject {
 
     [SerializeField]

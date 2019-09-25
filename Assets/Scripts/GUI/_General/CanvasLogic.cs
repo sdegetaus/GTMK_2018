@@ -4,8 +4,8 @@
 [RequireComponent(typeof(CanvasGroup))]
 public abstract class CanvasLogic : MonoBehaviour {
 
-    [SerializeField] private Canvas canvas;
-    [SerializeField] private CanvasGroup canvasGroup;
+    [HideInInspector] public Canvas canvas;
+    [HideInInspector] public CanvasGroup canvasGroup;
 
     private void Awake() {
         canvas = GetComponent<Canvas>();
