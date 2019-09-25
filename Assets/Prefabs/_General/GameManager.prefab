@@ -52,6 +52,7 @@ MonoBehaviour:
     type: 2}
   pools: {fileID: 240168107284753069}
   spawner: {fileID: 240168107284753067}
+  player: {fileID: 0}
 --- !u!114 &240168107284753069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,7 +67,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacleGroupPool:
     type: 0
-    count: 8
+    count: 5
     prefab: {fileID: 8732993859155758677, guid: b453fdb206193b74a9d465c10668d4f2,
       type: 3}
   collectibleGroupPool:

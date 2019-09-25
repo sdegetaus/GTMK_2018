@@ -17,6 +17,7 @@ public class GameManager : Singleton<GameManager> {
     [Header("Class References")]
     public Pools pools = null;
     public Spawner spawner = null;
+    public Player player = null;
 
     // Private Variables
     private Events events = null;

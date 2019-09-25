@@ -26,8 +26,10 @@ public class Arrows : MonoBehaviour {
     }
 
     private void OnRunOver() {
-        StopCoroutine(arrowsMovementCoroutine);
-        arrowsMovementCoroutine = null;
+        if (arrowsMovementCoroutine != null) {
+            StopCoroutine(arrowsMovementCoroutine);
+            arrowsMovementCoroutine = null;
+        }
         Events.instance.OnRunStarted.RegisterListener(OnRunStarted);
     }
 

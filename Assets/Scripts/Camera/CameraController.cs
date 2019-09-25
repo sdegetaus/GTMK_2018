@@ -15,25 +15,35 @@ public class CameraController : Singleton<CameraController> {
     public float amount = 0.2f;
 
     // Private Variables
-    private Vector3 originalPosition = default;
+    private Vector3 originalCameraPosition = default;
     public LeanTweenType tweenType = LeanTweenType.notUsed;
 
     // Class References
     private Events events = null;
 
     private void Start() {
-        originalPosition = camera.transform.localPosition;
+        originalCameraPosition = camera.transform.localPosition;
 
         events = Events.instance;
 
+        events.OnRunStarted.RegisterListener(OnRunStarted);
         events.OnRunOver.RegisterListener(OnRunOver);
     }
 
+
     #region Event Handlers
+
+    private void OnRunStarted() {
+        ZoomTo(Vector3.zero.With(x: 10f), 0.25f, 6f);
+    }
 
     private void OnRunOver() {
         Shake();
-        //ZoomTo(Vector3.zero, 0.25f, 4f);
+        ZoomTo(
+            GameManager.instance.player.gameObject.transform.position.With(y: 0.5f),
+            0.25f,
+            3f
+        );
     }
 
     #endregion
@@ -49,11 +59,11 @@ public class CameraController : Singleton<CameraController> {
         float _duration = duration;
         float endTime = Time.time + duration;
         while (Time.time < endTime) {
-            camera.transform.localPosition = originalPosition + Random.insideUnitSphere * amount;
+            camera.transform.localPosition = originalCameraPosition + Random.insideUnitSphere * amount;
             duration -= Time.deltaTime;
             yield return null;
         }
-        camera.transform.localPosition = originalPosition;
+        camera.transform.localPosition = originalCameraPosition;
         duration = _duration;
     }
 
