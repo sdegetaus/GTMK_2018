@@ -6,7 +6,6 @@ public abstract class BaseGroup<Type, GroupEnum> : MonoBehaviour
     where Type : Component
     where GroupEnum : Enum
     {
-
     [SerializeField]
     protected List<Type> objects = new List<Type>();
 
@@ -17,14 +16,22 @@ public abstract class BaseGroup<Type, GroupEnum> : MonoBehaviour
 
     [SerializeField]
     protected FloatVariable globalSpeed = null;
+    [SerializeField]
+    protected FloatVariable lerpSpeed = null;
+
 
     protected void FixedUpdate() {
 
         if (!GameManager.IsRunPlaying) return;
 
-        transform.position = transform.position.With(
-            x: transform.position.x + globalSpeed.value * Time.fixedDeltaTime
-        );
+        //transform.position = transform.position.With(
+        //    x: transform.position.x + globalSpeed.value * Time.fixedDeltaTime
+        //);
+
+        transform.position = Vector3.Lerp(
+            transform.position,
+            transform.position.With(x: transform.position.x - globalSpeed.value),
+            Time.fixedDeltaTime * lerpSpeed.value);
     }
 
     public virtual void Init() {

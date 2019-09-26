@@ -49,7 +49,7 @@ public static class Consts {
     #endregion
 
     public const float initialObstacleSpawnYieldTime = 1.75f;
-    public const float initialGlobalSpeed = -10f;
+    public const float initialGlobalSpeed = 1f;
 
     #region Global Paths
 

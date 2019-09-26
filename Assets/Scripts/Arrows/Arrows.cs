@@ -6,6 +6,8 @@ public class Arrows : MonoBehaviour {
 
     [SerializeField]
     private FloatVariable globalSpeed = null;
+    [SerializeField]
+    private FloatVariable lerpSpeed = null;
 
     // Private Variables
     private Pools pools;
@@ -41,11 +43,10 @@ public class Arrows : MonoBehaviour {
 
         while (true) {
 
-            Debug.Log("Arrows Running...");
-
-            transform.position = transform.position.With(
-                x: transform.position.x + globalSpeed.value * Time.deltaTime
-            );
+            transform.position = Vector3.Lerp(
+                transform.position,
+                transform.position.With(x: transform.position.x - globalSpeed.value),
+                Time.fixedDeltaTime * lerpSpeed.value);
 
             if (transform.position.x < -60.0f) {
                 pools.Spawn(
@@ -62,7 +63,7 @@ public class Arrows : MonoBehaviour {
                 );
             }
 
-            yield return null;
+            yield return new WaitForFixedUpdate();
         }
     }
 }

@@ -87,8 +87,6 @@ public class Spawner : MonoBehaviour {
 
         while (true) {
 
-            Debug.Log("Spawner Running...");
-
             if (fromResume) {
                 yield return new WaitForSeconds(
                     gameManager.obstacleSpawnYieldTime.value

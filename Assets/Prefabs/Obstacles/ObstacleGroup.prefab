@@ -58,6 +58,7 @@ MonoBehaviour:
   - {fileID: 7071484468737414459}
   activeObject: 0
   globalSpeed: {fileID: 11400000, guid: 41e3fbab2c4509246a98e0217cc2740d, type: 2}
+  lerpSpeed: {fileID: 11400000, guid: 5823a7bc9b75a9e499848415fd0221bd, type: 2}
 --- !u!1001 &2113317760151055745
 PrefabInstance:
   m_ObjectHideFlags: 0
