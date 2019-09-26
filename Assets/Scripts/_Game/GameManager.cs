@@ -7,12 +7,11 @@ public class GameManager : Singleton<GameManager> {
 
     // Static Variables
     public static bool IsRunPlaying = false;
-    public static bool IsRunPaused = false;
 
     [Header("Variables")]
     public FloatVariable runScore = null;
     public FloatVariable globalSpeed = null;
-    public RandomFloatVariable obstacleSpawnYieldTime = null;
+    public FloatVariable obstacleSpawnYieldTime = null;
 
     [Header("Class References")]
     public Pools pools = null;
@@ -23,8 +22,12 @@ public class GameManager : Singleton<GameManager> {
     private Events events = null;
     private GUIManager guiManager = null;
 
+    private float m_globalSpeed;
+
     private void Awake() {
         Application.targetFrameRate = 60;
+        obstacleSpawnYieldTime.value = Consts.initialObstacleSpawnYieldTime;
+        globalSpeed.value = Consts.initialGlobalSpeed;
     }
 
     private void Start() {
@@ -56,31 +59,35 @@ public class GameManager : Singleton<GameManager> {
 
     private void OnRunPaused() {
 
-        if (IsRunPaused) {
+        if (!IsRunPlaying) {
             Debug.Log("Can't pause the game as it is already paused!");
             return;
         }
 
-        guiManager.ChangeGUIState(GUIState.Pause, ChangeGUIStateMode.Additive, true, () => {
-            Time.timeScale = 0;
-        });
+        guiManager.ChangeGUIState(GUIState.Pause, false);
 
-        IsRunPaused = true;
+        m_globalSpeed = globalSpeed.value;
+        globalSpeed.value = 0;
 
+        spawner.StopSpawning();
+        IsRunPlaying = false;
     }
 
     private void OnRunResumed() {
 
-        if (!IsRunPaused) {
+        if (IsRunPlaying) {
             Debug.Log("Can't resume from pause as it the game is already running!");
             return;
         }
 
         guiManager.ChangeGUIState(GUIState.InGame, false);
-        Time.timeScale = 1;
 
-        IsRunPaused = false;
 
+        globalSpeed.value = m_globalSpeed;
+        m_globalSpeed = 0;
+
+        spawner.StartSpawning(true);
+        IsRunPlaying = true;
     }
 
     #endregion

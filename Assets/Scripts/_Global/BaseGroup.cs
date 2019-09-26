@@ -18,12 +18,12 @@ public abstract class BaseGroup<Type, GroupEnum> : MonoBehaviour
     [SerializeField]
     protected FloatVariable globalSpeed = null;
 
-    protected void Update() {
+    protected void FixedUpdate() {
 
         if (!GameManager.IsRunPlaying) return;
 
         transform.position = transform.position.With(
-            x: transform.position.x + globalSpeed.value * Time.deltaTime
+            x: transform.position.x + globalSpeed.value * Time.fixedDeltaTime
         );
     }
 

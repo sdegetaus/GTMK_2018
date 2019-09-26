@@ -64,20 +64,36 @@ public class Spawner : MonoBehaviour {
     private void OnRunOver() {
         if (spawningCoroutine != null) {
             StopCoroutine(spawningCoroutine);
+            spawningCoroutine = null;
         }
     }
 
     #endregion
 
-    public void StartSpawning() {
+    public void StartSpawning(bool fromResume = false) {
         if (spawningCoroutine == null) {
-            spawningCoroutine = StartCoroutine(EndlessSpawning());
+            spawningCoroutine = StartCoroutine(EndlessSpawning(fromResume));
         }
     }
 
-private IEnumerator EndlessSpawning() {
+    public void StopSpawning() {
+        if (spawningCoroutine != null) {
+            StopCoroutine(spawningCoroutine);
+            spawningCoroutine = null;
+        }
+    }
+
+    private IEnumerator EndlessSpawning(bool fromResume = false) {
 
         while (true) {
+
+            Debug.Log("Spawner Running...");
+
+            if (fromResume) {
+                yield return new WaitForSeconds(
+                    gameManager.obstacleSpawnYieldTime.value
+                );
+            }
 
             // Collectible Spawning...
             if (Helper.IsProbableBy(5)) {
@@ -121,21 +137,21 @@ private IEnumerator EndlessSpawning() {
 
         if (Helper.IsProbableBy(33)) {
             newLanePosition = -Consts.laneSeparation;
-            count_left++;
+            //count_left++;
         } else if (Helper.IsProbableBy(33)) {
             newLanePosition = Consts.laneSeparation;
-            count_right++;
+            //count_right++;
         } else {
             newLanePosition = 0;
-            count_0++;
+            //count_0++;
         }
 
-        perc_0 = (count_0 * 100) / totalCount;
-        perc_left = (count_left * 100) / totalCount;
-        perc_right = (count_right * 100) / totalCount;
-        perc_collectible = (count_collectible * 100) / totalCount;
+        //perc_0 = (count_0 * 100) / totalCount;
+        //perc_left = (count_left * 100) / totalCount;
+        //perc_right = (count_right * 100) / totalCount;
+        //perc_collectible = (count_collectible * 100) / totalCount;
 
-        totalCount++;
+        //totalCount++;
 
         return newLanePosition;
     }

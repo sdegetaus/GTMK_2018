@@ -1,10 +1,9 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ScoreUpdater : MonoBehaviour {
 
     [SerializeField]
-    private FloatVariable runScore;
+    private FloatVariable runScore = null;
 
     private void Start() {
         Events.instance.OnRunStarted.RegisterListener(OnRunStarted);

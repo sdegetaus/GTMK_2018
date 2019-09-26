@@ -4,8 +4,8 @@ using UnityEngine.Events;
 
 public class GUIManager : Singleton<GUIManager> {
 
-    [Header("GUI State"), SerializeField]
-    private GUIState currentState, lastState = GUIState.MainMenu;
+    [Header("GUI State")]
+    public GUIState currentState, lastState = GUIState.MainMenu;
 
     [SerializeField]
     private List<CanvasLogic> canvases = new List<CanvasLogic>();
@@ -60,7 +60,6 @@ public class GUIManager : Singleton<GUIManager> {
                     // hiding the canvas
                     canvasLogic.canvas.enabled = show;
                     onFadeFinished?.Invoke();
-                    Debug.Log((onFadeFinished != null) ? "Invoked" : "");
                 })
                 .setEase(tweenType);
 

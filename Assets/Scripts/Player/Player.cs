@@ -11,10 +11,6 @@ public class Player : MonoBehaviour {
     [Header("Settings")]
     public float movementTransition;
 
-    [Header("Variables")]
-    [SerializeField]
-    private FloatVariable runScore = null;
-
     // Private Variables
     private LeanTweenType tweenType = LeanTweenType.easeOutQuad;
     private bool fromStart = false;

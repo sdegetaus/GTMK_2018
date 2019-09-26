@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bb431c47dcc4a745b5109ccaa2a446e, type: 3}
+  m_Script: {fileID: 11500000, guid: db6e06f0663da5c4c9a12839fdf4b73e, type: 3}
   m_Name: ObstacleSpawnYieldTime
   m_EditorClassIdentifier: 
-  _value: 0
-  min: 1
-  max: 1.5
+  _value: 1.5

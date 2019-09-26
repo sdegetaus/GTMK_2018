@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runScore: {fileID: 11400000, guid: 74339a6faffde0947a4ee4b899b3c654, type: 2}
   globalSpeed: {fileID: 11400000, guid: 41e3fbab2c4509246a98e0217cc2740d, type: 2}
-  obstacleSpawnYieldTime: {fileID: 11400000, guid: 681db8829b0bf4147802a72e2bfbbcf7,
+  obstacleSpawnYieldTime: {fileID: 11400000, guid: 0801aa08aef408b4f8e575f00720288b,
     type: 2}
   pools: {fileID: 240168107284753069}
   spawner: {fileID: 240168107284753067}

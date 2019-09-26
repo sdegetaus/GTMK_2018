@@ -22,7 +22,9 @@ public class Arrows : MonoBehaviour {
     #region Event Handlers
 
     private void OnRunStarted() {
-        arrowsMovementCoroutine = StartCoroutine(ArrowsMovementCoroutine());
+        if (arrowsMovementCoroutine == null) {
+            arrowsMovementCoroutine = StartCoroutine(ArrowsMovementCoroutine());
+        }
     }
 
     private void OnRunOver() {
@@ -38,6 +40,8 @@ public class Arrows : MonoBehaviour {
     private IEnumerator ArrowsMovementCoroutine() {
 
         while (true) {
+
+            Debug.Log("Arrows Running...");
 
             transform.position = transform.position.With(
                 x: transform.position.x + globalSpeed.value * Time.deltaTime

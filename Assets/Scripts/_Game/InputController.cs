@@ -6,8 +6,10 @@ public class InputController : MonoBehaviour {
 
     // Private Variables
     private Player player = null;
+    private Events events = null;
 
     private void Start() {
+        events = Events.instance;
         player = GetComponent<Player>();
     }
 
@@ -15,10 +17,27 @@ public class InputController : MonoBehaviour {
 
         if (!GameManager.IsRunPlaying) {
 
-            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter)) {
-                Events.instance.OnRunStarted.Raise();
+            // TODO: fix
+            if (GUIManager.instance.currentState == GUIState.MainMenu) {
+
+                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter)) {
+                    events.OnRunStarted.Raise();
+                    return;
+                }
+
             }
 
+            if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape)) {
+                events.OnRunResumed.Raise();
+                return;
+            }
+
+            return;
+
+        }
+
+        if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape)) {
+            events.OnRunPaused.Raise();
             return;
         }
 
