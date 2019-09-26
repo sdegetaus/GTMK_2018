@@ -2,10 +2,10 @@
 
 public class ScoreUpdater : MonoBehaviour {
 
-    [SerializeField]
     private FloatVariable runScore = null;
 
     private void Start() {
+        runScore = GameManager.instance.runScore;
         Events.instance.OnRunStarted.RegisterListener(OnRunStarted);
     }
 

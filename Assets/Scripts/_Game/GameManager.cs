@@ -8,6 +8,8 @@ public class GameManager : Singleton<GameManager> {
     // Static Variables
     public static bool IsRunPlaying = false;
 
+    public bool godMode = false;
+
     [Header("Variables")]
     public FloatVariable runScore = null;
     public FloatVariable globalSpeed = null;

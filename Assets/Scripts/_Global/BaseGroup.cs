@@ -24,10 +24,6 @@ public abstract class BaseGroup<Type, GroupEnum> : MonoBehaviour
 
         if (!GameManager.IsRunPlaying) return;
 
-        //transform.position = transform.position.With(
-        //    x: transform.position.x + globalSpeed.value * Time.fixedDeltaTime
-        //);
-
         transform.position = Vector3.Lerp(
             transform.position,
             transform.position.With(x: transform.position.x - globalSpeed.value),
