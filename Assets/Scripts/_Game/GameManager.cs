@@ -23,8 +23,7 @@ public class GameManager : Singleton<GameManager> {
     // Private Variables
     private Events events = null;
     private GUIManager guiManager = null;
-
-    private float m_globalSpeed;
+    private float m_globalSpeed = 0f;
 
     private void Awake() {
         Application.targetFrameRate = 60;
@@ -55,8 +54,7 @@ public class GameManager : Singleton<GameManager> {
     }
 
     private void OnRunOver() {
-        guiManager.ChangeGUIState(GUIState.RunOver, false);
-        IsRunPlaying = false;
+        StartCoroutine(OnRunOverCoroutine());
     }
 
     private void OnRunPaused() {
@@ -93,6 +91,18 @@ public class GameManager : Singleton<GameManager> {
     }
 
     #endregion
+
+    private IEnumerator OnRunOverCoroutine() {
+
+        guiManager.HideCurrentCanvas();
+
+        IsRunPlaying = false;
+
+        yield return new WaitForSeconds(1f);
+
+        guiManager.ChangeGUIState(GUIState.RunOver);
+
+    }
 
     // TODO:
     public void CollectibleCollected(CollectibleEnum collectibleEnum) {

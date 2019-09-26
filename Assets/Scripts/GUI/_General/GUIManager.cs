@@ -25,7 +25,7 @@ public class GUIManager : Singleton<GUIManager> {
 
     }
 
-    private void ShowCanvas(GUIState state, bool show, bool fade, UnityAction onFadeFinished = null) {
+    private void ShowCanvas(GUIState state, bool show, bool fade) {
 
         if ((int)state >= canvases.Count) {
             Debug.LogError("Enlarge array of canvases in the Game Inspector");
@@ -55,11 +55,10 @@ public class GUIManager : Singleton<GUIManager> {
                 tweenType = LeanTweenType.easeOutCubic;
             }
 
-            LeanTween.alphaCanvas(canvasLogic.canvasGroup, alpha, 0.5f)
+            LeanTween.alphaCanvas(canvasLogic.canvasGroup, alpha, 0.25f)
                 .setOnComplete(() => {
                     // hiding the canvas
                     canvasLogic.canvas.enabled = show;
-                    onFadeFinished?.Invoke();
                 })
                 .setEase(tweenType);
 
@@ -73,7 +72,7 @@ public class GUIManager : Singleton<GUIManager> {
         if (show == true) canvasLogic.OnEnter();
     }
 
-    public void ChangeGUIState(GUIState toState, bool fade = true, UnityAction onFadeFinished = null) {
+    public void ChangeGUIState(GUIState toState, bool fade = true) {
 
         // if already on the same state, return
         if (toState == currentState) return;
@@ -91,7 +90,7 @@ public class GUIManager : Singleton<GUIManager> {
         ShowCanvas(currentState, false, fade);
 
         // show new one
-        ShowCanvas(toState, true, fade, onFadeFinished);
+        ShowCanvas(toState, true, fade);
 
         lastState = currentState;
         currentState = toState;
@@ -100,7 +99,7 @@ public class GUIManager : Singleton<GUIManager> {
 
     #region ChangeGUIState Overloads
 
-    public void ChangeGUIState(GUIState toState, ChangeGUIStateMode mode, bool fade = true, UnityAction onFadeFinished = null) {
+    public void ChangeGUIState(GUIState toState, ChangeGUIStateMode mode, bool fade = true) {
 
         // same state, return
         if (toState == currentState) return;
@@ -108,7 +107,7 @@ public class GUIManager : Singleton<GUIManager> {
         // if the mode is equal to Single,
         // then switch to the first overload of this method (see above)
         if (mode == ChangeGUIStateMode.Single) {
-            ChangeGUIState(toState, fade, onFadeFinished);
+            ChangeGUIState(toState, fade);
             return;
         }
 
@@ -122,7 +121,7 @@ public class GUIManager : Singleton<GUIManager> {
         // as this overload gets it merged
 
         // show new one
-        ShowCanvas(toState, true, fade, onFadeFinished);
+        ShowCanvas(toState, true, fade);
 
         lastState = currentState;
         currentState = toState;
