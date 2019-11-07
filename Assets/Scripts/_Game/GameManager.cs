@@ -54,7 +54,8 @@ public class GameManager : Singleton<GameManager> {
     }
 
     private void OnRunOver() {
-        StartCoroutine(OnRunOverCoroutine());
+        IsRunPlaying = false;
+        guiManager.ChangeGUIState(GUIState.RunOver);
     }
 
     private void OnRunPaused() {
@@ -92,17 +93,17 @@ public class GameManager : Singleton<GameManager> {
 
     #endregion
 
-    private IEnumerator OnRunOverCoroutine() {
+    //private IEnumerator OnRunOverCoroutine() {
 
-        guiManager.HideCurrentCanvas();
+    //    guiManager.HideCurrentCanvas();
 
-        IsRunPlaying = false;
+    //    IsRunPlaying = false;
 
-        yield return new WaitForSeconds(1f);
+    //    yield return new WaitForSeconds(1f);
 
-        guiManager.ChangeGUIState(GUIState.RunOver);
+    //    guiManager.ChangeGUIState(GUIState.RunOver);
 
-    }
+    //}
 
     // TODO:
     public void CollectibleCollected(CollectibleEnum collectibleEnum) {

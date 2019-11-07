@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class CanvasInGame : CanvasLogic {
@@ -15,5 +12,4 @@ public class CanvasInGame : CanvasLogic {
     private void Update() {
         runScoreText.text = ((int)runScore.value).ToString("N0");
     }
-
 }

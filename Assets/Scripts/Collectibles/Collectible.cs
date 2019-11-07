@@ -13,5 +13,4 @@ public class Collectible : MonoBehaviour, ICollide {
 
         GameManager.instance.CollectibleCollected(collectibleEnum);
     }
-
 }

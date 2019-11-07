@@ -43,7 +43,9 @@ public class GUIManager : Singleton<GUIManager> {
         if (show == false) canvasLogic.OnLeave();
 
         // make sure the gameobject is active
-        canvasLogic.gameObject.SetActive(true);
+        if (!canvasLogic.gameObject.activeSelf) {
+            canvasLogic.gameObject.SetActive(true);
+        }
 
         if (fade) {
 

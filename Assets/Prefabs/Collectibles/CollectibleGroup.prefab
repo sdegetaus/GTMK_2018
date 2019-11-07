@@ -51,6 +51,7 @@ MonoBehaviour:
   activeObject: 0
   globalSpeed: {fileID: 11400000, guid: 41e3fbab2c4509246a98e0217cc2740d, type: 2}
   lerpSpeed: {fileID: 11400000, guid: 5823a7bc9b75a9e499848415fd0221bd, type: 2}
+  selectedMaterial: {fileID: 11400000, guid: 0201840eb296d0340a29a09e84bcfa3b, type: 2}
 --- !u!1001 &3138920991278820652
 PrefabInstance:
   m_ObjectHideFlags: 0

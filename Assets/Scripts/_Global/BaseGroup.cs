@@ -6,18 +6,21 @@ public abstract class BaseGroup<Type, GroupEnum> : MonoBehaviour
     where Type : Component
     where GroupEnum : Enum
     {
+
     [SerializeField]
     protected List<Type> objects = new List<Type>();
 
     [SerializeField]
     protected GroupEnum activeObject;
 
-    [Space]
+    [Space, SerializeField]
+    protected FloatVariable globalSpeed = null;
 
     [SerializeField]
-    protected FloatVariable globalSpeed = null;
-    [SerializeField]
     protected FloatVariable lerpSpeed = null;
+
+    [SerializeField]
+    public MaterialVariable selectedMaterial = null;
 
 
     protected void FixedUpdate() {

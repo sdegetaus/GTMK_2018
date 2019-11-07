@@ -1,12 +1,20 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class Obstacle : MonoBehaviour, ICollide {
 
-    public void OnTriggerEnter(Collider other) {
+    [SerializeField]
+    private new List<Renderer> renderer = new List<Renderer>();
 
-        if (GameManager.instance.godMode) return;
-        Events.instance.OnRunOver.Raise();
+    [SerializeField]
+    private ObstacleGroup obstacleGroup = null;
 
+    private void Start() {
+        obstacleGroup = gameObject.transform.parent.GetComponent<ObstacleGroup>();
     }
 
+    public void OnTriggerEnter(Collider other) {
+        if (GameManager.instance.godMode) return;
+        Events.instance.OnRunOver.Raise();
+    }
 }
