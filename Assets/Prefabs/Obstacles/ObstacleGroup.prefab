@@ -57,9 +57,6 @@ MonoBehaviour:
   - {fileID: 4206526457278334941}
   - {fileID: 7071484468737414459}
   activeObject: 0
-  globalSpeed: {fileID: 11400000, guid: 41e3fbab2c4509246a98e0217cc2740d, type: 2}
-  lerpSpeed: {fileID: 11400000, guid: 5823a7bc9b75a9e499848415fd0221bd, type: 2}
-  selectedMaterial: {fileID: 11400000, guid: 0201840eb296d0340a29a09e84bcfa3b, type: 2}
 --- !u!1001 &2113317760151055745
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -67,16 +64,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8732993859155758676}
     m_Modifications:
-    - target: {fileID: 2932986239161239471, guid: 71c1f570fd44d514591f34cdea2fdca1,
-        type: 3}
-      propertyPath: m_Name
-      value: 2_SingleObstacleSpecial_0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2932986239161239471, guid: 71c1f570fd44d514591f34cdea2fdca1,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2927477042705473783, guid: 71c1f570fd44d514591f34cdea2fdca1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -132,6 +119,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2932986239161239471, guid: 71c1f570fd44d514591f34cdea2fdca1,
+        type: 3}
+      propertyPath: m_Name
+      value: 2_SingleObstacleSpecial_0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71c1f570fd44d514591f34cdea2fdca1, type: 3}
 --- !u!4 &3887872645345168758 stripped
@@ -163,11 +155,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: 5_DoubleObstacleSpecial_2
-      objectReference: {fileID: 0}
-    - target: {fileID: 993359746512016221, guid: e4391f28af4ba3648b9754aa75947cce,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 999074268258497541, guid: e4391f28af4ba3648b9754aa75947cce,
         type: 3}
@@ -256,11 +243,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: 4_DoubleObstacleSpecial_1
       objectReference: {fileID: 0}
-    - target: {fileID: 6549388498297383345, guid: f5bfd04bdd02a1c468760b6f20165025,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6552853518037405417, guid: f5bfd04bdd02a1c468760b6f20165025,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -343,16 +325,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8732993859155758676}
     m_Modifications:
-    - target: {fileID: 8104136039482992901, guid: 337edd6ddfe9bcf478b52f49b9bdda63,
-        type: 3}
-      propertyPath: m_Name
-      value: 3_DoubleObstacleSpecial_0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8104136039482992901, guid: 337edd6ddfe9bcf478b52f49b9bdda63,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8098562190867533405, guid: 337edd6ddfe9bcf478b52f49b9bdda63,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -408,6 +380,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8104136039482992901, guid: 337edd6ddfe9bcf478b52f49b9bdda63,
+        type: 3}
+      propertyPath: m_Name
+      value: 3_DoubleObstacleSpecial_0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 337edd6ddfe9bcf478b52f49b9bdda63, type: 3}
 --- !u!4 &1492870727549610658 stripped
@@ -437,11 +414,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1415541002170332, guid: 2a6a967f497c98c4289f7e03f73ff18f, type: 3}
       propertyPath: m_Name
-      value: SingleObstacle
-      objectReference: {fileID: 0}
-    - target: {fileID: 1415541002170332, guid: 2a6a967f497c98c4289f7e03f73ff18f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
+      value: 0_SingleObstacle
       objectReference: {fileID: 0}
     - target: {fileID: 4913445075667076, guid: 2a6a967f497c98c4289f7e03f73ff18f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -517,12 +490,7 @@ PrefabInstance:
     - target: {fileID: 3192857718429351911, guid: becc94d5fa177d240b87c13b35aed476,
         type: 3}
       propertyPath: m_Name
-      value: DoubleObstacle
-      objectReference: {fileID: 0}
-    - target: {fileID: 3192857718429351911, guid: becc94d5fa177d240b87c13b35aed476,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
+      value: 1_DoubleObstacle
       objectReference: {fileID: 0}
     - target: {fileID: 3196214882808289471, guid: becc94d5fa177d240b87c13b35aed476,
         type: 3}

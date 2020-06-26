@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class ObstacleGroup : BaseGroup<Obstacle, ObstacleEnum> { }
+﻿namespace GMTK
+{
+    public class ObstacleGroup : ObjectGroup<Obstacle, ObstacleEnum> { }
+}

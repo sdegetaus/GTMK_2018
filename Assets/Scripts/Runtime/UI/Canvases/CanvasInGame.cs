@@ -1,17 +1,24 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class CanvasInGame : CanvasLogic
+namespace GMTK
 {
-
-    [SerializeField]
-    private Text runScoreText = null;
-
-    [SerializeField]
-    private FloatVariable runScore = null;
-
-    private void Update()
+    public class CanvasInGame : CanvasLogic
     {
-        runScoreText.text = ((int)runScore.value).ToString("N0");
+        [SerializeField]
+        private Text runScoreText = null;
+
+        // Private Variables
+        private FloatVariable score = null;
+
+        private void Start()
+        {
+            score = Assets.Instance.Score;
+        }
+
+        private void Update() // move to coroutine
+        {
+            runScoreText.text = ((int)score.value).ToString("N0");
+        }
     }
 }

@@ -1,27 +1,30 @@
 ﻿using UnityEngine;
 
-public class ScoreUpdater : MonoBehaviour
+namespace GMTK
 {
-    private FloatVariable runScore = null;
-
-    private void Start()
+    public class ScoreUpdater : MonoBehaviour
     {
-        runScore = Assets.Instance.Score;
-        GameManager.Events.OnRunStarted.RegisterListener(OnRunStarted);
-    }
+        private FloatVariable score = null;
 
-    #region Events Handlers
+        private void Start()
+        {
+            score = Assets.Instance.Score;
+            GameManager.Events.OnRunStarted.RegisterListener(OnRunStarted);
+        }
 
-    private void OnRunStarted()
-    {
-        runScore.value = 0;
-    }
+        #region Events Handlers
 
-    #endregion
+        private void OnRunStarted()
+        {
+            score.value = 0;
+        }
 
-    private void Update()
-    {
-        if (!GameManager.IsRunPlaying) return;
-        runScore.value += Time.deltaTime * 10;
+        #endregion
+
+        private void Update()
+        {
+            if (!GameManager.CanReadInput) return;
+            score.value += Time.deltaTime * 10;
+        }
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 [ExecuteInEditMode]
 public class PlayFromSceneZero : Editor
 {
-    const string MENU_PATH = "Custom Tools/Play From Scene 0 &p";
+    const string MENU_PATH = "Game/Play From Scene 0 &p";
     static bool playFromFirstScene
     {
         get { return EditorPrefs.HasKey(MENU_PATH) && EditorPrefs.GetBool(MENU_PATH); }

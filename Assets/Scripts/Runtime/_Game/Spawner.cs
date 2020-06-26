@@ -3,102 +3,104 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
+namespace GMTK
 {
-    // Private Variables
-    private Pools pools = null;
-
-    private Coroutine spawningCoroutine = null;
-
-    private void Start()
+    public class Spawner : MonoBehaviour
     {
-        pools = GameManager.Pools;
+        // Private Variables
+        private Pools pools = null;
 
-        GameManager.Events.OnPoolLoaded.RegisterListener(OnPoolLoaded);
-        GameManager.Events.OnRunStarted.RegisterListener(OnRunStarted);
-        GameManager.Events.OnRunOver.RegisterListener(OnRunOver);
-    }
+        private Coroutine spawningCoroutine = null;
 
-
-    #region Event Handlers
-
-    private void OnPoolLoaded()
-    {
-        for (int i = 0; i < pools.arrowsPool.count; i++)
+        private void Start()
         {
-            pools.Spawn(
-                PoolTag.Arrows,
-                Vector3.zero.With(x: Consts.ARROWS_SEPARATION * i)
-            );
+            pools = GameManager.Pools;
+
+            GameManager.Events.OnPoolLoaded.RegisterListener(OnPoolLoaded);
+            GameManager.Events.OnRunStarted.RegisterListener(OnRunStarted);
+            GameManager.Events.OnRunOver.RegisterListener(OnRunOver);
         }
-    }
 
-    private void OnRunStarted()
-    {
-        StartSpawning();
-    }
 
-    private void OnRunOver()
-    {
-        if (spawningCoroutine != null)
+        #region Event Handlers
+
+        private void OnPoolLoaded()
         {
-            StopCoroutine(spawningCoroutine);
-            spawningCoroutine = null;
-        }
-    }
-
-    #endregion
-
-    public void StartSpawning(bool fromResume = false)
-    {
-        if (spawningCoroutine == null)
-        {
-            spawningCoroutine = StartCoroutine(
-                EndlessSpawning(fromResume)
-            );
-        }
-    }
-
-    public void StopSpawning()
-    {
-        if (spawningCoroutine != null)
-        {
-            StopCoroutine(spawningCoroutine);
-            spawningCoroutine = null;
-        }
-    }
-
-    private IEnumerator EndlessSpawning(bool fromResume = false)
-    {
-        while (true)
-        {
-            if (fromResume)
+            for (int i = 0; i < pools.arrowsPool.count; i++)
             {
-                yield return new WaitForSeconds(
-                    Assets.Instance.SpawnYieldTime.value
+                pools.Spawn(
+                    PoolTag.Arrows,
+                    Vector3.zero.With(x: Consts.ARROWS_SEPARATION * i)
                 );
             }
+        }
 
-            // Collectible Spawning...
-            if (5f.HasChance())
+        private void OnRunStarted()
+        {
+            StartSpawning();
+        }
+
+        private void OnRunOver()
+        {
+            if (spawningCoroutine != null)
             {
-                CollectibleGroup collectibleGroup = pools.Spawn(
+                StopCoroutine(spawningCoroutine);
+                spawningCoroutine = null;
+            }
+        }
+
+        #endregion
+
+        public void StartSpawning(bool fromResume = false)
+        {
+            if (spawningCoroutine == null)
+            {
+                spawningCoroutine = StartCoroutine(
+                    EndlessSpawning(fromResume)
+                );
+            }
+        }
+
+        public void StopSpawning()
+        {
+            if (spawningCoroutine != null)
+            {
+                StopCoroutine(spawningCoroutine);
+                spawningCoroutine = null;
+            }
+        }
+
+        private IEnumerator EndlessSpawning(bool fromResume = false)
+        {
+            while (true)
+            {
+                if (fromResume)
+                {
+                    yield return new WaitForSeconds(
+                        Assets.Instance.SpawnYieldTime.value
+                    );
+                }
+
+                // Collectible Spawning...
+                if (5f.HasChance())
+                {
+                    CollectableGroup collectibleGroup = pools.Spawn(
                     PoolTag.CollectibleGroup,
                     Vector3.zero.With(
                         x: Consts.SPAWN_POINT,
                         z: GetNewLanePosition() ?? 0
                     )
-                ).GetComponent<CollectibleGroup>();
+                ).GetComponent<CollectableGroup>();
 
-                collectibleGroup.Init();
+                    collectibleGroup.Initialize();
 
-                yield return new WaitForSeconds(
-                    Assets.Instance.SpawnYieldTime.value
-                );
-            }
+                    yield return new WaitForSeconds(
+                        Assets.Instance.SpawnYieldTime.value
+                    );
+                }
 
-            // Obstacle Spawning...
-            ObstacleGroup obstacleGroup = pools.Spawn(
+                // Obstacle Spawning...
+                ObstacleGroup obstacleGroup = pools.Spawn(
                 PoolTag.ObstacleGroup,
                 Vector3.zero.With(
                     x: Consts.SPAWN_POINT,
@@ -106,26 +108,27 @@ public class Spawner : MonoBehaviour
                 )
             ).GetComponent<ObstacleGroup>();
 
-            obstacleGroup.Init();
+                obstacleGroup.Initialize();
 
-            yield return new WaitForSeconds(
-                Assets.Instance.SpawnYieldTime.value
-            );
+                yield return new WaitForSeconds(
+                    Assets.Instance.SpawnYieldTime.value
+                );
+            }
         }
-    }
 
-    // TEMP, TODO:
-    private float? GetNewLanePosition()
-    {
-        float? newLanePosition;
+        // TEMP, TODO:
+        private float? GetNewLanePosition()
+        {
+            float? newLanePosition;
 
-        if (33.0f.HasChance())
-            newLanePosition = -Consts.LANE_SEPARATION;
-        else if (33.0f.HasChance())
-            newLanePosition = Consts.LANE_SEPARATION;
-        else
-            newLanePosition = 0;
+            if (33.0f.HasChance())
+                newLanePosition = -Consts.LANE_SEPARATION;
+            else if (33.0f.HasChance())
+                newLanePosition = Consts.LANE_SEPARATION;
+            else
+                newLanePosition = 0;
 
-        return newLanePosition;
+            return newLanePosition;
+        }
     }
 }

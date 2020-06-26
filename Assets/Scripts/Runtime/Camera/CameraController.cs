@@ -1,76 +1,79 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class CameraController : Singleton<CameraController>
+namespace GMTK
 {
-    [SerializeField] private new Camera camera = null;
-    [SerializeField] private GameObject cameraHolder = null;
-
-    [Header("Shake Properties")]
-    [Range(0f, 1f)] public float shakeAmount = 0.2f;
-
-    [Header("Tween Presets")]
-    [SerializeField] private TweenPreset tween = null;
-
-    // Private Variables
-    private Vector3 originalCameraPosition = default;
-
-    private void Start()
+    public class CameraController : Singleton<CameraController>
     {
-        originalCameraPosition = camera.transform.localPosition;
-        GameManager.Events.OnRunStarted.RegisterListener(OnRunStarted);
-        GameManager.Events.OnRunOver.RegisterListener(OnRunOver);
-    }
+        [SerializeField] private new Camera camera = null;
+        [SerializeField] private GameObject cameraHolder = null;
 
+        [Header("Shake Properties")]
+        [Range(0f, 1f)] public float shakeAmount = 0.2f;
 
-    #region Event Handlers
+        [Header("Tween Presets")]
+        [SerializeField] private TweenPreset tween = null;
 
-    private void OnRunStarted()
-    {
-        ZoomTo(
-            target: Vector3.zero,
-            time: tween.time,
-            zoom: 6.0f
-        );
-    }
+        // Private Variables
+        private Vector3 originalCameraPosition = default;
 
-    private void OnRunOver()
-    {
-        Shake();
-        ZoomTo(
-            target: GameManager.Player.Position.With(x: -7.0f, y: 0.5f),
-            time: tween.time,
-            zoom: 3.0f
-        );
-    }
-
-    #endregion
-
-    public void Shake()
-    {
-        StopAllCoroutines();
-        StartCoroutine(Instance.ShakeCoroutine());
-    }
-
-    private IEnumerator ShakeCoroutine()
-    {
-        float time = tween.time;
-        float endTime = Time.time + time;
-        while (Time.time < endTime)
+        private void Start()
         {
-            camera.transform.localPosition = originalCameraPosition + Random.insideUnitSphere * shakeAmount;
-            time -= Time.deltaTime;
-            yield return null;
+            originalCameraPosition = camera.transform.localPosition;
+            GameManager.Events.OnRunStarted.RegisterListener(OnRunStarted);
+            GameManager.Events.OnRunOver.RegisterListener(OnRunOver);
         }
-        camera.transform.localPosition = originalCameraPosition;
-    }
 
-    public void ZoomTo(Vector3 target, float time, float zoom)
-    {
-        LeanTween.cancel(cameraHolder);
-        LeanTween.move(cameraHolder, target, time).setEase(tween.tweenType);
-        LeanTween.value(camera.gameObject, camera.orthographicSize, zoom, time)
-            .setOnUpdate(f => camera.orthographicSize = f
-        ).setEase(tween.tweenType);
+
+        #region Event Handlers
+
+        private void OnRunStarted()
+        {
+            ZoomTo(
+                target: Vector3.zero,
+                time: tween.time,
+                zoom: 6.0f
+            );
+        }
+
+        private void OnRunOver()
+        {
+            Shake();
+            ZoomTo(
+                target: GameManager.Player.Position.With(x: -7.0f, y: 0.5f),
+                time: tween.time,
+                zoom: 3.0f
+            );
+        }
+
+        #endregion
+
+        public void Shake()
+        {
+            StopAllCoroutines();
+            StartCoroutine(Instance.ShakeCoroutine());
+        }
+
+        private IEnumerator ShakeCoroutine()
+        {
+            float time = tween.time;
+            float endTime = Time.time + time;
+            while (Time.time < endTime)
+            {
+                camera.transform.localPosition = originalCameraPosition + Random.insideUnitSphere * shakeAmount;
+                time -= Time.deltaTime;
+                yield return null;
+            }
+            camera.transform.localPosition = originalCameraPosition;
+        }
+
+        public void ZoomTo(Vector3 target, float time, float zoom)
+        {
+            LeanTween.cancel(cameraHolder);
+            LeanTween.move(cameraHolder, target, time).setEase(tween.tweenType);
+            LeanTween.value(camera.gameObject, camera.orthographicSize, zoom, time)
+                .setOnUpdate(f => camera.orthographicSize = f
+            ).setEase(tween.tweenType);
+        }
     }
 }

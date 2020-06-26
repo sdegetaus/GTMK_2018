@@ -2,4 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollectibleGroup : BaseGroup<Collectible, CollectibleEnum> { }
+namespace GMTK
+{
+    public class Selection : MonoBehaviour
+    {
+      
+    }
+}

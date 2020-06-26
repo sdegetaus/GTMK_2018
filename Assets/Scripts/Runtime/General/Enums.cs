@@ -28,7 +28,7 @@ public enum ObstacleEnum
     DoubleSpecial_2
 }
 
-public enum CollectibleEnum
+public enum CollectableEnum
 {
     CollectibleTest0,
     CollectibleTest1

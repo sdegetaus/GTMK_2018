@@ -1,57 +1,37 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class InputController : MonoBehaviour
+namespace GMTK
 {
-    // Cached Variables
-    private Player player = null;
-    private Events events = null;
-
-    private void Start()
+    public class InputController : MonoBehaviour
     {
-        events = GameManager.Events;
-        player = GameManager.Player;
-    }
 
-    private void Update()
-    {
-        if (!GameManager.IsRunPlaying)
+        // Private Variables
+        private new Camera camera = null;
+        private Ray ray = default;
+        private RaycastHit hit = default;
+
+        private void Awake()
         {
-            // TODO: fix
-            if (UIManager.CurrentState == UIState.MainMenu)
-            {
-                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
-                {
-                    events.OnRunStarted.Raise();
-                    return;
-                }
-            }
-
-            if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
-            {
-                events.OnRunResumed.Raise();
-                return;
-            }
-            return;
+            camera = Camera.main;
         }
 
-        if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
+        private void Update()
         {
-            events.OnRunPaused.Raise();
-            return;
-        }
+#if UNITY_EDITOR
+            if (EventSystem.current.IsPointerOverGameObject()) return;
+#else
+        if (EventSystem.current.IsPointerOverGameObject(0)) return;
+#endif
 
-        if (Consts.DEBUG_PLAYER_MOV)
-        {
-            if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
+            if (Input.GetMouseButtonDown(0))
             {
-                player.MoveLeft();
-                return;
-            }
-
-            if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
-            {
-                player.MoveRight();
-                return;
+                ray = camera.ScreenPointToRay(Input.mousePosition);
+                Physics.Raycast(ray, out hit);
+                if (hit.transform == null) return;
+                var selectable = hit.transform.GetComponent<ISelectable>();
+                if (selectable is null) return;
+                selectable.Select();
             }
         }
     }

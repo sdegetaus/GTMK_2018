@@ -3,26 +3,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CanvasPersistent : CanvasLogic
+namespace GMTK
 {
-    [Header("Cinematic Effect")]
-    [SerializeField]
-    private GUICinematicEffect cinematicEffect = null;
-
-    private void Start()
+    public class CanvasPersistent : CanvasLogic
     {
-        GameManager.Events.OnRunStarted.RegisterListener(OnRunStarted);
-        GameManager.Events.OnRunOver.RegisterListener(OnRunOver);
-    }
+        [Header("Cinematic Effect")]
+        [SerializeField]
+        private GUICinematicEffect cinematicEffect = null;
 
-    private void OnRunStarted()
-    {
-        cinematicEffect.FadeOut();
-    }
+        private void Start()
+        {
+            GameManager.Events.OnRunStarted.RegisterListener(OnRunStarted);
+            GameManager.Events.OnRunOver.RegisterListener(OnRunOver);
+        }
 
-    private void OnRunOver()
-    {
-        cinematicEffect.FadeIn();
-    }
+        private void OnRunStarted()
+        {
+            cinematicEffect.FadeOut();
+        }
 
+        private void OnRunOver()
+        {
+            cinematicEffect.FadeIn();
+        }
+    }
 }

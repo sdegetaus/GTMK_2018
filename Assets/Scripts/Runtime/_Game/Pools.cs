@@ -3,112 +3,115 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pools : MonoBehaviour
+namespace GMTK
 {
-    [Serializable]
-    public struct Pool
+    public class Pools : MonoBehaviour
     {
-        public PoolTag type;
-        public int count;
-        public GameObject prefab;
-    }
-
-    [Header("Pools")]
-    public Pool obstacleGroupPool;
-    public Pool collectibleGroupPool;
-    public Pool arrowsPool;
-
-    // Private Variables
-    private List<Pool> pools = new List<Pool>();
-    private Dictionary<PoolTag, Queue<GameObject>> poolGroup = new Dictionary<PoolTag, Queue<GameObject>>();
-
-    // Class References
-    private GameManager gameManager;
-
-    private void Start()
-    {
-        pools.Clear();
-        pools.Add(obstacleGroupPool);
-        pools.Add(collectibleGroupPool);
-        pools.Add(arrowsPool);
-    }
-
-    #region Public Methods
-
-    public void InitializePool()
-    {
-        gameManager = GameManager.Instance;
-        StartCoroutine(
-            InitializePoolCoroutine()
-        );
-    }
-
-    public GameObject Spawn(PoolTag tag, Vector3 position = default)
-    {
-
-        if (!poolGroup.ContainsKey(tag))
+        [Serializable]
+        public struct Pool
         {
-            Debug.LogError("PoolTag of type " + tag.ToString() + " doesn't exist!");
-            return null;
+            public PoolTag type;
+            public int count;
+            public GameObject prefab;
         }
 
-        GameObject objectToSpawn = poolGroup[tag].Dequeue();
+        [Header("Pools")]
+        public Pool obstacleGroupPool;
+        public Pool collectibleGroupPool;
+        public Pool arrowsPool;
 
-        objectToSpawn.SetActive(true);
-        objectToSpawn.transform.position = position;
-        objectToSpawn.transform.rotation = Quaternion.identity;
+        // Private Variables
+        private List<Pool> pools = new List<Pool>();
+        private Dictionary<PoolTag, Queue<GameObject>> poolGroup = new Dictionary<PoolTag, Queue<GameObject>>();
 
-        poolGroup[tag].Enqueue(objectToSpawn);
+        // Class References
+        private GameManager gameManager;
 
-        return objectToSpawn;
-    }
-
-    #endregion
-
-    private IEnumerator InitializePoolCoroutine()
-    {
-        Transform poolObjectsTransform = GameManager.Spawner.gameObject.transform;
-        Queue<GameObject> poolObject = new Queue<GameObject>();
-
-        for (int i = 0; i < obstacleGroupPool.count; i++)
+        private void Start()
         {
-            GameObject obj = Instantiate(obstacleGroupPool.prefab, poolObjectsTransform);
-            obj.SetActive(false);
-            poolObject.Enqueue(obj);
-            yield return new WaitForEndOfFrame();
+            pools.Clear();
+            pools.Add(obstacleGroupPool);
+            pools.Add(collectibleGroupPool);
+            pools.Add(arrowsPool);
         }
-        poolGroup.Add(obstacleGroupPool.type, poolObject);
 
-        yield return null;
+        #region Public Methods
 
-        // initialize collectiblePool
-        poolObject = new Queue<GameObject>();
-
-        for (int i = 0; i < collectibleGroupPool.count; i++)
+        public void Initialize()
         {
-            GameObject obj = Instantiate(collectibleGroupPool.prefab, poolObjectsTransform);
-            obj.SetActive(false);
-            poolObject.Enqueue(obj);
-            yield return new WaitForEndOfFrame();
+            gameManager = GameManager.Instance;
+            StartCoroutine(
+                InitializePoolCoroutine()
+            );
         }
-        poolGroup.Add(collectibleGroupPool.type, poolObject);
 
-        yield return null;
-
-        // initialize arrowsPool
-        poolObject = new Queue<GameObject>();
-
-        for (int i = 0; i < arrowsPool.count; i++)
+        public GameObject Spawn(PoolTag tag, Vector3 position = default)
         {
-            GameObject obj = Instantiate(arrowsPool.prefab, poolObjectsTransform);
-            obj.SetActive(false);
-            poolObject.Enqueue(obj);
-            yield return new WaitForEndOfFrame();
+
+            if (!poolGroup.ContainsKey(tag))
+            {
+                Debug.LogError("PoolTag of type " + tag.ToString() + " doesn't exist!");
+                return null;
+            }
+
+            GameObject objectToSpawn = poolGroup[tag].Dequeue();
+
+            objectToSpawn.SetActive(true);
+            objectToSpawn.transform.position = position;
+            objectToSpawn.transform.rotation = Quaternion.identity;
+
+            poolGroup[tag].Enqueue(objectToSpawn);
+
+            return objectToSpawn;
         }
-        poolGroup.Add(arrowsPool.type, poolObject);
 
-        yield return null;
+        #endregion
 
-        GameManager.Events.OnPoolLoaded.Raise();
+        private IEnumerator InitializePoolCoroutine()
+        {
+            Transform poolObjectsTransform = GameManager.Spawner.gameObject.transform;
+            Queue<GameObject> poolObject = new Queue<GameObject>();
+
+            for (int i = 0; i < obstacleGroupPool.count; i++)
+            {
+                GameObject obj = Instantiate(obstacleGroupPool.prefab, poolObjectsTransform);
+                obj.SetActive(false);
+                poolObject.Enqueue(obj);
+                yield return new WaitForEndOfFrame();
+            }
+            poolGroup.Add(obstacleGroupPool.type, poolObject);
+
+            yield return null;
+
+            // initialize collectiblePool
+            poolObject = new Queue<GameObject>();
+
+            for (int i = 0; i < collectibleGroupPool.count; i++)
+            {
+                GameObject obj = Instantiate(collectibleGroupPool.prefab, poolObjectsTransform);
+                obj.SetActive(false);
+                poolObject.Enqueue(obj);
+                yield return new WaitForEndOfFrame();
+            }
+            poolGroup.Add(collectibleGroupPool.type, poolObject);
+
+            yield return null;
+
+            // initialize arrowsPool
+            poolObject = new Queue<GameObject>();
+
+            for (int i = 0; i < arrowsPool.count; i++)
+            {
+                GameObject obj = Instantiate(arrowsPool.prefab, poolObjectsTransform);
+                obj.SetActive(false);
+                poolObject.Enqueue(obj);
+                yield return new WaitForEndOfFrame();
+            }
+            poolGroup.Add(arrowsPool.type, poolObject);
+
+            yield return null;
+
+            GameManager.Events.OnPoolLoaded.Raise();
+        }
     }
 }

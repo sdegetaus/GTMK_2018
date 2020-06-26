@@ -1,12 +1,15 @@
 ﻿using System;
 
-public static class Utilities
+namespace GMTK
 {
-    public static T GetRandomEnum<T>()
+    public static class Utilities
     {
-        Array A = Enum.GetValues(typeof(T));
-        T V = (T)A.GetValue(UnityEngine.Random.Range(0, A.Length));
-        return V;
-    }
+        public static T GetRandomEnum<T>()
+        {
+            Array A = Enum.GetValues(typeof(T));
+            T V = (T)A.GetValue(UnityEngine.Random.Range(0, A.Length));
+            return V;
+        }
 
+    }
 }

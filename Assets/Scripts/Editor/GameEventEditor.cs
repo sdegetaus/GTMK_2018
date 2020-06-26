@@ -1,17 +1,20 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(GameEvent))]
-public class GameEventEditor : Editor
+namespace GMTK
 {
-    public override void OnInspectorGUI()
+    [CustomEditor(typeof(GameEvent))]
+    public class GameEventEditor : Editor
     {
-        base.OnInspectorGUI();
-        GUI.enabled = Application.isPlaying;
-        if (GUILayout.Button("Raise"))
+        public override void OnInspectorGUI()
         {
-            GameEvent gameEvent = (GameEvent)target;
-            gameEvent.Raise();
+            base.OnInspectorGUI();
+            GUI.enabled = Application.isPlaying;
+            if (GUILayout.Button("Raise"))
+            {
+                GameEvent gameEvent = (GameEvent)target;
+                gameEvent.Raise();
+            }
         }
     }
 }

@@ -1,6 +1,14 @@
 ﻿using UnityEngine;
 
-public interface ICollide
+namespace GMTK
 {
-    void OnTriggerEnter(Collider other);
+    public interface ICollide
+    {
+        void OnTriggerEnter(Collider other);
+    }
+
+    public interface ISelectable
+    {
+        void Select();
+    }
 }

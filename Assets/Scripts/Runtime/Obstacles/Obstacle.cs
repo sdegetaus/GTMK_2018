@@ -1,22 +1,30 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-public class Obstacle : MonoBehaviour, ICollide
+namespace GMTK
 {
-    [SerializeField]
-    private new List<Renderer> renderer = new List<Renderer>();
-
-    [SerializeField]
-    private ObstacleGroup obstacleGroup = null;
-
-    private void Start()
+    public class Obstacle : MonoBehaviour, ICollide, ISelectable
     {
-        obstacleGroup = gameObject.transform.parent.GetComponent<ObstacleGroup>();
-    }
+        private new List<Renderer> renderer;
+        private ObstacleGroup obstacleGroup = null;
 
-    public void OnTriggerEnter(Collider other)
-    {
-        if (GameManager.GodMode) return;
-        GameManager.Events.OnRunOver.Raise();
+        private void Start()
+        {
+            renderer = GetComponentsInChildren<Renderer>().ToList();
+            obstacleGroup = gameObject.transform.parent.GetComponent<ObstacleGroup>();
+        }
+
+        public void OnTriggerEnter(Collider other)
+        {
+            if (GameManager.GodMode) return;
+            GameManager.Events.OnRunOver.Raise();
+        }
+
+        public void Select()
+        {
+            Debug.Log("Select");
+        }
+
     }
 }

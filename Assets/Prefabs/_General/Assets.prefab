@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Score: {fileID: 11400000, guid: 74339a6faffde0947a4ee4b899b3c654, type: 2}
   Speed: {fileID: 11400000, guid: 41e3fbab2c4509246a98e0217cc2740d, type: 2}
+  LerpSpeed: {fileID: 11400000, guid: 5823a7bc9b75a9e499848415fd0221bd, type: 2}
   SpawnYieldTime: {fileID: 11400000, guid: 0801aa08aef408b4f8e575f00720288b, type: 2}
   SelectedMat: {fileID: 2100000, guid: fc5389b4d7af8e84cb115ea6c58a56fe, type: 2}
 --- !u!114 &5719914377481352953

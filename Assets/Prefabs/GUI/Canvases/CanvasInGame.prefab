@@ -116,7 +116,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 0
-  m_Text: 1,000
+  m_Text: 0
 --- !u!114 &2112052789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,8 +272,8 @@ GameObject:
   - component: {fileID: 7746123640393270428}
   - component: {fileID: 7746123640393270429}
   - component: {fileID: 7746123640393270430}
-  - component: {fileID: 7746123640393270425}
   - component: {fileID: 7746123640393270426}
+  - component: {fileID: 7746123640393270425}
   m_Layer: 5
   m_Name: CanvasInGame
   m_TagString: Untagged
@@ -361,6 +361,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!225 &7746123640393270426
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7746123640393270431}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!114 &7746123640393270425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -376,19 +388,6 @@ MonoBehaviour:
   canvas: {fileID: 0}
   canvasGroup: {fileID: 0}
   runScoreText: {fileID: 2112052786}
-  runScore: {fileID: 11400000, guid: 74339a6faffde0947a4ee4b899b3c654, type: 2}
---- !u!225 &7746123640393270426
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7746123640393270431}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
 --- !u!1001 &9212581632644849736
 PrefabInstance:
   m_ObjectHideFlags: 0

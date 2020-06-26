@@ -1,70 +1,73 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class Arrows : MonoBehaviour
+namespace GMTK
 {
-    [SerializeField]
-    private FloatVariable globalSpeed = null;
-    [SerializeField]
-    private FloatVariable lerpSpeed = null;
-
-    // Private Variables
-    private Pools pools;
-    private Coroutine arrowsMovementCoroutine = null;
-
-    private void Start()
+    public class Arrows : MonoBehaviour
     {
-        GameManager.Events.OnRunOver.RegisterListener(OnRunOver);
-        pools = GameManager.Pools;
-        arrowsMovementCoroutine = StartCoroutine(ArrowsMovementCoroutine());
-    }
+        [SerializeField]
+        private FloatVariable globalSpeed = null;
+        [SerializeField]
+        private FloatVariable lerpSpeed = null;
 
-    #region Event Handlers
+        // Private Variables
+        private Pools pools;
+        private Coroutine arrowsMovementCoroutine = null;
 
-    private void OnRunStarted()
-    {
-        if (arrowsMovementCoroutine == null)
+        private void Start()
+        {
+            GameManager.Events.OnRunOver.RegisterListener(OnRunOver);
+            pools = GameManager.Pools;
             arrowsMovementCoroutine = StartCoroutine(ArrowsMovementCoroutine());
-    }
-
-    private void OnRunOver()
-    {
-        if (arrowsMovementCoroutine != null)
-        {
-            StopCoroutine(arrowsMovementCoroutine);
-            arrowsMovementCoroutine = null;
         }
-        GameManager.Events.OnRunStarted.RegisterListener(OnRunStarted);
-    }
 
-    #endregion
+        #region Event Handlers
 
-    private IEnumerator ArrowsMovementCoroutine()
-    {
-        while (true)
+        private void OnRunStarted()
         {
-            transform.position = Vector3.Lerp(
-                transform.position,
-                transform.position.With(x: transform.position.x - globalSpeed.value),
-                Time.fixedDeltaTime * lerpSpeed.value);
+            if (arrowsMovementCoroutine == null)
+                arrowsMovementCoroutine = StartCoroutine(ArrowsMovementCoroutine());
+        }
 
-            if (transform.position.x < -60.0f)
+        private void OnRunOver()
+        {
+            if (arrowsMovementCoroutine != null)
             {
-                pools.Spawn(
-                    PoolTag.Arrows,
-                    Vector3.zero.With(x: Consts.ARROWS_SEPARATION)
-                );
-                pools.Spawn(
-                    PoolTag.Arrows,
-                    Vector3.zero.With(x: 0f)
-                );
-                pools.Spawn(
-                    PoolTag.Arrows,
-                    Vector3.zero.With(x: -Consts.ARROWS_SEPARATION)
-                );
+                StopCoroutine(arrowsMovementCoroutine);
+                arrowsMovementCoroutine = null;
             }
+            GameManager.Events.OnRunStarted.RegisterListener(OnRunStarted);
+        }
 
-            yield return new WaitForFixedUpdate();
+        #endregion
+
+        private IEnumerator ArrowsMovementCoroutine()
+        {
+            while (true)
+            {
+                transform.position = Vector3.Lerp(
+                    transform.position,
+                    transform.position.With(x: transform.position.x - globalSpeed.value),
+                    Time.fixedDeltaTime * lerpSpeed.value);
+
+                if (transform.position.x < -60.0f)
+                {
+                    pools.Spawn(
+                        PoolTag.Arrows,
+                        Vector3.zero.With(x: Consts.ARROWS_SEPARATION)
+                    );
+                    pools.Spawn(
+                        PoolTag.Arrows,
+                        Vector3.zero.With(x: 0f)
+                    );
+                    pools.Spawn(
+                        PoolTag.Arrows,
+                        Vector3.zero.With(x: -Consts.ARROWS_SEPARATION)
+                    );
+                }
+
+                yield return new WaitForFixedUpdate();
+            }
         }
     }
 }
