@@ -1,17 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class InputController : MonoBehaviour
 {
-    // Private Variables
+    // Cached Variables
     private Player player = null;
     private Events events = null;
 
     private void Start()
     {
         events = GameManager.Events;
-        player = GetComponent<Player>();
+        player = GameManager.Player;
     }
 
     private void Update()

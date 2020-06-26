@@ -21,14 +21,14 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Player
-  m_Shader: {fileID: 4800000, guid: 8d2bb70cbf9db8d4da26e15b26e74248, type: 3}
-  m_ShaderKeywords: _EMISSION _GLOSSINESS_FROM_BASE_ALPHA _SPECULAR_COLOR
-  m_LightmapFlags: 2
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _EMISSION _GLOSSINESS_FROM_BASE_ALPHA _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
+    _SPECULAR_COLOR
+  m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2050
-  stringTagMap:
-    RenderType: Opaque
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -97,7 +97,7 @@ Material:
     - _DontMix: 0
     - _DstBlend: 0
     - _Fog: 0
-    - _GlossMapScale: 1
+    - _GlossMapScale: 0.506
     - _Glossiness: 0.5
     - _GlossinessSource: 0
     - _GlossyReflections: 1
@@ -119,9 +119,9 @@ Material:
     - _Shininess: 0
     - _Smoothness: 0.554
     - _SmoothnessSource: 1
-    - _SmoothnessTextureChannel: 0
+    - _SmoothnessTextureChannel: 1
     - _SpecSource: 0
-    - _SpecularHighlights: 0
+    - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
     - _UVSec: 0
@@ -129,7 +129,7 @@ Material:
     m_Colors:
     - _AmbientColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColor: {r: 0.31078678, g: 0.6792453, b: 0.62858224, a: 0.554}
-    - _Color: {r: 1, g: 0, b: 0, a: 1}
+    - _Color: {r: 0.5377358, g: 0, b: 0.21679285, a: 1}
     - _Color1_B: {r: 0.9725491, g: 0.90196085, b: 0.91372555, a: 1}
     - _Color1_F: {r: 0.9716981, g: 0.9029459, b: 0.9154463, a: 1}
     - _Color1_L: {r: 0.9725491, g: 0.90196085, b: 0.91372555, a: 1}
@@ -140,7 +140,7 @@ Material:
     - _Color2_R: {r: 0.9725491, g: 0.90196085, b: 0.91372555, a: 1}
     - _Color_D: {r: 0.8666667, g: 0.4627451, b: 0.5529412, a: 1}
     - _Color_T: {r: 1, g: 0.9843137, b: 0.99215686, a: 1}
-    - _EmissionColor: {r: 0.9433962, g: 0.4413913, b: 0, a: 1}
+    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _LMColor: {r: 1, g: 1, b: 1, a: 1}
     - _OutlineColor: {r: 0.9528302, g: 0.28315237, b: 0.28315237, a: 1}
     - _Pos: {r: 31.93, g: 10.68, b: 6.66, a: 27.56}

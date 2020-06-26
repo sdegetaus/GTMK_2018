@@ -5,42 +5,14 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-
     // Private Variables
-    private GameManager gameManager = null;
     private Pools pools = null;
 
     private Coroutine spawningCoroutine = null;
 
-    [Space]
-
-    #region PERCENTAGE TEST VARIABLES
-
-    public float count_0;
-    public float count_left;
-    public float count_right;
-
-    [Space]
-
-    public float perc_0;
-    public float perc_left;
-    public float perc_right;
-
-    [Space]
-
-    public float perc_collectible;
-    public float count_collectible;
-
-    [Space]
-
-    public float totalCount = 0;
-
-    #endregion
-
     private void Start()
     {
-        gameManager = GameManager.Instance;
-        pools = gameManager.pools;
+        pools = GameManager.Pools;
 
         GameManager.Events.OnPoolLoaded.RegisterListener(OnPoolLoaded);
         GameManager.Events.OnRunStarted.RegisterListener(OnRunStarted);
@@ -81,7 +53,9 @@ public class Spawner : MonoBehaviour
     {
         if (spawningCoroutine == null)
         {
-            spawningCoroutine = StartCoroutine(EndlessSpawning(fromResume));
+            spawningCoroutine = StartCoroutine(
+                EndlessSpawning(fromResume)
+            );
         }
     }
 
@@ -96,10 +70,8 @@ public class Spawner : MonoBehaviour
 
     private IEnumerator EndlessSpawning(bool fromResume = false)
     {
-
         while (true)
         {
-
             if (fromResume)
             {
                 yield return new WaitForSeconds(
@@ -108,9 +80,8 @@ public class Spawner : MonoBehaviour
             }
 
             // Collectible Spawning...
-            if (Utilities.IsProbableBy(5))
+            if (5f.HasChance())
             {
-                count_collectible++;
                 CollectibleGroup collectibleGroup = pools.Spawn(
                     PoolTag.CollectibleGroup,
                     Vector3.zero.With(
@@ -146,31 +117,14 @@ public class Spawner : MonoBehaviour
     // TEMP, TODO:
     private float? GetNewLanePosition()
     {
+        float? newLanePosition;
 
-        float? newLanePosition = null;
-
-        if (Utilities.IsProbableBy(33))
-        {
+        if (33.0f.HasChance())
             newLanePosition = -Consts.LANE_SEPARATION;
-            //count_left++;
-        }
-        else if (Utilities.IsProbableBy(33))
-        {
+        else if (33.0f.HasChance())
             newLanePosition = Consts.LANE_SEPARATION;
-            //count_right++;
-        }
         else
-        {
             newLanePosition = 0;
-            //count_0++;
-        }
-
-        //perc_0 = (count_0 * 100) / totalCount;
-        //perc_left = (count_left * 100) / totalCount;
-        //perc_right = (count_right * 100) / totalCount;
-        //perc_collectible = (count_collectible * 100) / totalCount;
-
-        //totalCount++;
 
         return newLanePosition;
     }

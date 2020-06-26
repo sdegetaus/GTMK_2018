@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8467858214690022964}
   - component: {fileID: 8467858214690022965}
+  - component: {fileID: 5719914377481352953}
   m_Layer: 0
   m_Name: Assets
   m_TagString: Untagged
@@ -47,3 +48,15 @@ MonoBehaviour:
   Speed: {fileID: 11400000, guid: 41e3fbab2c4509246a98e0217cc2740d, type: 2}
   SpawnYieldTime: {fileID: 11400000, guid: 0801aa08aef408b4f8e575f00720288b, type: 2}
   SelectedMat: {fileID: 2100000, guid: fc5389b4d7af8e84cb115ea6c58a56fe, type: 2}
+--- !u!114 &5719914377481352953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8467858214690022970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4954d241dc68a9d4792b52ca1c11c7c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

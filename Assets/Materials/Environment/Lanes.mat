@@ -9,8 +9,9 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Lanes
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _GLOSSINESS_FROM_BASE_ALPHA _SPECULARHIGHLIGHTS_OFF _SPECULAR_COLOR
-  m_LightmapFlags: 4
+  m_ShaderKeywords: _EMISSION _GLOSSINESS_FROM_BASE_ALPHA _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
+    _SPECULAR_COLOR
+  m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -78,8 +79,8 @@ Material:
     - _DontMix: 1
     - _DstBlend: 0
     - _Fog: 0
-    - _GlossMapScale: 1
-    - _Glossiness: 0.5
+    - _GlossMapScale: 0.5
+    - _Glossiness: 0.148
     - _GlossinessSource: 0
     - _GlossyReflections: 1
     - _GradientHeight: 0.12
@@ -98,9 +99,9 @@ Material:
     - _Shininess: 0
     - _Smoothness: 0
     - _SmoothnessSource: 1
-    - _SmoothnessTextureChannel: 0
+    - _SmoothnessTextureChannel: 1
     - _SpecSource: 0
-    - _SpecularHighlights: 0
+    - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
     - _UVSec: 0
@@ -108,7 +109,7 @@ Material:
     m_Colors:
     - _AmbientColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColor: {r: 0.8867924, g: 0, b: 0.24853802, a: 0}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 0, b: 0.49694967, a: 1}
     - _Color1_B: {r: 0.654902, g: 0.15686275, b: 0.27450982, a: 1}
     - _Color1_F: {r: 0.654902, g: 0.15686275, b: 0.27450982, a: 1}
     - _Color1_L: {r: 0.9450981, g: 0.2901961, b: 0.46274513, a: 1}

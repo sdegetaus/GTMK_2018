@@ -5,11 +5,9 @@ public class GameManager : Singleton<GameManager>
     // Static Variables
     public static bool IsRunPlaying = false;
 
-    public bool godMode = false;
+    public static bool GodMode = false;
 
     [Header("Class References")]
-    public Pools pools = null;
-    public Spawner spawner = null;
 
     [SerializeField] private Player playerRef = null;
 
@@ -17,17 +15,21 @@ public class GameManager : Singleton<GameManager>
     private float m_globalSpeed = 0f;
 
     // Static References
-    public static Player Player = null;
     public static Events Events = null;
+    public static Pools Pools = null;
+    public static Spawner Spawner = null;
+    public static Player Player = null;
 
     // Class References
     private Assets assets = null;
 
     private void Awake()
     {
-        Events = GetComponentInChildren<Events>();
-        Player = playerRef;
         assets = Assets.Instance;
+        Events = GetComponentInChildren<Events>();
+        Pools = GetComponentInChildren<Pools>();
+        Spawner = GetComponentInChildren<Spawner>();
+        InstantiatePlayer();
     }
 
     private void Start()
@@ -42,7 +44,7 @@ public class GameManager : Singleton<GameManager>
         Events.OnRunResumed.RegisterListener(OnRunResumed);
 
         // initialize pool (instantiate gameobjects)
-        pools.InitializePool();
+        Pools.InitializePool();
     }
 
     #region Event Handlers
@@ -72,7 +74,7 @@ public class GameManager : Singleton<GameManager>
         m_globalSpeed = assets.Speed.value;
         assets.Speed.value = 0;
 
-        spawner.StopSpawning();
+        Spawner.StopSpawning();
         IsRunPlaying = false;
     }
 
@@ -89,11 +91,17 @@ public class GameManager : Singleton<GameManager>
         assets.Speed.value = m_globalSpeed;
         m_globalSpeed = 0;
 
-        spawner.StartSpawning(true);
+        Spawner.StartSpawning(true);
         IsRunPlaying = true;
     }
 
     #endregion
+
+    private void InstantiatePlayer()
+    {
+        Player = Instantiate(playerRef);
+        DontDestroyOnLoad(Player);
+    }
 
     // TODO:
     public void CollectibleCollected(CollectibleEnum collectibleEnum)

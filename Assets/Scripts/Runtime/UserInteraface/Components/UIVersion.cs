@@ -5,5 +5,5 @@ using UnityEngine.UI;
 public class UIVersion : MonoBehaviour
 {
     public Text versionText = null;
-    private void Start() => versionText.text = Application.version;
+    private void Start() => versionText.text = Version.Display;
 }

@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour, ICollide
 {
-
     [SerializeField]
     private new List<Renderer> renderer = new List<Renderer>();
 
@@ -17,7 +16,7 @@ public class Obstacle : MonoBehaviour, ICollide
 
     public void OnTriggerEnter(Collider other)
     {
-        if (GameManager.Instance.godMode) return;
+        if (GameManager.GodMode) return;
         GameManager.Events.OnRunOver.Raise();
     }
 }

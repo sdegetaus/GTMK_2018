@@ -15,7 +15,7 @@ public class Arrows : MonoBehaviour
     private void Start()
     {
         GameManager.Events.OnRunOver.RegisterListener(OnRunOver);
-        pools = GameManager.Instance.pools;
+        pools = GameManager.Pools;
         arrowsMovementCoroutine = StartCoroutine(ArrowsMovementCoroutine());
     }
 
