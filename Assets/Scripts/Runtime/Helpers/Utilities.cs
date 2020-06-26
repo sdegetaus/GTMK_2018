@@ -9,12 +9,4 @@ public static class Utilities
         return V;
     }
 
-    public static bool IsMobile()
-    {
-#if !UNITY_EDITOR && (UNITY_IOS || UNITY_ANDROID || UNITY_BLACKBERRY || UNITY_WP8)
-            return true;
-#else
-        return false;
-#endif
-    }
 }
