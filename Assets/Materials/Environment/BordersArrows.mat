@@ -8,14 +8,13 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: BordersArrows
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _ALPHATEST_ON _EMISSION
-  m_LightmapFlags: 2
+  m_Shader: {fileID: 10750, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _ALPHAPREMULTIPLY_ON _EMISSION _GLOSSYREFLECTIONS_OFF _SPECULARHIGHLIGHTS_OFF
+  m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2450
-  stringTagMap:
-    RenderType: TransparentCutout
+  m_DoubleSidedGI: 1
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
   disabledShaderPasses:
   - SHADOWCASTER
   m_SavedProperties:
@@ -42,7 +41,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 6bd146488bc4d3f479ddf4947ea37731, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -75,20 +74,20 @@ Material:
     - _Blend: 1
     - _BumpScale: 1
     - _Cull: 2
-    - _Cutoff: 0.688
+    - _Cutoff: 0.54
     - _DetailNormalMapScale: 1
     - _DontMix: 0
-    - _DstBlend: 0
+    - _DstBlend: 10
     - _EnvironmentReflections: 1
     - _Fog: 0
-    - _GlossMapScale: 1
+    - _GlossMapScale: 0.501
     - _Glossiness: 0
-    - _GlossyReflections: 1
+    - _GlossyReflections: 0
     - _LM: 0
     - _LMPower: 0
     - _MainTexturePower: 5.14
     - _Metallic: 0
-    - _Mode: 1
+    - _Mode: 3
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _QueueOffset: 0
@@ -97,23 +96,23 @@ Material:
     - _SampleGI: 0
     - _Smoothness: 0
     - _SmoothnessTextureChannel: 0
-    - _SpecularHighlights: 1
+    - _SpecularHighlights: 0
     - _SrcBlend: 1
     - _Surface: 1
     - _UVSec: 0
     - _WorkflowMode: 1
-    - _ZWrite: 1
+    - _ZWrite: 0
     m_Colors:
     - _AmbientColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColor: {r: 0.6313726, g: 0.5764706, b: 1, a: 1}
-    - _Color: {r: 0, g: 0, b: 0, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Color_B: {r: 1, g: 1, b: 1, a: 1}
     - _Color_D: {r: 1, g: 1, b: 1, a: 1}
     - _Color_F: {r: 1, g: 1, b: 1, a: 1}
     - _Color_L: {r: 1, g: 1, b: 1, a: 1}
     - _Color_R: {r: 1, g: 1, b: 1, a: 1}
     - _Color_T: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 0.039215688, g: 0.08627451, b: 0.38039216, a: 1}
+    - _EmissionColor: {r: 294.06674, g: 12.685232, b: 12.685232, a: 1}
     - _LMColor: {r: 1, g: 1, b: 1, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
 --- !u!114 &7157627749883257785
