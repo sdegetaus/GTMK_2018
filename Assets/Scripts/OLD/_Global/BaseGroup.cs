@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class BaseGroup<Type, GroupEnum> : MonoBehaviour
     where Type : Component
     where GroupEnum : Enum
-    {
+{
 
     [SerializeField]
     protected List<Type> objects = new List<Type>();
@@ -23,7 +23,8 @@ public abstract class BaseGroup<Type, GroupEnum> : MonoBehaviour
     public MaterialVariable selectedMaterial = null;
 
 
-    protected void FixedUpdate() {
+    protected void FixedUpdate()
+    {
 
         if (!GameManager.IsRunPlaying) return;
 
@@ -33,28 +34,34 @@ public abstract class BaseGroup<Type, GroupEnum> : MonoBehaviour
             Time.fixedDeltaTime * lerpSpeed.value);
     }
 
-    public virtual void Init() {
+    public virtual void Init()
+    {
         UnactivateAll();
         SetRandomObstacle();
     }
 
-    public void UnsetActiveItem(GroupEnum item) {
+    public void UnsetActiveItem(GroupEnum item)
+    {
         int enumToInt = (int)Enum.Parse(typeof(GroupEnum), item.ToString());
         objects[enumToInt].gameObject.SetActive(false);
     }
 
-    protected void SetActiveItem(GroupEnum item) {
+    protected void SetActiveItem(GroupEnum item)
+    {
         int enumToInt = (int)Enum.Parse(typeof(GroupEnum), item.ToString());
         objects[enumToInt].gameObject.SetActive(true);
         activeObject = item;
     }
 
-    protected void SetRandomObstacle() {
-        SetActiveItem(Helper.GetRandomEnum<GroupEnum>());
+    protected void SetRandomObstacle()
+    {
+        SetActiveItem(Utilities.GetRandomEnum<GroupEnum>());
     }
 
-    protected void UnactivateAll() {
-        foreach (Type item in objects) {
+    protected void UnactivateAll()
+    {
+        foreach (Type item in objects)
+        {
             item.gameObject.SetActive(false);
         }
     }

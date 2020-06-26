@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 
-public class DontDestroy : MonoBehaviour {
-    void Awake() {
+public class DontDestroy : MonoBehaviour
+{
+    void Awake()
+    {
         DontDestroyOnLoad(gameObject);
     }
 

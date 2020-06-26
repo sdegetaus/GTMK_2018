@@ -3,10 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pools : MonoBehaviour {
-
+public class Pools : MonoBehaviour
+{
     [Serializable]
-    public struct Pool {
+    public struct Pool
+    {
         public PoolTag type;
         public int count;
         public GameObject prefab;
@@ -24,7 +25,8 @@ public class Pools : MonoBehaviour {
     // Class References
     private GameManager gameManager;
 
-    private void Start() {
+    private void Start()
+    {
         pools.Clear();
         pools.Add(obstacleGroupPool);
         pools.Add(collectibleGroupPool);
@@ -33,16 +35,19 @@ public class Pools : MonoBehaviour {
 
     #region Public Methods
 
-    public void InitializePool() {
-        gameManager = GameManager.instance;
+    public void InitializePool()
+    {
+        gameManager = GameManager.Instance;
         StartCoroutine(
             InitializePoolCoroutine()
         );
     }
 
-    public GameObject Spawn(PoolTag tag, Vector3 position = default) {
+    public GameObject Spawn(PoolTag tag, Vector3 position = default)
+    {
 
-        if (!poolGroup.ContainsKey(tag)) {
+        if (!poolGroup.ContainsKey(tag))
+        {
             Debug.LogError("PoolTag of type " + tag.ToString() + " doesn't exist!");
             return null;
         }
@@ -60,14 +65,16 @@ public class Pools : MonoBehaviour {
 
     #endregion
 
-    private IEnumerator InitializePoolCoroutine() {
+    private IEnumerator InitializePoolCoroutine()
+    {
 
-        Transform poolObjectsTransform = (!Helper.IsMobile()) ? gameManager.spawner.gameObject.transform : null;
+        Transform poolObjectsTransform = (!Utilities.IsMobile()) ? gameManager.spawner.gameObject.transform : null;
 
         // initialize obstacleGroupPool
         Queue<GameObject> poolObject = new Queue<GameObject>();
 
-        for (int i = 0; i < obstacleGroupPool.count; i++) {
+        for (int i = 0; i < obstacleGroupPool.count; i++)
+        {
             GameObject obj = Instantiate(obstacleGroupPool.prefab, poolObjectsTransform);
             obj.SetActive(false);
             poolObject.Enqueue(obj);
@@ -80,7 +87,8 @@ public class Pools : MonoBehaviour {
         // initialize collectiblePool
         poolObject = new Queue<GameObject>();
 
-        for (int i = 0; i < collectibleGroupPool.count; i++) {
+        for (int i = 0; i < collectibleGroupPool.count; i++)
+        {
             GameObject obj = Instantiate(collectibleGroupPool.prefab, poolObjectsTransform);
             obj.SetActive(false);
             poolObject.Enqueue(obj);
@@ -93,7 +101,8 @@ public class Pools : MonoBehaviour {
         // initialize arrowsPool
         poolObject = new Queue<GameObject>();
 
-        for (int i = 0; i < arrowsPool.count; i++) {
+        for (int i = 0; i < arrowsPool.count; i++)
+        {
             GameObject obj = Instantiate(arrowsPool.prefab, poolObjectsTransform);
             obj.SetActive(false);
             poolObject.Enqueue(obj);
@@ -103,6 +112,6 @@ public class Pools : MonoBehaviour {
 
         yield return null;
 
-        Events.instance.OnPoolLoaded.Raise();
+        GameManager.Events.OnPoolLoaded.Raise();
     }
 }

@@ -1,5 +1,6 @@
 ﻿
-public static class Consts {
+public static class Consts
+{
 
     #region Debug
 
@@ -39,7 +40,7 @@ public static class Consts {
     /// know when to respawn the arrows (sense of movement).
     /// </summary>
     public const float arrowsSeparation = 30.0f;
-    
+
     /// <summary>
     /// In what point of the X axis are the
     /// "spawnables" being spawned.

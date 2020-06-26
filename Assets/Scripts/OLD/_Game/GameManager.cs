@@ -1,10 +1,7 @@
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-using System;
 
-public class GameManager : Singleton<GameManager> {
-
+public class GameManager : Singleton<GameManager>
+{
     // Static Variables
     public static bool IsRunPlaying = false;
 
@@ -18,29 +15,32 @@ public class GameManager : Singleton<GameManager> {
     [Header("Class References")]
     public Pools pools = null;
     public Spawner spawner = null;
-    public Player player = null;
+
+    [SerializeField] private Player playerRef = null;
 
     // Private Variables
-    private Events events = null;
-    private GUIManager guiManager = null;
     private float m_globalSpeed = 0f;
 
-    private void Awake() {
-        Application.targetFrameRate = 60;
-        obstacleSpawnYieldTime.value = Consts.initialObstacleSpawnYieldTime;
-        globalSpeed.value = Consts.initialGlobalSpeed;
+    // Static References
+    public static Player Player = null;
+    public static Events Events = null;
+
+    private void Awake()
+    {
+        Events = GetComponentInChildren<Events>();
+        Player = playerRef;
     }
 
-    private void Start() {
-
-        events = Events.instance;
-        guiManager = GUIManager.instance;
+    private void Start()
+    {
+        obstacleSpawnYieldTime.value = Consts.initialObstacleSpawnYieldTime;
+        globalSpeed.value = Consts.initialGlobalSpeed;
 
         // register listeners
-        events.OnRunStarted.RegisterListener(OnRunStarted);
-        events.OnRunOver.RegisterListener(OnRunOver);
-        events.OnRunPaused.RegisterListener(OnRunPaused);
-        events.OnRunResumed.RegisterListener(OnRunResumed);
+        Events.OnRunStarted.RegisterListener(OnRunStarted);
+        Events.OnRunOver.RegisterListener(OnRunOver);
+        Events.OnRunPaused.RegisterListener(OnRunPaused);
+        Events.OnRunResumed.RegisterListener(OnRunResumed);
 
         // initialize pool (instantiate gameobjects)
         pools.InitializePool();
@@ -48,24 +48,27 @@ public class GameManager : Singleton<GameManager> {
 
     #region Event Handlers
 
-    private void OnRunStarted() {
-        guiManager.ChangeGUIState(GUIState.InGame);
+    private void OnRunStarted()
+    {
+        UIManager.ChangeState(UIState.InGame);
         IsRunPlaying = true;
     }
 
-    private void OnRunOver() {
+    private void OnRunOver()
+    {
         IsRunPlaying = false;
-        guiManager.ChangeGUIState(GUIState.RunOver);
+        UIManager.ChangeState(UIState.RunOver);
     }
 
-    private void OnRunPaused() {
-
-        if (!IsRunPlaying) {
+    private void OnRunPaused()
+    {
+        if (!IsRunPlaying)
+        {
             Debug.Log("Can't pause the game as it is already paused!");
             return;
         }
 
-        guiManager.ChangeGUIState(GUIState.Pause, false);
+        UIManager.ChangeState(UIState.Pause, false);
 
         m_globalSpeed = globalSpeed.value;
         globalSpeed.value = 0;
@@ -74,15 +77,15 @@ public class GameManager : Singleton<GameManager> {
         IsRunPlaying = false;
     }
 
-    private void OnRunResumed() {
-
-        if (IsRunPlaying) {
+    private void OnRunResumed()
+    {
+        if (IsRunPlaying)
+        {
             Debug.Log("Can't resume from pause as it the game is already running!");
             return;
         }
 
-        guiManager.ChangeGUIState(GUIState.InGame, false);
-
+        UIManager.ChangeState(UIState.InGame, false);
 
         globalSpeed.value = m_globalSpeed;
         m_globalSpeed = 0;
@@ -93,20 +96,9 @@ public class GameManager : Singleton<GameManager> {
 
     #endregion
 
-    //private IEnumerator OnRunOverCoroutine() {
-
-    //    guiManager.HideCurrentCanvas();
-
-    //    IsRunPlaying = false;
-
-    //    yield return new WaitForSeconds(1f);
-
-    //    guiManager.ChangeGUIState(GUIState.RunOver);
-
-    //}
-
     // TODO:
-    public void CollectibleCollected(CollectibleEnum collectibleEnum) {
+    public void CollectibleCollected(CollectibleEnum collectibleEnum)
+    {
         Debug.Log("Collectible Collected!");
     }
 

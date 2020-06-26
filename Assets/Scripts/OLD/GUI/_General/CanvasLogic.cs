@@ -2,12 +2,14 @@
 
 [RequireComponent(typeof(Canvas))]
 [RequireComponent(typeof(CanvasGroup))]
-public abstract class CanvasLogic : MonoBehaviour {
+public abstract class CanvasLogic : MonoBehaviour
+{
 
     [HideInInspector] public Canvas canvas;
     [HideInInspector] public CanvasGroup canvasGroup;
 
-    private void Awake() {
+    private void Awake()
+    {
         canvas = GetComponent<Canvas>();
         canvasGroup = GetComponent<CanvasGroup>();
     }

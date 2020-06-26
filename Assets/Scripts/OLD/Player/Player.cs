@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
-public class Player : MonoBehaviour {
+public class Player : MonoBehaviour
+{
 
     [Header("Status")]
     public Lane lanePosition = Lane.Middle;
@@ -15,46 +17,54 @@ public class Player : MonoBehaviour {
     private LeanTweenType tweenType = LeanTweenType.easeOutQuad;
     private bool fromStart = false;
 
-    // Class References
-    private Events events;
+    public Vector3 Position
+    {
+        get => gameObject.transform.position;
+    }
 
-    private void Start() {
-        events = Events.instance;
-        events.OnRunStarted.RegisterListener(OnRunStarted);
-        events.OnRunOver.RegisterListener(OnRunOver);
+    private void Start()
+    {
+        GameManager.Events.OnRunStarted.RegisterListener(OnRunStarted);
+        GameManager.Events.OnRunOver.RegisterListener(OnRunOver);
     }
 
     #region Event Handlers
 
-    private void OnRunStarted() {
+    private void OnRunStarted()
+    {
         fromStart = true;
         Move(Lane.Middle);
     }
 
-    private void OnRunOver() {
+    private void OnRunOver()
+    {
         LeanTween.cancel(gameObject);
         isMoving = false;
     }
 
     #endregion
 
-    public void MoveLeft() {
+    public void MoveLeft()
+    {
         if (isMoving) return;
         Move(CheckLaneLimit(lanePosition - 1));
     }
 
-    public void MoveRight() {
+    public void MoveRight()
+    {
         if (isMoving) return;
         Move(CheckLaneLimit(lanePosition + 1));
     }
-    
-    private Lane CheckLaneLimit(Lane toLane) {
+
+    private Lane CheckLaneLimit(Lane toLane)
+    {
         if (toLane < 0) return lanePosition;
         if (toLane > Lane.Right) return lanePosition;
         return toLane;
     }
 
-    private void Move(Lane toLane) {
+    private void Move(Lane toLane)
+    {
 
         if (lanePosition == toLane && fromStart == false) return;
 
@@ -63,7 +73,8 @@ public class Player : MonoBehaviour {
 
         isMoving = true;
 
-        switch (toLane) {
+        switch (toLane)
+        {
             case Lane.Left:
                 to = Consts.laneSeparation;
                 break;
@@ -76,7 +87,8 @@ public class Player : MonoBehaviour {
         }
 
         LeanTween.moveZ(gameObject, to, movementTransition)
-            .setOnComplete(() => {
+            .setOnComplete(() =>
+            {
                 gameObject.transform.position = gameObject.transform.position.With(z: to);
                 lanePosition = newLanePosition;
                 isMoving = false;

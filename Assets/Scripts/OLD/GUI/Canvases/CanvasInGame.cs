@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class CanvasInGame : CanvasLogic {
+public class CanvasInGame : CanvasLogic
+{
 
     [SerializeField]
     private Text runScoreText = null;
@@ -9,7 +10,8 @@ public class CanvasInGame : CanvasLogic {
     [SerializeField]
     private FloatVariable runScore = null;
 
-    private void Update() {
+    private void Update()
+    {
         runScoreText.text = ((int)runScore.value).ToString("N0");
     }
 }

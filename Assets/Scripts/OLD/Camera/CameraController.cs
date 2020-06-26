@@ -1,66 +1,63 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class CameraController : Singleton<CameraController> {
-
-    [SerializeField]
-    private new Camera camera = null;
+public class CameraController : Singleton<CameraController>
+{
+    [SerializeField] private new Camera camera = null;
+    [SerializeField] private GameObject cameraHolder = null;
 
     [Header("Shake Properties")]
-    [Range(0f, 1f)]
-    public float shakeAmount = 0.2f;
+    [Range(0f, 1f)] public float shakeAmount = 0.2f;
 
-    [Header("Tween Presets"), SerializeField]
-    private TweenPreset tween = null;
+    [Header("Tween Presets")]
+    [SerializeField] private TweenPreset tween = null;
 
     // Private Variables
     private Vector3 originalCameraPosition = default;
 
-    // Class References
-    private Events events = null;
-
-    private void Start() {
+    private void Start()
+    {
         originalCameraPosition = camera.transform.localPosition;
-
-        events = Events.instance;
-
-        events.OnRunStarted.RegisterListener(OnRunStarted);
-        events.OnRunOver.RegisterListener(OnRunOver);
+        GameManager.Events.OnRunStarted.RegisterListener(OnRunStarted);
+        GameManager.Events.OnRunOver.RegisterListener(OnRunOver);
     }
 
 
     #region Event Handlers
 
-    private void OnRunStarted() {
+    private void OnRunStarted()
+    {
         ZoomTo(
-            Vector3.zero.With(x: 10f),
-            tween.time,
-            6f
+            target: Vector3.zero,
+            time: tween.time,
+            zoom: 6.0f
         );
     }
 
-    private void OnRunOver() {
+    private void OnRunOver()
+    {
         Shake();
         ZoomTo(
-            GameManager.instance.player.gameObject.transform.position.With(y: 0.5f),
-            tween.time,
-            3f
+            target: GameManager.Player.Position.With(x: -7.0f, y: 0.5f),
+            time: tween.time,
+            zoom: 3.0f
         );
     }
 
     #endregion
 
-    public void Shake() {
+    public void Shake()
+    {
         StopAllCoroutines();
-        StartCoroutine(
-            instance.ShakeCoroutine()
-        );
+        StartCoroutine(Instance.ShakeCoroutine());
     }
 
-    private IEnumerator ShakeCoroutine() {
+    private IEnumerator ShakeCoroutine()
+    {
         float time = tween.time;
         float endTime = Time.time + time;
-        while (Time.time < endTime) {
+        while (Time.time < endTime)
+        {
             camera.transform.localPosition = originalCameraPosition + Random.insideUnitSphere * shakeAmount;
             time -= Time.deltaTime;
             yield return null;
@@ -68,13 +65,12 @@ public class CameraController : Singleton<CameraController> {
         camera.transform.localPosition = originalCameraPosition;
     }
 
-    // TODO:
-    public void ZoomTo(Vector3 target, float time, float zoom) {
-        LeanTween.move(gameObject, target, time).setEase(tween.tweenType);
+    public void ZoomTo(Vector3 target, float time, float zoom)
+    {
+        LeanTween.cancel(cameraHolder);
+        LeanTween.move(cameraHolder, target, time).setEase(tween.tweenType);
         LeanTween.value(camera.gameObject, camera.orthographicSize, zoom, time)
-            .setOnUpdate((float flt) => {
-                camera.orthographicSize = flt;
-            }
+            .setOnUpdate(f => camera.orthographicSize = f
         ).setEase(tween.tweenType);
     }
 }

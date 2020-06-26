@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class Obstacle : MonoBehaviour, ICollide {
+public class Obstacle : MonoBehaviour, ICollide
+{
 
     [SerializeField]
     private new List<Renderer> renderer = new List<Renderer>();
@@ -9,12 +10,14 @@ public class Obstacle : MonoBehaviour, ICollide {
     [SerializeField]
     private ObstacleGroup obstacleGroup = null;
 
-    private void Start() {
+    private void Start()
+    {
         obstacleGroup = gameObject.transform.parent.GetComponent<ObstacleGroup>();
     }
 
-    public void OnTriggerEnter(Collider other) {
-        if (GameManager.instance.godMode) return;
-        Events.instance.OnRunOver.Raise();
+    public void OnTriggerEnter(Collider other)
+    {
+        if (GameManager.Instance.godMode) return;
+        GameManager.Events.OnRunOver.Raise();
     }
 }

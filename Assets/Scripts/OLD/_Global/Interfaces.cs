@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
-public interface ICollide {
+public interface ICollide
+{
     void OnTriggerEnter(Collider other);
 }

@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 240168107284753069}
   - component: {fileID: 240168107284753067}
   - component: {fileID: 4353679057414407496}
-  - component: {fileID: 979238039}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -31,7 +30,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 6863670650310754657}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -47,13 +47,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e884eb92ac7fcf4aa1d12d8d70683f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  godMode: 0
   runScore: {fileID: 11400000, guid: 74339a6faffde0947a4ee4b899b3c654, type: 2}
   globalSpeed: {fileID: 11400000, guid: 41e3fbab2c4509246a98e0217cc2740d, type: 2}
   obstacleSpawnYieldTime: {fileID: 11400000, guid: 0801aa08aef408b4f8e575f00720288b,
     type: 2}
   pools: {fileID: 240168107284753069}
   spawner: {fileID: 240168107284753067}
-  player: {fileID: 0}
+  playerRef: {fileID: 0}
 --- !u!114 &240168107284753069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,14 +115,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f9bbd29091d3de479a83f49c6ef9a1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runScore: {fileID: 11400000, guid: 74339a6faffde0947a4ee4b899b3c654, type: 2}
---- !u!114 &979238039
+--- !u!1 &5260127278534395320
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6863670650310754657}
+  - component: {fileID: 7100376445543025774}
+  m_Layer: 0
+  m_Name: Events
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6863670650310754657
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5260127278534395320}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 240168107284753064}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7100376445543025774
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 240168107284753065}
+  m_GameObject: {fileID: 5260127278534395320}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 36572ade750b5534fb9cc20aa9fd6298, type: 3}

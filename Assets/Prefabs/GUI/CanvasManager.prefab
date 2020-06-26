@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6526377087355865649}
-  - component: {fileID: 6526377087355865648}
+  - component: {fileID: 252982468451885732}
   m_Layer: 0
-  m_Name: GUIManager
+  m_Name: UIManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6526377087355865648
+--- !u!114 &252982468451885732
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,15 +40,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 6526377087355865650}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5da8a9d974ae1bf438135401ac2446e7, type: 3}
+  m_Script: {fileID: 11500000, guid: c985cd123755c174d95cafa663a51932, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentState: 0
-  lastState: 0
-  canvases:
+  canvasReferences:
+  - {fileID: 8366104098008262778, guid: b0a83ca8ced74fd48af4ad880240e939, type: 3}
+  - {fileID: 5422214430703377344, guid: ca0c80cc361969f40a06df328b31cc98, type: 3}
+  - {fileID: 7746123640393270425, guid: 4f6260cefb9796c419c15578a05cc9ed, type: 3}
+  - {fileID: 3184288017370531437, guid: e34e86435eef46e4987913a3ebc259d8, type: 3}
+  - {fileID: 4162480413516118171, guid: 7fcc93bba39fd1446b742c1cc2d2c795, type: 3}
+  canvasInstances:
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  isAdditive: 0

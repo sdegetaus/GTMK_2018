@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class CanvasRunOver : CanvasLogic {
-
+public class CanvasRunOver : CanvasLogic
+{
     [SerializeField]
     private GameObject deathScreen = null;
 
@@ -17,19 +17,20 @@ public class CanvasRunOver : CanvasLogic {
     [SerializeField]
     private FloatVariable runScore = null;
 
-    private void OnEnable() {
+    private void OnEnable()
+    {
         runScoreText.text = ((int)runScore.value).ToString("N0");
     }
 
-    private void Start() {
-
+    private void Start()
+    {
         runStats.SetActive(false);
         deathScreen.SetActive(false);
-
-        Events.instance.OnRunOver.RegisterListener(OnRunOver);
+        GameManager.Events.OnRunOver.RegisterListener(OnRunOver);
     }
 
-    private void OnRunOver() {
+    private void OnRunOver()
+    {
         runStats.SetActive(false);
         deathScreen.SetActive(true);
     }

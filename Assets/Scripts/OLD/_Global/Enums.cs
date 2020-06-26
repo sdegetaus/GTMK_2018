@@ -1,21 +1,25 @@
-﻿public enum Scene {
+﻿public enum Scene
+{
     LoadingScreen = 0,
     Main = 1
 }
 
-public enum PoolTag {
+public enum PoolTag
+{
     ObstacleGroup,
     CollectibleGroup,
     Arrows,
 }
 
-public enum Lane {
+public enum Lane
+{
     Left,
     Middle,
     Right
 }
 
-public enum ObstacleEnum {
+public enum ObstacleEnum
+{
     SingleNormal,
     DoubleNormal,
     SingleSpecial_0,
@@ -24,21 +28,24 @@ public enum ObstacleEnum {
     DoubleSpecial_2
 }
 
-public enum CollectibleEnum {
+public enum CollectibleEnum
+{
     CollectibleTest0,
     CollectibleTest1
 }
 
-public enum GUIState {
+public enum UIState
+{
     MainMenu,
     Settings,
     InGame,
     Pause,
     RunOver,
-    MaxGUIState
+    Empty,
 }
 
-public enum ChangeGUIStateMode {
+public enum ChangeGUIStateMode
+{
     Single,
     Additive
 }

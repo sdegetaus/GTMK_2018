@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
-public class Arrows : MonoBehaviour {
-
+public class Arrows : MonoBehaviour
+{
     [SerializeField]
     private FloatVariable globalSpeed = null;
     [SerializeField]
@@ -13,42 +12,44 @@ public class Arrows : MonoBehaviour {
     private Pools pools;
     private Coroutine arrowsMovementCoroutine = null;
 
-    private void Start() {
-
-        Events.instance.OnRunOver.RegisterListener(OnRunOver);
-
-        pools = GameManager.instance.pools;
+    private void Start()
+    {
+        GameManager.Events.OnRunOver.RegisterListener(OnRunOver);
+        pools = GameManager.Instance.pools;
         arrowsMovementCoroutine = StartCoroutine(ArrowsMovementCoroutine());
     }
 
     #region Event Handlers
 
-    private void OnRunStarted() {
-        if (arrowsMovementCoroutine == null) {
+    private void OnRunStarted()
+    {
+        if (arrowsMovementCoroutine == null)
             arrowsMovementCoroutine = StartCoroutine(ArrowsMovementCoroutine());
-        }
     }
 
-    private void OnRunOver() {
-        if (arrowsMovementCoroutine != null) {
+    private void OnRunOver()
+    {
+        if (arrowsMovementCoroutine != null)
+        {
             StopCoroutine(arrowsMovementCoroutine);
             arrowsMovementCoroutine = null;
         }
-        Events.instance.OnRunStarted.RegisterListener(OnRunStarted);
+        GameManager.Events.OnRunStarted.RegisterListener(OnRunStarted);
     }
 
     #endregion
 
-    private IEnumerator ArrowsMovementCoroutine() {
-
-        while (true) {
-
+    private IEnumerator ArrowsMovementCoroutine()
+    {
+        while (true)
+        {
             transform.position = Vector3.Lerp(
                 transform.position,
                 transform.position.With(x: transform.position.x - globalSpeed.value),
                 Time.fixedDeltaTime * lerpSpeed.value);
 
-            if (transform.position.x < -60.0f) {
+            if (transform.position.x < -60.0f)
+            {
                 pools.Spawn(
                     PoolTag.Arrows,
                     Vector3.zero.With(x: Consts.arrowsSeparation)

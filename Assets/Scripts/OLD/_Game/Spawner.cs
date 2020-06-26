@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour {
+public class Spawner : MonoBehaviour
+{
 
     // Private Variables
     private GameManager gameManager = null;
@@ -36,20 +37,23 @@ public class Spawner : MonoBehaviour {
 
     #endregion
 
-    private void Start() {
-        gameManager = GameManager.instance;
+    private void Start()
+    {
+        gameManager = GameManager.Instance;
         pools = gameManager.pools;
 
-        Events.instance.OnPoolLoaded.RegisterListener(OnPoolLoaded); 
-        Events.instance.OnRunStarted.RegisterListener(OnRunStarted);
-        Events.instance.OnRunOver.RegisterListener(OnRunOver);
+        GameManager.Events.OnPoolLoaded.RegisterListener(OnPoolLoaded);
+        GameManager.Events.OnRunStarted.RegisterListener(OnRunStarted);
+        GameManager.Events.OnRunOver.RegisterListener(OnRunOver);
     }
 
 
     #region Event Handlers
 
-    private void OnPoolLoaded() {
-        for (int i = 0; i < pools.arrowsPool.count; i++) {
+    private void OnPoolLoaded()
+    {
+        for (int i = 0; i < pools.arrowsPool.count; i++)
+        {
             pools.Spawn(
                 PoolTag.Arrows,
                 Vector3.zero.With(x: Consts.arrowsSeparation * i)
@@ -57,12 +61,15 @@ public class Spawner : MonoBehaviour {
         }
     }
 
-    private void OnRunStarted() {
+    private void OnRunStarted()
+    {
         StartSpawning();
     }
 
-    private void OnRunOver() {
-        if (spawningCoroutine != null) {
+    private void OnRunOver()
+    {
+        if (spawningCoroutine != null)
+        {
             StopCoroutine(spawningCoroutine);
             spawningCoroutine = null;
         }
@@ -70,31 +77,39 @@ public class Spawner : MonoBehaviour {
 
     #endregion
 
-    public void StartSpawning(bool fromResume = false) {
-        if (spawningCoroutine == null) {
+    public void StartSpawning(bool fromResume = false)
+    {
+        if (spawningCoroutine == null)
+        {
             spawningCoroutine = StartCoroutine(EndlessSpawning(fromResume));
         }
     }
 
-    public void StopSpawning() {
-        if (spawningCoroutine != null) {
+    public void StopSpawning()
+    {
+        if (spawningCoroutine != null)
+        {
             StopCoroutine(spawningCoroutine);
             spawningCoroutine = null;
         }
     }
 
-    private IEnumerator EndlessSpawning(bool fromResume = false) {
+    private IEnumerator EndlessSpawning(bool fromResume = false)
+    {
 
-        while (true) {
+        while (true)
+        {
 
-            if (fromResume) {
+            if (fromResume)
+            {
                 yield return new WaitForSeconds(
                     gameManager.obstacleSpawnYieldTime.value
                 );
             }
 
             // Collectible Spawning...
-            if (Helper.IsProbableBy(5)) {
+            if (Utilities.IsProbableBy(5))
+            {
                 count_collectible++;
                 CollectibleGroup collectibleGroup = pools.Spawn(
                     PoolTag.CollectibleGroup,
@@ -129,17 +144,23 @@ public class Spawner : MonoBehaviour {
     }
 
     // TEMP, TODO:
-    private float? GetNewLanePosition() {
+    private float? GetNewLanePosition()
+    {
 
         float? newLanePosition = null;
 
-        if (Helper.IsProbableBy(33)) {
+        if (Utilities.IsProbableBy(33))
+        {
             newLanePosition = -Consts.laneSeparation;
             //count_left++;
-        } else if (Helper.IsProbableBy(33)) {
+        }
+        else if (Utilities.IsProbableBy(33))
+        {
             newLanePosition = Consts.laneSeparation;
             //count_right++;
-        } else {
+        }
+        else
+        {
             newLanePosition = 0;
             //count_0++;
         }

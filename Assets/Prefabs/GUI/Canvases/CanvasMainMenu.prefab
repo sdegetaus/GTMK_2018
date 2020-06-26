@@ -58,7 +58,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 805386035}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -67,8 +67,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: f3897a8b09c9c5a4ba10fb5d6246fde9, type: 3}
     m_FontSize: 35
@@ -106,7 +104,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 805386035}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1573420865, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0.14901961, g: 0.16078432, b: 0.4117647, a: 0.5882353}
@@ -121,7 +119,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 805386035}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -166,8 +164,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!114 &1877128221668221478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,7 +234,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1325845273}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -247,8 +243,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 95aeedf8ca72a144f8c591bf5ff2f39b, type: 3}
     m_FontSize: 125
@@ -262,7 +256,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: KIN GAME
+  m_Text: GMTK 2018
 --- !u!114 &1325845277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,11 +281,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1325845273}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1573420865, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0.14901961, g: 0.16078432, b: 0.41176474, a: 1}
-  m_EffectDistance: {x: 0, y: -5}
+  m_EffectDistance: {x: 0, y: -2}
   m_UseGraphicAlpha: 0
 --- !u!1 &2136636744
 GameObject:
@@ -350,7 +344,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2136636744}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -359,8 +353,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
@@ -370,6 +362,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!114 &2136636748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -442,7 +435,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2091253624322213319}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -451,8 +444,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: f3897a8b09c9c5a4ba10fb5d6246fde9, type: 3}
     m_FontSize: 30
@@ -466,7 +457,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: v0.0.0
+  m_Text: 0.0.0
 --- !u!114 &8961551127109730659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -536,7 +527,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6118606882587108120}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -545,8 +536,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: f3897a8b09c9c5a4ba10fb5d6246fde9, type: 3}
     m_FontSize: 40
@@ -570,11 +559,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6118606882587108120}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1573420865, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0.14901961, g: 0.16078432, b: 0.4117647, a: 0.5882353}
-  m_EffectDistance: {x: 0, y: -2}
+  m_EffectDistance: {x: 0, y: -1}
   m_UseGraphicAlpha: 0
 --- !u!1 &8366104098008262784
 GameObject:
@@ -588,8 +577,8 @@ GameObject:
   - component: {fileID: 8366104098008262789}
   - component: {fileID: 8366104098008262790}
   - component: {fileID: 8366104098008262791}
-  - component: {fileID: 8366104098008262778}
   - component: {fileID: 8366104098008262779}
+  - component: {fileID: 8366104098008262778}
   m_Layer: 5
   m_Name: CanvasMainMenu
   m_TagString: Untagged
@@ -647,7 +636,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8366104098008262784}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_UiScaleMode: 1
@@ -669,7 +658,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8366104098008262784}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreReversedGraphics: 1
@@ -677,6 +666,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!225 &8366104098008262779
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8366104098008262784}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!114 &8366104098008262778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -691,18 +692,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
   canvasGroup: {fileID: 0}
---- !u!225 &8366104098008262779
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8366104098008262784}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
 --- !u!1 &8959103838483564997
 GameObject:
   m_ObjectHideFlags: 0
@@ -759,7 +748,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8959103838483564997}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -768,8 +757,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
@@ -779,6 +766,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &9049607827257146169
 GameObject:
   m_ObjectHideFlags: 0
@@ -827,7 +815,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9049607827257146169}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -405508275, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
@@ -850,6 +838,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4300608874011227296}
     m_Modifications:
+    - target: {fileID: 58127294587667473, guid: 7d8847d65e29abb45bd20e5f96bf9e1a,
+        type: 3}
+      propertyPath: m_Text
+      value: SETTINGS
+      objectReference: {fileID: 0}
     - target: {fileID: 5829557723985924856, guid: 7d8847d65e29abb45bd20e5f96bf9e1a,
         type: 3}
       propertyPath: m_Name
@@ -960,11 +953,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 58127294587667473, guid: 7d8847d65e29abb45bd20e5f96bf9e1a,
-        type: 3}
-      propertyPath: m_Text
-      value: SETTINGS
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d8847d65e29abb45bd20e5f96bf9e1a, type: 3}
 --- !u!224 &8089967355489206300 stripped
@@ -980,6 +968,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4300608874011227296}
     m_Modifications:
+    - target: {fileID: 58127294587667473, guid: 7d8847d65e29abb45bd20e5f96bf9e1a,
+        type: 3}
+      propertyPath: m_Text
+      value: HOW TO PLAY
+      objectReference: {fileID: 0}
     - target: {fileID: 5829557723985924856, guid: 7d8847d65e29abb45bd20e5f96bf9e1a,
         type: 3}
       propertyPath: m_Name
@@ -1090,11 +1083,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 58127294587667473, guid: 7d8847d65e29abb45bd20e5f96bf9e1a,
-        type: 3}
-      propertyPath: m_Text
-      value: HOW TO PLAY
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d8847d65e29abb45bd20e5f96bf9e1a, type: 3}
 --- !u!224 &4460832072586576426 stripped
@@ -1110,6 +1098,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4300608874011227296}
     m_Modifications:
+    - target: {fileID: 58127294587667473, guid: 7d8847d65e29abb45bd20e5f96bf9e1a,
+        type: 3}
+      propertyPath: m_Text
+      value: ABOUT
+      objectReference: {fileID: 0}
     - target: {fileID: 5829557723985924856, guid: 7d8847d65e29abb45bd20e5f96bf9e1a,
         type: 3}
       propertyPath: m_Name
@@ -1219,11 +1212,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 58127294587667473, guid: 7d8847d65e29abb45bd20e5f96bf9e1a,
-        type: 3}
-      propertyPath: m_Text
-      value: ABOUT
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d8847d65e29abb45bd20e5f96bf9e1a, type: 3}

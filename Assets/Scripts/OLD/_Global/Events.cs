@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
-public class Events : Singleton<Events> {
-
+public class Events : MonoBehaviour
+{
     [Header("Pool Events")]
     public GameEvent OnPoolLoaded;
 

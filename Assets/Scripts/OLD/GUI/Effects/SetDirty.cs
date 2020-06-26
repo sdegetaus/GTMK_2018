@@ -1,14 +1,17 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class SetDirty : MonoBehaviour {
+public class SetDirty : MonoBehaviour
+{
     public Graphic m_graphic;
 
-    void Reset() {
+    void Reset()
+    {
         m_graphic = GetComponent<Graphic>();
     }
 
-    void Update() {
+    void Update()
+    {
         m_graphic.SetVerticesDirty();
     }
 }
