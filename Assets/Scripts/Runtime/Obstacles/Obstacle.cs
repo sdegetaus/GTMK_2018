@@ -34,19 +34,16 @@ namespace GMTK
                 Deselect();
 
             IsSelected = !IsSelected;
-            Debug.Log(IsSelected);
         }
 
         public void Select()
         {
             LeanTween.moveY(gameObject, a.to, a.time).setEase(a.ease);
-            Debug.Log("Select");
         }
 
         public void Deselect()
         {
             LeanTween.moveY(gameObject, 0, a.time / 2f).setEase(a.ease);
-            Debug.Log("Select");
         }
 
     }
