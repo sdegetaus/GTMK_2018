@@ -5,8 +5,7 @@ namespace GMTK
 {
     public class InputController : MonoBehaviour
     {
-
-        // Private Variables
+        // Cached Variables
         private new Camera camera = null;
         private Ray ray = default;
         private RaycastHit hit = default;
@@ -21,7 +20,7 @@ namespace GMTK
 #if UNITY_EDITOR
             if (EventSystem.current.IsPointerOverGameObject()) return;
 #else
-        if (EventSystem.current.IsPointerOverGameObject(0)) return;
+            if (EventSystem.current.IsPointerOverGameObject(0)) return;
 #endif
 
             if (Input.GetMouseButtonDown(0))
@@ -29,10 +28,11 @@ namespace GMTK
                 ray = camera.ScreenPointToRay(Input.mousePosition);
                 Physics.Raycast(ray, out hit);
                 if (hit.transform == null) return;
-                var selectable = hit.transform.GetComponent<ISelectable>();
+                var selectable = hit.transform.GetComponent<Obstacle>();
                 if (selectable is null) return;
-                selectable.Select();
+                selectable.OnClick();
             }
         }
+
     }
 }

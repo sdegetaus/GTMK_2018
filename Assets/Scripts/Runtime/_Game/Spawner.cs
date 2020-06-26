@@ -21,7 +21,6 @@ namespace GMTK
             GameManager.Events.OnRunOver.RegisterListener(OnRunOver);
         }
 
-
         #region Event Handlers
 
         private void OnPoolLoaded()
@@ -37,7 +36,7 @@ namespace GMTK
 
         private void OnRunStarted()
         {
-            StartSpawning();
+            BeginSpawning();
         }
 
         private void OnRunOver()
@@ -51,7 +50,7 @@ namespace GMTK
 
         #endregion
 
-        public void StartSpawning(bool fromResume = false)
+        public void BeginSpawning(bool fromResume = false)
         {
             if (spawningCoroutine == null)
             {
@@ -101,10 +100,10 @@ namespace GMTK
 
                 // Obstacle Spawning...
                 ObstacleGroup obstacleGroup = pools.Spawn(
-                PoolTag.ObstacleGroup,
-                Vector3.zero.With(
-                    x: Consts.SPAWN_POINT,
-                    z: GetNewLanePosition() ?? 0
+                    PoolTag.ObstacleGroup,
+                    Vector3.zero.With(
+                        x: Consts.SPAWN_POINT,
+                        z: GetNewLanePosition() ?? 0
                 )
             ).GetComponent<ObstacleGroup>();
 

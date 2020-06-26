@@ -12,7 +12,7 @@ namespace GMTK
         [Range(0f, 1f)] public float shakeAmount = 0.2f;
 
         [Header("Tween Presets")]
-        [SerializeField] private TweenPreset tween = null;
+        [SerializeField] private TweenPreset a = null;
 
         // Private Variables
         private Vector3 originalCameraPosition = default;
@@ -31,7 +31,7 @@ namespace GMTK
         {
             ZoomTo(
                 target: Vector3.zero,
-                time: tween.time,
+                time: a.time,
                 zoom: 6.0f
             );
         }
@@ -41,7 +41,7 @@ namespace GMTK
             Shake();
             ZoomTo(
                 target: GameManager.Player.Position.With(x: -7.0f, y: 0.5f),
-                time: tween.time,
+                time: a.time,
                 zoom: 3.0f
             );
         }
@@ -56,7 +56,7 @@ namespace GMTK
 
         private IEnumerator ShakeCoroutine()
         {
-            float time = tween.time;
+            float time = a.time;
             float endTime = Time.time + time;
             while (Time.time < endTime)
             {
@@ -70,10 +70,10 @@ namespace GMTK
         public void ZoomTo(Vector3 target, float time, float zoom)
         {
             LeanTween.cancel(cameraHolder);
-            LeanTween.move(cameraHolder, target, time).setEase(tween.tweenType);
+            LeanTween.move(cameraHolder, target, time).setEase(a.ease);
             LeanTween.value(camera.gameObject, camera.orthographicSize, zoom, time)
                 .setOnUpdate(f => camera.orthographicSize = f
-            ).setEase(tween.tweenType);
+            ).setEase(a.ease);
         }
     }
 }

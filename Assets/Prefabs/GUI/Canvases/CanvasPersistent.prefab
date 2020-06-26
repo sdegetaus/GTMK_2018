@@ -129,9 +129,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d491e1d497583334d9791caf040b2bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cinematicMasks:
-  - {fileID: 8023309}
-  - {fileID: 341092233}
+  topMask: {fileID: 8023309}
+  bottomMask: {fileID: 341092233}
   tween: {fileID: 11400000, guid: db14e04c66605934494132931ec26411, type: 2}
 --- !u!1 &341092232
 GameObject:

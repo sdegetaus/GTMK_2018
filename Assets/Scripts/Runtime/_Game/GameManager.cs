@@ -110,7 +110,7 @@ namespace GMTK
             assets.Speed.value = m_globalSpeed;
             m_globalSpeed = 0;
 
-            Spawner.StartSpawning(true);
+            Spawner.BeginSpawning(true);
             CanReadInput = true;
         }
 

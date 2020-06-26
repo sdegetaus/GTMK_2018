@@ -9,7 +9,7 @@ namespace GMTK
     {
         [Header("Cinematic Effect")]
         [SerializeField]
-        private GUICinematicEffect cinematicEffect = null;
+        private UICinematicEffect cinematicEffect = null;
 
         private void Start()
         {
