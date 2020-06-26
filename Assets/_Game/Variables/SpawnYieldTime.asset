@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4bda7747905a344fb88a7353f3eb4d1, type: 3}
-  m_Name: SelectedMaterial
+  m_Script: {fileID: 11500000, guid: db6e06f0663da5c4c9a12839fdf4b73e, type: 3}
+  m_Name: SpawnYieldTime
   m_EditorClassIdentifier: 
-  material: {fileID: 2100000, guid: fc5389b4d7af8e84cb115ea6c58a56fe, type: 2}
+  _value: 2

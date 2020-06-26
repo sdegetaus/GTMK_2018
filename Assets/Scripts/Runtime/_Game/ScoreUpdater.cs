@@ -6,7 +6,7 @@ public class ScoreUpdater : MonoBehaviour
 
     private void Start()
     {
-        runScore = GameManager.Instance.runScore;
+        runScore = Assets.Instance.Score;
         GameManager.Events.OnRunStarted.RegisterListener(OnRunStarted);
     }
 

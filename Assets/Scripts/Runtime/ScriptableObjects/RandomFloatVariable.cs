@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = Consts.scriptableObjectBasePath + "Variables/Random Float")]
+[CreateAssetMenu(menuName = Consts.PATH_ASSET_MENU + "Variables/Random Float")]
 public class RandomFloatVariable : FloatVariable
 {
 

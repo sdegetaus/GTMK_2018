@@ -7,11 +7,6 @@ public class GameManager : Singleton<GameManager>
 
     public bool godMode = false;
 
-    [Header("Variables")]
-    public FloatVariable runScore = null;
-    public FloatVariable globalSpeed = null;
-    public FloatVariable obstacleSpawnYieldTime = null;
-
     [Header("Class References")]
     public Pools pools = null;
     public Spawner spawner = null;
@@ -25,16 +20,20 @@ public class GameManager : Singleton<GameManager>
     public static Player Player = null;
     public static Events Events = null;
 
+    // Class References
+    private Assets assets = null;
+
     private void Awake()
     {
         Events = GetComponentInChildren<Events>();
         Player = playerRef;
+        assets = Assets.Instance;
     }
 
     private void Start()
     {
-        obstacleSpawnYieldTime.value = Consts.initialObstacleSpawnYieldTime;
-        globalSpeed.value = Consts.initialGlobalSpeed;
+        Assets.Instance.Score.value = Consts.INITIAL_SPAWN_YIELD_TIME;
+        Assets.Instance.Speed.value = Consts.INITIAL_SPEED;
 
         // register listeners
         Events.OnRunStarted.RegisterListener(OnRunStarted);
@@ -70,8 +69,8 @@ public class GameManager : Singleton<GameManager>
 
         UIManager.ChangeState(UIState.Pause, false);
 
-        m_globalSpeed = globalSpeed.value;
-        globalSpeed.value = 0;
+        m_globalSpeed = assets.Speed.value;
+        assets.Speed.value = 0;
 
         spawner.StopSpawning();
         IsRunPlaying = false;
@@ -87,7 +86,7 @@ public class GameManager : Singleton<GameManager>
 
         UIManager.ChangeState(UIState.InGame, false);
 
-        globalSpeed.value = m_globalSpeed;
+        assets.Speed.value = m_globalSpeed;
         m_globalSpeed = 0;
 
         spawner.StartSpawning(true);

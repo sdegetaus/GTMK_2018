@@ -42,7 +42,7 @@ public class InputController : MonoBehaviour
             return;
         }
 
-        if (Consts.debugPlayerMovement)
+        if (Consts.DEBUG_PLAYER_MOV)
         {
             if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
             {

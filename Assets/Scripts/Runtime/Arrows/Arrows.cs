@@ -52,7 +52,7 @@ public class Arrows : MonoBehaviour
             {
                 pools.Spawn(
                     PoolTag.Arrows,
-                    Vector3.zero.With(x: Consts.arrowsSeparation)
+                    Vector3.zero.With(x: Consts.ARROWS_SEPARATION)
                 );
                 pools.Spawn(
                     PoolTag.Arrows,
@@ -60,7 +60,7 @@ public class Arrows : MonoBehaviour
                 );
                 pools.Spawn(
                     PoolTag.Arrows,
-                    Vector3.zero.With(x: -Consts.arrowsSeparation)
+                    Vector3.zero.With(x: -Consts.ARROWS_SEPARATION)
                 );
             }
 

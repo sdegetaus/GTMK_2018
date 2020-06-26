@@ -76,10 +76,10 @@ public class Player : MonoBehaviour
         switch (toLane)
         {
             case Lane.Left:
-                to = Consts.laneSeparation;
+                to = Consts.LANE_SEPARATION;
                 break;
             case Lane.Right:
-                to = -Consts.laneSeparation;
+                to = -Consts.LANE_SEPARATION;
                 break;
             default:
                 newLanePosition = Lane.Middle;

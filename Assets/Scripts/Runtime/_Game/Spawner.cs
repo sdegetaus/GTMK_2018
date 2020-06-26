@@ -56,7 +56,7 @@ public class Spawner : MonoBehaviour
         {
             pools.Spawn(
                 PoolTag.Arrows,
-                Vector3.zero.With(x: Consts.arrowsSeparation * i)
+                Vector3.zero.With(x: Consts.ARROWS_SEPARATION * i)
             );
         }
     }
@@ -103,7 +103,7 @@ public class Spawner : MonoBehaviour
             if (fromResume)
             {
                 yield return new WaitForSeconds(
-                    gameManager.obstacleSpawnYieldTime.value
+                    Assets.Instance.SpawnYieldTime.value
                 );
             }
 
@@ -114,7 +114,7 @@ public class Spawner : MonoBehaviour
                 CollectibleGroup collectibleGroup = pools.Spawn(
                     PoolTag.CollectibleGroup,
                     Vector3.zero.With(
-                        x: Consts.globalSpawnPoint,
+                        x: Consts.SPAWN_POINT,
                         z: GetNewLanePosition() ?? 0
                     )
                 ).GetComponent<CollectibleGroup>();
@@ -122,7 +122,7 @@ public class Spawner : MonoBehaviour
                 collectibleGroup.Init();
 
                 yield return new WaitForSeconds(
-                    gameManager.obstacleSpawnYieldTime.value
+                    Assets.Instance.SpawnYieldTime.value
                 );
             }
 
@@ -130,7 +130,7 @@ public class Spawner : MonoBehaviour
             ObstacleGroup obstacleGroup = pools.Spawn(
                 PoolTag.ObstacleGroup,
                 Vector3.zero.With(
-                    x: Consts.globalSpawnPoint,
+                    x: Consts.SPAWN_POINT,
                     z: GetNewLanePosition() ?? 0
                 )
             ).GetComponent<ObstacleGroup>();
@@ -138,7 +138,7 @@ public class Spawner : MonoBehaviour
             obstacleGroup.Init();
 
             yield return new WaitForSeconds(
-                gameManager.obstacleSpawnYieldTime.value
+                Assets.Instance.SpawnYieldTime.value
             );
         }
     }
@@ -151,12 +151,12 @@ public class Spawner : MonoBehaviour
 
         if (Utilities.IsProbableBy(33))
         {
-            newLanePosition = -Consts.laneSeparation;
+            newLanePosition = -Consts.LANE_SEPARATION;
             //count_left++;
         }
         else if (Utilities.IsProbableBy(33))
         {
-            newLanePosition = Consts.laneSeparation;
+            newLanePosition = Consts.LANE_SEPARATION;
             //count_right++;
         }
         else

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[CreateAssetMenu(menuName = Consts.scriptableObjectBasePath + "Events/Event")]
+[CreateAssetMenu(menuName = Consts.PATH_ASSET_MENU + "Events/Event")]
 public class GameEvent : ScriptableObject
 {
 
@@ -19,13 +19,13 @@ public class GameEvent : ScriptableObject
         }
 
 #if UNITY_EDITOR
-        if (Consts.debugLogEvents) Debug.Log(this.name + " raised");
+        if (Consts.LOG_EVENTS) Debug.Log(this.name + " raised");
 #endif
 
         for (int i = listeners.Count - 1; i >= 0; i--)
         {
 #if UNITY_EDITOR
-            if (Consts.debugLogEvents) Debug.LogFormat("{0} listened at {1}.", this.name, listeners[i].Method.DeclaringType.ToString());
+            if (Consts.LOG_EVENTS) Debug.LogFormat("{0} listened at {1}.", this.name, listeners[i].Method.DeclaringType.ToString());
 #endif
             listeners[i].Invoke();
         }

@@ -19,10 +19,6 @@ public abstract class BaseGroup<Type, GroupEnum> : MonoBehaviour
     [SerializeField]
     protected FloatVariable lerpSpeed = null;
 
-    [SerializeField]
-    public MaterialVariable selectedMaterial = null;
-
-
     protected void FixedUpdate()
     {
 

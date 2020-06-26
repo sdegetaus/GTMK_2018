@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = Consts.scriptableObjectBasePath + "Tween Preset")]
+[CreateAssetMenu(menuName = Consts.PATH_ASSET_MENU + "Tween Preset")]
 public class TweenPreset : ScriptableObject
 {
     public float time;
