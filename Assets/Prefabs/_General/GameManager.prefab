@@ -48,7 +48,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e884eb92ac7fcf4aa1d12d8d70683f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  godMode: 0
   playerRef: {fileID: 326599259588132496, guid: a2266d0239bb88841af86af7888ebef5,
     type: 3}
 --- !u!1 &836771344885588352
@@ -66,7 +65,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &3375904709314520980
 Transform:
@@ -94,15 +93,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3195a329197d7d46a87829fdbc3ad90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count_0: 0
-  count_left: 0
-  count_right: 0
-  perc_0: 0
-  perc_left: 0
-  perc_right: 0
-  perc_collectible: 0
-  count_collectible: 0
-  totalCount: 0
 --- !u!1 &988545615795002338
 GameObject:
   m_ObjectHideFlags: 0
@@ -118,7 +108,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8683099056668496599
 Transform:
@@ -172,11 +162,11 @@ GameObject:
   - component: {fileID: 1171755699281289521}
   - component: {fileID: 5174589716273471608}
   m_Layer: 0
-  m_Name: Score
+  m_Name: ScoreUpdater
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1171755699281289521
 Transform:
@@ -219,7 +209,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &6863670650310754657
 Transform:
@@ -267,7 +257,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1799195200887235454
 Transform:
