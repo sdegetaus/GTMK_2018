@@ -67,8 +67,8 @@ public class Pools : MonoBehaviour
 
     private IEnumerator InitializePoolCoroutine()
     {
-
-        Transform poolObjectsTransform = (!Utilities.IsMobile()) ? GameManager.Spawner.gameObject.transform : null;
+        // TODO:
+        Transform poolObjectsTransform = null;
 
         // initialize obstacleGroupPool
         Queue<GameObject> poolObject = new Queue<GameObject>();
