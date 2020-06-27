@@ -30,7 +30,6 @@ namespace GMTK
             runScoreText.text = ((int)Assets.Instance.Score.value).ToString("N0");
             deathCanvas.enabled = true;
             statsCanvas.enabled = false;
-            Debug.LogError($"{deathCanvas.enabled}, {statsCanvas.enabled}");
         }
 
         public void Switch()

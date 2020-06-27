@@ -13,6 +13,8 @@ namespace GMTK
             score = Assets.Instance.Score;
             speed = Assets.Instance.Speed;
 
+            score.value = 0;
+
             GameManager.Events.OnRunStarted.RegisterListener(OnRunStarted);
             GameManager.Events.OnRunOver.RegisterListener(OnRunOver);
             GameManager.Events.OnRunPaused.RegisterListener(OnRunPaused);
@@ -22,6 +24,12 @@ namespace GMTK
         #region Event Handlers
 
         private void OnRunStarted()
+        {
+            score.value = 0;
+            StartCoroutine(ScoreUpdate());
+        }
+
+        private void OnRunRestarted()
         {
             score.value = 0;
             StartCoroutine(ScoreUpdate());

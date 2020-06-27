@@ -54,6 +54,7 @@ namespace GMTK
         {
             if (spawningCoroutine == null)
             {
+                if (!fromResume) pools.ClearBy(PoolTag.Arrows);
                 spawningCoroutine = StartCoroutine(
                     EndlessSpawningRoutine(fromResume)
                 );
@@ -74,11 +75,9 @@ namespace GMTK
             while (true)
             {
                 if (fromResume)
-                {
                     yield return new WaitForSeconds(
                         Assets.Instance.SpawnYieldTime.value
                     );
-                }
 
                 // Collectible Spawning...
                 if (5f.HasChance())

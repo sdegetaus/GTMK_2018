@@ -9,35 +9,11 @@ namespace GMTK
 
         private void Start()
         {
-            GameManager.Events.OnRunStarted.RegisterListener(OnRunStarted);
-            GameManager.Events.OnRunOver.RegisterListener(OnRunOver);
-            GameManager.Events.OnRunPaused.RegisterListener(OnRunPaused);
-            GameManager.Events.OnRunResumed.RegisterListener(OnRunResumed);
+            GameManager.Events.OnRunStarted.RegisterListener(CinematicOut);
+            GameManager.Events.OnRunOver.RegisterListener(CinematicIn);
+            GameManager.Events.OnRunPaused.RegisterListener(CinematicIn);
+            GameManager.Events.OnRunResumed.RegisterListener(CinematicOut);
         }
-
-        #region Event Handlers
-
-        private void OnRunStarted()
-        {
-            cinematicEffect.FadeOut();
-        }
-
-        private void OnRunOver()
-        {
-            cinematicEffect.FadeIn();
-        }
-
-        private void OnRunPaused()
-        {
-            cinematicEffect.FadeIn();
-        }
-
-        private void OnRunResumed()
-        {
-            cinematicEffect.FadeOut();
-        }
-
-        #endregion
 
         public static void CinematicIn()
         {

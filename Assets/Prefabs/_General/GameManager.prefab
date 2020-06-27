@@ -239,6 +239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnPoolLoaded: {fileID: 11400000, guid: 4d72c3814dd5da34ab9686eefa19ab65, type: 2}
   OnRunStarted: {fileID: 11400000, guid: f3ec353d2281c084bbd476c2b3210465, type: 2}
+  OnRunRestarted: {fileID: 11400000, guid: 73403c51bd8b8c547aab2925f9d529a3, type: 2}
   OnRunOver: {fileID: 11400000, guid: a76ecd68c565b5f48b591283a4ff5b8f, type: 2}
   OnRunPaused: {fileID: 11400000, guid: ed0c58156f9bc414bb7211d440fe4065, type: 2}
   OnRunResumed: {fileID: 11400000, guid: 8406dbd5688dacd4ba8c7d2234240ebb, type: 2}

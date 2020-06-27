@@ -18,7 +18,7 @@ namespace GMTK
         {
             GameManager.Events.OnRunOver.RegisterListener(OnRunOver);
             pools = GameManager.Pools;
-            arrowsMovementCoroutine = StartCoroutine(ArrowsMovementCoroutine());
+            arrowsMovementCoroutine = StartCoroutine(ArrowsCoroutine());
         }
 
         #region Event Handlers
@@ -26,7 +26,7 @@ namespace GMTK
         private void OnRunStarted()
         {
             if (arrowsMovementCoroutine == null)
-                arrowsMovementCoroutine = StartCoroutine(ArrowsMovementCoroutine());
+                arrowsMovementCoroutine = StartCoroutine(ArrowsCoroutine());
         }
 
         private void OnRunOver()
@@ -41,7 +41,7 @@ namespace GMTK
 
         #endregion
 
-        private IEnumerator ArrowsMovementCoroutine()
+        private IEnumerator ArrowsCoroutine()
         {
             while (true)
             {

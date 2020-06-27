@@ -60,6 +60,13 @@ namespace GMTK
                 case ClickType.ResumeRun:
                     GameManager.Events.OnRunResumed.Raise();
                     break;
+
+                // RunOver: 400 - 499
+
+                case ClickType.RestartRun:
+                    GameManager.Events.OnRunStarted.Raise();
+                    break;
+
             }
         }
     }

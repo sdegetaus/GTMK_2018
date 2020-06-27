@@ -21,18 +21,15 @@ namespace GMTK
         public Pool arrowsPool;
 
         // Private Variables
-        private List<Pool> pools = new List<Pool>();
+        private List<Pool> pools = new List<Pool>(3);
         private Dictionary<PoolTag, Queue<GameObject>> poolGroup = new Dictionary<PoolTag, Queue<GameObject>>();
        
         private void Awake()
         {
-            pools.Clear();
             pools.Add(obstacleGroupPool);
             pools.Add(collectibleGroupPool);
             pools.Add(arrowsPool);
         }
-
-        #region Public Methods
 
         public void Initialize()
         {
@@ -60,7 +57,13 @@ namespace GMTK
             return objectToSpawn;
         }
 
-        #endregion
+        public void ClearBy(PoolTag tag)
+        {
+            foreach (var f in poolGroup[tag])
+            {
+                f.SetActive(false);
+            }
+        }
 
         private IEnumerator InitializePoolCoroutine()
         {
