@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 1171755699281289521}
   - component: {fileID: 5174589716273471608}
   m_Layer: 0
-  m_Name: ScoreUpdater
+  m_Name: Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

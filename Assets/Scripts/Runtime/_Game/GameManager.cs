@@ -60,9 +60,7 @@ namespace GMTK
             Events.OnRunPaused.RegisterListener(OnRunPaused);
             Events.OnRunResumed.RegisterListener(OnRunResumed);
 
-            // initialize pool (instantiate gameobjects)
             Pools.Initialize();
-
             CanReadInput = false;
         }
 
