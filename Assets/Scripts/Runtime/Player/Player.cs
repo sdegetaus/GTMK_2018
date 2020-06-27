@@ -27,6 +27,8 @@ namespace GMTK
         {
             GameManager.Events.OnRunStarted.RegisterListener(OnRunStarted);
             GameManager.Events.OnRunOver.RegisterListener(OnRunOver);
+            GameManager.Events.OnRunPaused.RegisterListener(OnRunPaused);
+            GameManager.Events.OnRunResumed.RegisterListener(OnRunResumed);
         }
 
         #region Event Handlers
@@ -45,6 +47,18 @@ namespace GMTK
             StopAllCoroutines();
         }
 
+        private void OnRunPaused()
+        {
+            LeanTween.cancel(gameObject);
+            isMoving = false;
+            StopAllCoroutines();
+        }
+
+        private void OnRunResumed()
+        {
+            StartCoroutine(RandomWalker());
+        }
+
         #endregion
 
         private IEnumerator RandomWalker()
@@ -52,7 +66,7 @@ namespace GMTK
             yield return new WaitForSeconds(1f);
             while (true)
             {
-                var l = CheckLaneLimit(currentLane + (50f.HasChance() ? 1 : -1));
+                var l = CheckLaneLimit(currentLane + ((Random.value * 100f).HasChance() ? 1 : -1));
                 Debug.Log(l);
                 Move(l);
                 yield return new WaitForSeconds(1f);
@@ -61,7 +75,7 @@ namespace GMTK
 
         private void Update()
         {
-            if (Consts.DEBUG_PLAYER_MOV && GameManager.CanReadInput)
+            if (GameManager.CanReadInput && Consts.DEBUG_PLAYER_MOV)
             {
                 if (Input.GetKeyDown(KeyCode.LeftArrow) ||
                     Input.GetKeyDown(KeyCode.A))
