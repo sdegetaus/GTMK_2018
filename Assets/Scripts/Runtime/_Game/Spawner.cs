@@ -36,6 +36,7 @@ namespace GMTK
 
         private void OnRunStarted()
         {
+            pools.DeactivateObjects();
             BeginSpawning();
         }
 
@@ -84,7 +85,7 @@ namespace GMTK
                 if (5f.HasChance())
                 {
                     var collectableGroup = pools.Spawn(
-                        PoolTag.CollectibleGroup,
+                        PoolTag.CollectableGroup,
                         Vector3.zero.With(
                             x: Consts.SPAWN_POINT_X,
                             z: GetNewLanePosition() ?? 0

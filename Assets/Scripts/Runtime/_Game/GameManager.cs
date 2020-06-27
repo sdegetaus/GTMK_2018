@@ -121,9 +121,9 @@ namespace GMTK
         }
 
         // TODO:
-        public void CollectibleCollected(CollectableEnum collectibleEnum)
+        public void CollectableCollected(CollectableEnum collectableEnum)
         {
-            Debug.Log("Collectible Collected!");
+            Debug.Log($"<b>Collectable Collected!</b> {collectableEnum}");
         }
     }
 }

@@ -21,15 +21,8 @@ namespace GMTK
         public Pool arrowsPool;
 
         // Private Variables
-        private List<Pool> pools = new List<Pool>(3);
         private Dictionary<PoolTag, Queue<GameObject>> poolGroup = new Dictionary<PoolTag, Queue<GameObject>>();
-       
-        private void Awake()
-        {
-            pools.Add(obstacleGroupPool);
-            pools.Add(collectibleGroupPool);
-            pools.Add(arrowsPool);
-        }
+
 
         public void Initialize()
         {
@@ -42,7 +35,7 @@ namespace GMTK
         {
             if (!poolGroup.ContainsKey(tag))
             {
-                Debug.LogError("PoolTag of type " + tag.ToString() + " doesn't exist!");
+                Debug.LogError($"PoolTag of type {tag.ToString()} doesn't exist!");
                 return null;
             }
 
@@ -59,12 +52,12 @@ namespace GMTK
 
         private IEnumerator InitializePoolCoroutine()
         {
-            Transform poolObjectsTransform = GameManager.Spawner.gameObject.transform;
-            Queue<GameObject> poolObject = new Queue<GameObject>();
+            var poolObjectsTransform = GameManager.Spawner.gameObject.transform;
+            var poolObject = new Queue<GameObject>();
 
             for (int i = 0; i < obstacleGroupPool.count; i++)
             {
-                GameObject obj = Instantiate(obstacleGroupPool.prefab, poolObjectsTransform);
+                var obj = Instantiate(obstacleGroupPool.prefab, poolObjectsTransform);
                 obj.SetActive(false);
                 poolObject.Enqueue(obj);
                 yield return new WaitForEndOfFrame();
@@ -78,7 +71,7 @@ namespace GMTK
 
             for (int i = 0; i < collectibleGroupPool.count; i++)
             {
-                GameObject obj = Instantiate(collectibleGroupPool.prefab, poolObjectsTransform);
+                var obj = Instantiate(collectibleGroupPool.prefab, poolObjectsTransform);
                 obj.SetActive(false);
                 poolObject.Enqueue(obj);
                 yield return new WaitForEndOfFrame();
@@ -92,7 +85,7 @@ namespace GMTK
 
             for (int i = 0; i < arrowsPool.count; i++)
             {
-                GameObject obj = Instantiate(arrowsPool.prefab, poolObjectsTransform);
+                var obj = Instantiate(arrowsPool.prefab, poolObjectsTransform);
                 obj.SetActive(false);
                 poolObject.Enqueue(obj);
                 yield return new WaitForEndOfFrame();
@@ -103,5 +96,15 @@ namespace GMTK
 
             GameManager.Events.OnPoolLoaded.Raise();
         }
+
+        public void DeactivateObjects()
+        {
+            foreach (var obj in poolGroup[PoolTag.ObstacleGroup])
+                obj.SetActive(false);
+
+            foreach (var obj in poolGroup[PoolTag.CollectableGroup])
+                obj.SetActive(false);
+        }
+
     }
 }

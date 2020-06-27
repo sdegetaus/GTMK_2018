@@ -7,7 +7,7 @@
 public enum PoolTag
 {
     ObstacleGroup,
-    CollectibleGroup,
+    CollectableGroup,
     Arrows,
 }
 

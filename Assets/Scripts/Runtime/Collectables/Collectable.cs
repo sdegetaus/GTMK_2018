@@ -13,7 +13,7 @@ namespace GMTK
             CollectableGroup collectibleGroup = gameObject.transform.parent.GetComponent<CollectableGroup>();
             collectibleGroup.DeactivateItem(collectibleEnum);
 
-            GameManager.Instance.CollectibleCollected(collectibleEnum);
+            GameManager.Instance.CollectableCollected(collectibleEnum);
         }
     }
 }
