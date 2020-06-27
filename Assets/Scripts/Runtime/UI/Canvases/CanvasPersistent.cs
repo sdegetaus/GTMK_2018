@@ -7,7 +7,6 @@ namespace GMTK
 {
     public class CanvasPersistent : CanvasLogic
     {
-        [Header("Cinematic Effect")]
         [SerializeField]
         private UICinematicEffect cinematicEffect = null;
 
@@ -15,6 +14,8 @@ namespace GMTK
         {
             GameManager.Events.OnRunStarted.RegisterListener(OnRunStarted);
             GameManager.Events.OnRunOver.RegisterListener(OnRunOver);
+            GameManager.Events.OnRunPaused.RegisterListener(OnRunPaused);
+            GameManager.Events.OnRunResumed.RegisterListener(OnRunResumed);
         }
 
         private void OnRunStarted()
@@ -25,6 +26,16 @@ namespace GMTK
         private void OnRunOver()
         {
             cinematicEffect.FadeIn();
+        }
+
+        private void OnRunPaused()
+        {
+            cinematicEffect.FadeIn();
+        }
+
+        private void OnRunResumed()
+        {
+            cinematicEffect.FadeOut();
         }
     }
 }

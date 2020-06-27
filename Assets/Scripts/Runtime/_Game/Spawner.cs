@@ -55,7 +55,7 @@ namespace GMTK
             if (spawningCoroutine == null)
             {
                 spawningCoroutine = StartCoroutine(
-                    EndlessSpawning(fromResume)
+                    EndlessSpawningRoutine(fromResume)
                 );
             }
         }
@@ -69,7 +69,7 @@ namespace GMTK
             }
         }
 
-        private IEnumerator EndlessSpawning(bool fromResume = false)
+        private IEnumerator EndlessSpawningRoutine(bool fromResume = false)
         {
             while (true)
             {
@@ -83,13 +83,13 @@ namespace GMTK
                 // Collectible Spawning...
                 if (5f.HasChance())
                 {
-                    CollectableGroup collectibleGroup = pools.Spawn(
-                    PoolTag.CollectibleGroup,
-                    Vector3.zero.With(
-                        x: Consts.SPAWN_POINT,
-                        z: GetNewLanePosition() ?? 0
-                    )
-                ).GetComponent<CollectableGroup>();
+                    var collectibleGroup = pools.Spawn(
+                        PoolTag.CollectibleGroup,
+                        Vector3.zero.With(
+                            x: Consts.SPAWN_POINT_X,
+                            z: GetNewLanePosition() ?? 0
+                        )
+                    ).GetComponent<CollectableGroup>();
 
                     collectibleGroup.Initialize();
 
@@ -99,13 +99,13 @@ namespace GMTK
                 }
 
                 // Obstacle Spawning...
-                ObstacleGroup obstacleGroup = pools.Spawn(
+                var obstacleGroup = pools.Spawn(
                     PoolTag.ObstacleGroup,
                     Vector3.zero.With(
-                        x: Consts.SPAWN_POINT,
+                        x: Consts.SPAWN_POINT_X,
                         z: GetNewLanePosition() ?? 0
-                )
-            ).GetComponent<ObstacleGroup>();
+                    )
+                ).GetComponent<ObstacleGroup>();
 
                 obstacleGroup.Initialize();
 

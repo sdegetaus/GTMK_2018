@@ -23,11 +23,8 @@ namespace GMTK
         // Private Variables
         private List<Pool> pools = new List<Pool>();
         private Dictionary<PoolTag, Queue<GameObject>> poolGroup = new Dictionary<PoolTag, Queue<GameObject>>();
-
-        // Class References
-        private GameManager gameManager;
-
-        private void Start()
+       
+        private void Awake()
         {
             pools.Clear();
             pools.Add(obstacleGroupPool);
@@ -39,7 +36,6 @@ namespace GMTK
 
         public void Initialize()
         {
-            gameManager = GameManager.Instance;
             StartCoroutine(
                 InitializePoolCoroutine()
             );
@@ -47,7 +43,6 @@ namespace GMTK
 
         public GameObject Spawn(PoolTag tag, Vector3 position = default)
         {
-
             if (!poolGroup.ContainsKey(tag))
             {
                 Debug.LogError("PoolTag of type " + tag.ToString() + " doesn't exist!");

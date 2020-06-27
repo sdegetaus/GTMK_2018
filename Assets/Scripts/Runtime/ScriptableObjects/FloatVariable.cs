@@ -3,7 +3,6 @@
 [CreateAssetMenu(menuName = Consts.PATH_ASSET_MENU + "Variables/Float")]
 public class FloatVariable : ScriptableObject
 {
-
     [SerializeField]
     protected float _value;
 
@@ -12,5 +11,4 @@ public class FloatVariable : ScriptableObject
         get => _value;
         set => _value = value;
     }
-
 }

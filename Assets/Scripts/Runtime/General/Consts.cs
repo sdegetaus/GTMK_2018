@@ -23,7 +23,7 @@ public static class Consts
 
     public const float LANE_SEPARATION = 1.6f;
     public const float ARROWS_SEPARATION = 30.0f;
-    public const float SPAWN_POINT = 30.0f;
+    public const float SPAWN_POINT_X = 30.0f;
     public const float INITIAL_SPAWN_YIELD_TIME = 1.75f;
     public const float INITIAL_SPEED = 1f;
 

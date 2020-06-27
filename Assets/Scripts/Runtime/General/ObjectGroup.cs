@@ -23,7 +23,7 @@ namespace GMTK
             speed = Assets.Instance.Speed;
             lerpSpeed = Assets.Instance.LerpSpeed;
             UnactivateAll();
-            SetRandomObstacle();
+            RandomObstacle();
         }
 
         protected void FixedUpdate()
@@ -49,14 +49,15 @@ namespace GMTK
             activeObject = item;
         }
 
-        protected void SetRandomObstacle()
+        protected void RandomObstacle()
         {
             SetActiveItem(Utilities.GetRandomEnum<GroupEnum>());
         }
 
         protected void UnactivateAll()
         {
-            foreach (Type item in objects) item.gameObject.SetActive(false);
+            foreach (Type item in objects)
+                item.gameObject.SetActive(false);
         }
     }
 

@@ -5,14 +5,17 @@ namespace GMTK
 {
     public class CameraController : Singleton<CameraController>
     {
-        [SerializeField] private new Camera camera = null;
-        [SerializeField] private GameObject cameraHolder = null;
+        [SerializeField]
+        private new Camera camera = null;
 
-        [Header("Shake Properties")]
-        [Range(0f, 1f)] public float shakeAmount = 0.2f;
+        [SerializeField]
+        private GameObject cameraHolder = null;
 
-        [Header("Tween Presets")]
-        [SerializeField] private TweenPreset a = null;
+        [Header("Shake Properties"), Range(0f, 1f)]
+        public float shakeAmount = 0.2f;
+
+        [Header("Tween Presets"), SerializeField]
+        private TweenPreset a = null;
 
         // Private Variables
         private Vector3 originalCameraPosition = default;
@@ -22,8 +25,9 @@ namespace GMTK
             originalCameraPosition = camera.transform.localPosition;
             GameManager.Events.OnRunStarted.RegisterListener(OnRunStarted);
             GameManager.Events.OnRunOver.RegisterListener(OnRunOver);
+            GameManager.Events.OnRunPaused.RegisterListener(OnRunPaused);
+            GameManager.Events.OnRunResumed.RegisterListener(OnRunStarted);
         }
-
 
         #region Event Handlers
 
@@ -44,6 +48,15 @@ namespace GMTK
                 time: a.time,
                 zoom: 3.0f
             );
+        }
+
+        private void OnRunPaused()
+        {
+            ZoomTo(
+               target: GameManager.Player.Position.With(x: -7.0f, y: 0.5f),
+               time: a.time,
+               zoom: 3.0f
+           );
         }
 
         #endregion
@@ -72,8 +85,7 @@ namespace GMTK
             LeanTween.cancel(cameraHolder);
             LeanTween.move(cameraHolder, target, time).setEase(a.ease);
             LeanTween.value(camera.gameObject, camera.orthographicSize, zoom, time)
-                .setOnUpdate(f => camera.orthographicSize = f
-            ).setEase(a.ease);
+                .setOnUpdate(f => camera.orthographicSize = f).setEase(a.ease);
         }
     }
 }
