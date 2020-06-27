@@ -42,7 +42,7 @@ namespace GMTK
         private void Awake()
         {
             assets = Assets.Instance;
-            assets.Score.value = Consts.INITIAL_SPAWN_YIELD_TIME;
+            assets.SpawnYieldTime.value = Consts.INITIAL_SPAWN_YIELD_TIME;
             assets.Speed.value = Consts.INITIAL_SPEED;
 
             Input = GetComponentInChildren<InputController>();
