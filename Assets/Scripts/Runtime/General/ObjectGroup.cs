@@ -1,25 +1,27 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace GMTK
 {
-    public abstract class ObjectGroup<Type, GroupEnum> : MonoBehaviour
+    public abstract class ObjectGroup<Type, ObjectEnum> : MonoBehaviour
         where Type : Component
-        where GroupEnum : Enum
+        where ObjectEnum : Enum
     {
         [SerializeField]
-        protected List<Type> objects = new List<Type>();
-
-        [SerializeField]
-        protected GroupEnum activeObject;
+        protected ObjectEnum activeObject;
 
         // Private Variables
+        protected List<Type> objects;
         protected FloatVariable speed = null;
         protected FloatVariable lerpSpeed = null;
 
         public virtual void Initialize()
         {
+            if (objects is null || objects.Count == 0)
+                objects = gameObject.GetComponentsInChildren<Type>(true).ToList();
+
             speed = Assets.Instance.Speed;
             lerpSpeed = Assets.Instance.LerpSpeed;
             UnactivateAll();
@@ -36,22 +38,22 @@ namespace GMTK
             );
         }
 
-        public void UnsetActiveItem(GroupEnum item)
+        protected void ActivateItem(ObjectEnum item)
         {
-            int enumToInt = (int)Enum.Parse(typeof(GroupEnum), item.ToString());
-            objects[enumToInt].gameObject.SetActive(false);
-        }
-
-        protected void SetActiveItem(GroupEnum item)
-        {
-            int enumToInt = (int)Enum.Parse(typeof(GroupEnum), item.ToString());
+            int enumToInt = (int)Enum.Parse(typeof(ObjectEnum), item.ToString());
             objects[enumToInt].gameObject.SetActive(true);
             activeObject = item;
         }
 
+        public void DeactivateItem(ObjectEnum item)
+        {
+            int enumToInt = (int)Enum.Parse(typeof(ObjectEnum), item.ToString());
+            objects[enumToInt].gameObject.SetActive(false);
+        }
+
         protected void RandomObstacle()
         {
-            SetActiveItem(Utilities.GetRandomEnum<GroupEnum>());
+            ActivateItem(Utilities.GetRandomEnum<ObjectEnum>());
         }
 
         protected void UnactivateAll()
@@ -60,5 +62,4 @@ namespace GMTK
                 item.gameObject.SetActive(false);
         }
     }
-
 }

@@ -57,14 +57,6 @@ namespace GMTK
             return objectToSpawn;
         }
 
-        public void ClearBy(PoolTag tag)
-        {
-            foreach (var f in poolGroup[tag])
-            {
-                f.SetActive(false);
-            }
-        }
-
         private IEnumerator InitializePoolCoroutine()
         {
             Transform poolObjectsTransform = GameManager.Spawner.gameObject.transform;

@@ -54,7 +54,6 @@ namespace GMTK
         {
             if (spawningCoroutine == null)
             {
-                if (!fromResume) pools.ClearBy(PoolTag.Arrows);
                 spawningCoroutine = StartCoroutine(
                     EndlessSpawningRoutine(fromResume)
                 );
@@ -75,14 +74,16 @@ namespace GMTK
             while (true)
             {
                 if (fromResume)
+                {
                     yield return new WaitForSeconds(
                         Assets.Instance.SpawnYieldTime.value
                     );
+                }
 
-                // Collectible Spawning...
+                // Collectable Spawning...
                 if (5f.HasChance())
                 {
-                    var collectibleGroup = pools.Spawn(
+                    var collectableGroup = pools.Spawn(
                         PoolTag.CollectibleGroup,
                         Vector3.zero.With(
                             x: Consts.SPAWN_POINT_X,
@@ -90,7 +91,7 @@ namespace GMTK
                         )
                     ).GetComponent<CollectableGroup>();
 
-                    collectibleGroup.Initialize();
+                    collectableGroup.Initialize();
 
                     yield return new WaitForSeconds(
                         Assets.Instance.SpawnYieldTime.value

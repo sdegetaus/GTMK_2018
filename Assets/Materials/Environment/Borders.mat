@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Borders
-  m_Shader: {fileID: 4800000, guid: 0aa18dddb55bf054cb6811a4c172b2b0, type: 3}
+  m_Shader: {fileID: 4800000, guid: fb19280b97d72c6468792b23c808345d, type: 3}
   m_ShaderKeywords: AO_ON BACKGRADIENT DONTMIX FRONTGRADIENT SHADOW_ON TOPSOLID _AOUV_UV0
     _EMISSION _GRADIENTSPACE_WORLD_SPACE _GRADSETTINGS_B_USE_GLOBAL _GRADSETTINGS_D_USE_GLOBAL
     _GRADSETTINGS_F_USE_GLOBAL _GRADSETTINGS_L_USE_GLOBAL _GRADSETTINGS_R_USE_GLOBAL
@@ -163,6 +163,8 @@ Material:
     - _Shading_L: 0
     - _Shading_R: 0
     - _Shading_T: 1
+    - _ShadowBlend: 0.5
+    - _ShadowInfluence: 0.5
     - _Shininess: 0
     - _ShowAO: 0
     - _ShowAmbientSettings: 0
@@ -188,6 +190,7 @@ Material:
     - _UVSec: 0
     - _UnityFogEnable: 0
     - _ZWrite: 1
+    - _ZWriteOverride: 0
     m_Colors:
     - _AOColor: {r: 1, g: 1, b: 1, a: 1}
     - _AmbientColor: {r: 1, g: 1, b: 1, a: 1}
