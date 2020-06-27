@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace GMTK
 {
-    public class CanvasPersistent : CanvasLogic
+    public class CanvasPersistent : Singleton<CanvasPersistent>
     {
         [SerializeField]
         private UICinematicEffect cinematicEffect = null;
@@ -17,6 +14,8 @@ namespace GMTK
             GameManager.Events.OnRunPaused.RegisterListener(OnRunPaused);
             GameManager.Events.OnRunResumed.RegisterListener(OnRunResumed);
         }
+
+        #region Event Handlers
 
         private void OnRunStarted()
         {
@@ -37,5 +36,18 @@ namespace GMTK
         {
             cinematicEffect.FadeOut();
         }
+
+        #endregion
+
+        public static void CinematicIn()
+        {
+            Instance.cinematicEffect.FadeIn();
+        }
+
+        public static void CinematicOut()
+        {
+            Instance.cinematicEffect.FadeOut();
+        }
+
     }
 }

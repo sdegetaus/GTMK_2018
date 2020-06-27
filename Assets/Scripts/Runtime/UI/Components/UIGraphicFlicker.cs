@@ -11,6 +11,9 @@ namespace GMTK
         [SerializeField]
         private LeanTweenType tweenType = LeanTweenType.easeInOutBack;
 
+        [SerializeField]
+        private float delay = 0.0f;
+
         // Private Variables
         private RectTransform rect = null;
 
@@ -19,6 +22,7 @@ namespace GMTK
             if (rect == null) rect = GetComponent<RectTransform>();
             LeanTween.cancel(rect);
             LeanTween.textAlpha(rect, 0, duration)
+                .setDelay(delay)
                 .setLoopPingPong()
                 .setEase(tweenType);
         }

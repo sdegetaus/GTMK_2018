@@ -6,35 +6,39 @@ namespace GMTK
     public class CanvasRunOver : CanvasLogic
     {
         [SerializeField]
-        private GameObject deathScreen = null;
+        private Canvas deathCanvas = null;
 
         [SerializeField]
-        private GameObject runStats = null;
+        private Canvas statsCanvas = null;
 
         [Space]
 
         [SerializeField]
         private Text runScoreText = null;
 
-        [SerializeField]
-        private FloatVariable runScore = null;
-
-        private void OnEnable()
-        {
-            runScoreText.text = ((int)runScore.value).ToString("N0");
-        }
-
         private void Start()
         {
-            runStats.SetActive(false);
-            deathScreen.SetActive(false);
-            GameManager.Events.OnRunOver.RegisterListener(OnRunOver);
+            if (!deathCanvas.gameObject.activeSelf)
+                deathCanvas.gameObject.SetActive(true);
+
+            if (!statsCanvas.gameObject.activeSelf)
+                statsCanvas.gameObject.SetActive(true);
         }
 
-        private void OnRunOver()
+        public override void OnEnter()
         {
-            runStats.SetActive(false);
-            deathScreen.SetActive(true);
+            runScoreText.text = ((int)Assets.Instance.Score.value).ToString("N0");
+            deathCanvas.enabled = true;
+            statsCanvas.enabled = false;
+            Debug.LogError($"{deathCanvas.enabled}, {statsCanvas.enabled}");
         }
+
+        public void Switch()
+        {
+            deathCanvas.enabled = false;
+            statsCanvas.enabled = true;
+            CanvasPersistent.CinematicOut();
+        }
+
     }
 }
