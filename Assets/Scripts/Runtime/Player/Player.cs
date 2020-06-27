@@ -40,7 +40,7 @@ namespace GMTK
 
         private void Update()
         {
-            if (Consts.DEBUG_PLAYER_MOV)
+            if (Consts.DEBUG_PLAYER_MOV && GameManager.CanReadInput)
             {
                 if (Input.GetKeyDown(KeyCode.LeftArrow) ||
                     Input.GetKeyDown(KeyCode.A))

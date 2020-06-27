@@ -7,7 +7,6 @@ namespace GMTK
     public class Obstacle : MonoBehaviour, ICollide, ISelectable
     {
         private new List<Renderer> renderer;
-        private ObstacleGroup obstacleGroup = null;
         public TweenPreset a = null;
 
         public bool IsSelected = false;
@@ -15,7 +14,6 @@ namespace GMTK
         private void Start()
         {
             renderer = GetComponentsInChildren<Renderer>().ToList();
-            obstacleGroup = gameObject.transform.parent.GetComponent<ObstacleGroup>();
         }
 
         public void OnTriggerEnter(Collider other)
