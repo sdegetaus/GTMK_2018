@@ -1,20 +1,27 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 namespace GMTK
 {
     public class Player : MonoBehaviour
     {
-        [Header("Status")]
-        public Lane lanePosition = Lane.Middle;
-        public bool isMoving = false;
+        public Vector3 Position
+        {
+            get => gameObject.transform.position;
+        }
+
+        [SerializeField]
+        private Lane currentLane = Lane.Middle;
+
+        [SerializeField]
+        private bool isMoving = false;
 
         [Header("Settings")]
-        public float movementTransition;
+        [SerializeField]
+        private float movementTransition;
 
         // Private Variables
         private LeanTweenType tweenType = LeanTweenType.easeOutQuad;
         private bool fromStart = false;
-
-        public Vector3 Position { get => gameObject.transform.position; }
 
         private void Start()
         {
@@ -28,15 +35,29 @@ namespace GMTK
         {
             fromStart = true;
             Move(Lane.Middle);
+            StartCoroutine(RandomWalker());
         }
 
         private void OnRunOver()
         {
             LeanTween.cancel(gameObject);
             isMoving = false;
+            StopAllCoroutines();
         }
 
         #endregion
+
+        private IEnumerator RandomWalker()
+        {
+            yield return new WaitForSeconds(1f);
+            while (true)
+            {
+                var l = CheckLaneLimit(currentLane + (50f.HasChance() ? 1 : -1));
+                Debug.Log(l);
+                Move(l);
+                yield return new WaitForSeconds(1f);
+            }
+        }
 
         private void Update()
         {
@@ -61,28 +82,32 @@ namespace GMTK
         private void MoveLeft()
         {
             if (isMoving) return;
-            Move(CheckLaneLimit(lanePosition - 1));
+            Move(CheckLaneLimit(currentLane - 1));
         }
 
         private void MoveRight()
         {
             if (isMoving) return;
-            Move(CheckLaneLimit(lanePosition + 1));
+            Move(CheckLaneLimit(currentLane + 1));
         }
 
         private Lane CheckLaneLimit(Lane toLane)
         {
-            if (toLane < 0) return lanePosition;
-            if (toLane > Lane.Right) return lanePosition;
+            if (toLane < 0) return currentLane;
+            if (toLane > Lane.Right) return currentLane;
             return toLane;
         }
 
         private void Move(Lane toLane)
         {
-            if (lanePosition == toLane && fromStart == false) return;
+            if (currentLane == toLane &&
+                fromStart == false)
+            {
+                return;
+            }
 
             float to = 0.0f;
-            Lane newLanePosition = toLane;
+            var newLanePosition = toLane;
 
             isMoving = true;
 
@@ -103,7 +128,7 @@ namespace GMTK
                 .setOnComplete(() =>
                 {
                     gameObject.transform.position = gameObject.transform.position.With(z: to);
-                    lanePosition = newLanePosition;
+                    currentLane = newLanePosition;
                     isMoving = false;
                     fromStart = false;
                 }
