@@ -1,4 +1,4 @@
 ﻿namespace GMTK
 {
-    public class ObstacleGroup : ObjectGroup<Obstacle, ObstacleEnum> { }
+    public class ObstacleGroup : SpawnGroup<Obstacle, ObstacleEnum> { }
 }

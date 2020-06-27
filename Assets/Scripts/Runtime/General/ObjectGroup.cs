@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace GMTK
 {
-    public abstract class ObjectGroup<Type, ObjectEnum> : MonoBehaviour
+    public abstract class SpawnGroup<Type, ObjectEnum> : MonoBehaviour
         where Type : Component
         where ObjectEnum : Enum
     {
@@ -25,7 +25,12 @@ namespace GMTK
             speed = Assets.Instance.Speed;
             lerpSpeed = Assets.Instance.LerpSpeed;
             UnactivateAll();
-            RandomObstacle();
+            ActivateRandom();
+        }
+
+        private void OnDisable()
+        {
+            Debug.Log("Disabled!");
         }
 
         protected void FixedUpdate()
@@ -51,7 +56,7 @@ namespace GMTK
             objects[enumToInt].gameObject.SetActive(false);
         }
 
-        protected void RandomObstacle()
+        protected void ActivateRandom()
         {
             ActivateItem(Utilities.GetRandomEnum<ObjectEnum>());
         }

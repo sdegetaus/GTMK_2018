@@ -1,4 +1,4 @@
 ﻿namespace GMTK
 {
-    public class CollectableGroup : ObjectGroup<Collectable, CollectableEnum> { }
+    public class CollectableGroup : SpawnGroup<Collectable, CollectableEnum> { }
 }
