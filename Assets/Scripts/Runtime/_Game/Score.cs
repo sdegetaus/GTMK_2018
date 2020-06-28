@@ -29,12 +29,6 @@ namespace GMTK
             StartCoroutine(ScoreUpdate());
         }
 
-        private void OnRunRestarted()
-        {
-            score.value = 0;
-            StartCoroutine(ScoreUpdate());
-        }
-
         private void OnRunOver()
         {
             StopAllCoroutines();
