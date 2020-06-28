@@ -48,6 +48,9 @@ MonoBehaviour:
   Speed: {fileID: 11400000, guid: 41e3fbab2c4509246a98e0217cc2740d, type: 2}
   LerpSpeed: {fileID: 11400000, guid: 5823a7bc9b75a9e499848415fd0221bd, type: 2}
   SpawnYieldTime: {fileID: 11400000, guid: 0801aa08aef408b4f8e575f00720288b, type: 2}
+  arrowLeft: {fileID: 21300000, guid: d21e461f49bdd934b85c7343babdacc7, type: 3}
+  arrowStraight: {fileID: 21300000, guid: cdb08ff1a4cb2fc4d8fa0beda5b5b1da, type: 3}
+  arrowRight: {fileID: 21300000, guid: 6108310eab90f9545bb305b6c821e371, type: 3}
   SelectedMat: {fileID: 2100000, guid: fc5389b4d7af8e84cb115ea6c58a56fe, type: 2}
 --- !u!114 &5719914377481352953
 MonoBehaviour:

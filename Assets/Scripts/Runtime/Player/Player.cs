@@ -1,30 +1,35 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
+
 namespace GMTK
 {
     public class Player : MonoBehaviour
     {
-        public Vector3 Position
-        {
-            get => gameObject.transform.position;
-        }
+        public static Lane CurrentLane = Lane.Middle;
+        public static Lane PreviousLane = Lane.Middle;
 
-        [SerializeField]
-        private Lane currentLane = Lane.Middle;
+        public Vector3 Position { get => gameObject.transform.position; }
 
         [SerializeField]
         private bool isMoving = false;
 
         [Header("Settings")]
-        [SerializeField]
-        private float movementTransition;
+        [SerializeField] private float movementTransition;
+
+        [Header("Signaling")]
+        [SerializeField] private Canvas signalingCanvas = null;
+        [SerializeField] public Image arrowImage = null;
 
         // Private Variables
-        private LeanTweenType tweenType = LeanTweenType.easeOutQuad;
         private bool fromStart = false;
+        private Assets assets = null;
 
         private void Start()
         {
+            assets = Assets.Instance;
+            signalingCanvas.enabled = false;
+
             GameManager.Events.OnRunStarted.RegisterListener(OnRunStarted);
             GameManager.Events.OnRunOver.RegisterListener(OnRunOver);
             GameManager.Events.OnRunPaused.RegisterListener(OnRunPaused);
@@ -42,6 +47,7 @@ namespace GMTK
 
         private void OnRunOver()
         {
+            signalingCanvas.enabled = false;
             LeanTween.cancel(gameObject);
             isMoving = false;
             StopAllCoroutines();
@@ -49,6 +55,7 @@ namespace GMTK
 
         private void OnRunPaused()
         {
+            signalingCanvas.enabled = false;
             LeanTween.cancel(gameObject);
             isMoving = false;
             StopAllCoroutines();
@@ -63,16 +70,74 @@ namespace GMTK
 
         private IEnumerator RandomWalker()
         {
-            yield return new WaitForSeconds(1f);
+            signalingCanvas.enabled = true;
             while (true)
             {
-                var l = CheckLaneLimit(currentLane + ((Random.value * 100f).HasChance() ? 1 : -1));
-                Debug.Log(l);
-                Move(l);
+                var newLane = CheckLaneLimit(CurrentLane + ((Random.value * 100f).HasChance() ? 1 : -1));
+                ChangeArrowDirection(newLane);
                 yield return new WaitForSeconds(1f);
+                Move(newLane);
             }
         }
 
+
+        private Lane CheckLaneLimit(Lane toLane)
+        {
+            if (toLane < 0) return CurrentLane;
+            if (toLane > Lane.Right) return CurrentLane;
+            return toLane;
+        }
+
+        private void Move(Lane toLane)
+        {
+            if (CurrentLane == toLane && fromStart == false)
+            {
+                return;
+            }
+
+            PreviousLane = CurrentLane;
+
+            float to = 0.0f;
+            var newLanePosition = toLane;
+
+            isMoving = true;
+
+            switch (toLane)
+            {
+                case Lane.Left:
+                    to = Consts.LANE_SEPARATION;
+                    break;
+                case Lane.Right:
+                    to = -Consts.LANE_SEPARATION;
+                    break;
+                default:
+                    newLanePosition = Lane.Middle;
+                    break;
+            }
+
+            LeanTween.moveZ(gameObject, to, movementTransition)
+                .setOnComplete(() =>
+                {
+                    arrowImage.sprite = assets.arrowStraight;
+                    gameObject.transform.position = gameObject.transform.position.With(z: to);
+                    CurrentLane = newLanePosition;
+                    isMoving = false;
+                    fromStart = false;
+                }
+            ).setEase(LeanTweenType.easeOutQuad);
+        }
+
+        private void ChangeArrowDirection(Lane newLane)
+        {
+            if (newLane == PreviousLane)
+                arrowImage.sprite = assets.arrowStraight;
+            else if (newLane < PreviousLane)
+                arrowImage.sprite = assets.arrowLeft;
+            else
+                arrowImage.sprite = assets.arrowRight;
+        }
+
+#if UNITY_EDITOR
         private void Update()
         {
             if (GameManager.CanReadInput && Consts.DEBUG_PLAYER_MOV)
@@ -96,57 +161,16 @@ namespace GMTK
         private void MoveLeft()
         {
             if (isMoving) return;
-            Move(CheckLaneLimit(currentLane - 1));
+            Move(CheckLaneLimit(CurrentLane - 1));
         }
 
         private void MoveRight()
         {
             if (isMoving) return;
-            Move(CheckLaneLimit(currentLane + 1));
+            Move(CheckLaneLimit(CurrentLane + 1));
         }
 
-        private Lane CheckLaneLimit(Lane toLane)
-        {
-            if (toLane < 0) return currentLane;
-            if (toLane > Lane.Right) return currentLane;
-            return toLane;
-        }
+#endif
 
-        private void Move(Lane toLane)
-        {
-            if (currentLane == toLane &&
-                fromStart == false)
-            {
-                return;
-            }
-
-            float to = 0.0f;
-            var newLanePosition = toLane;
-
-            isMoving = true;
-
-            switch (toLane)
-            {
-                case Lane.Left:
-                    to = Consts.LANE_SEPARATION;
-                    break;
-                case Lane.Right:
-                    to = -Consts.LANE_SEPARATION;
-                    break;
-                default:
-                    newLanePosition = Lane.Middle;
-                    break;
-            }
-
-            LeanTween.moveZ(gameObject, to, movementTransition)
-                .setOnComplete(() =>
-                {
-                    gameObject.transform.position = gameObject.transform.position.With(z: to);
-                    currentLane = newLanePosition;
-                    isMoving = false;
-                    fromStart = false;
-                }
-            ).setEase(tweenType);
-        }
     }
 }

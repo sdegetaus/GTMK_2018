@@ -47,9 +47,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faee1642556d79e4693aa70f7005ed95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLane: 1
   isMoving: 0
   movementTransition: 0.2
+  signalingCanvas: {fileID: 1446783926711361702}
+  arrowImage: {fileID: 451543734857850041}
 --- !u!135 &135879431761130102
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -202,7 +203,7 @@ GameObject:
   - component: {fileID: 2482832017239574871}
   - component: {fileID: 2070134742287449781}
   m_Layer: 0
-  m_Name: Canvas
+  m_Name: SignalingCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -300,7 +301,7 @@ GameObject:
   - component: {fileID: 8984294767397481194}
   - component: {fileID: 451543734857850041}
   m_Layer: 0
-  m_Name: Image
+  m_Name: ArrowImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

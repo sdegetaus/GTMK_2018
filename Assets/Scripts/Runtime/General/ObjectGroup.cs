@@ -28,11 +28,6 @@ namespace GMTK
             ActivateRandom();
         }
 
-        private void OnDisable()
-        {
-            Debug.Log("Disabled!");
-        }
-
         protected void FixedUpdate()
         {
             if (!GameManager.CanReadInput) return;

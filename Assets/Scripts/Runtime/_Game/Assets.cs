@@ -10,8 +10,10 @@ namespace GMTK
         public FloatVariable LerpSpeed = null;
         public FloatVariable SpawnYieldTime = null;
 
-        [Header("Others")]
-        public Material SelectedMat = null;
+        [Header("Signaling Arrows")]
+        public Sprite arrowLeft = null;
+        public Sprite arrowStraight = null;
+        public Sprite arrowRight = null;
 
     }
 }
