@@ -53,7 +53,7 @@ namespace GMTK
 
         public void BeginSpawning(bool fromResume = false)
         {
-            if (spawningCoroutine == null)
+            if (spawningCoroutine is null)
             {
                 spawningCoroutine = StartCoroutine(
                     EndlessSpawningRoutine(fromResume)
@@ -84,14 +84,11 @@ namespace GMTK
                 var newLane = GetRandomLane();
 
                 // Collectable Spawning...
-                if (5f.HasChance())
+                if (5.0f.HasChance())
                 {
                     var collectableGroup = pools.Spawn(
                         PoolTag.CollectableGroup,
-                        Vector3.zero.With(
-                            x: Consts.SPAWN_POINT_X,
-                            z: (float)newLane * Consts.LANE_SEPARATION
-                        )
+                        Vector3.zero.With(x: Consts.SPAWN_POINT_X)
                     ).GetComponent<CollectableGroup>();
 
                     collectableGroup.Initialize(newLane);
@@ -104,10 +101,7 @@ namespace GMTK
                 // Obstacle Spawning...
                 var obstacleGroup = pools.Spawn(
                     PoolTag.ObstacleGroup,
-                    Vector3.zero.With(
-                        x: Consts.SPAWN_POINT_X,
-                        z: (float)newLane * Consts.LANE_SEPARATION
-                    )
+                    Vector3.zero.With(x: Consts.SPAWN_POINT_X)
                 ).GetComponent<ObstacleGroup>();
 
                 obstacleGroup.Initialize(newLane);

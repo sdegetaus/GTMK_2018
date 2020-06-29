@@ -49,7 +49,6 @@ namespace GMTK
                 {
                     selectable.MoveTo(laneEnum.value, () =>
                     {
-                        selectable.Deselect();
                         selectable = null;
                         laneEnum = null;
                     });

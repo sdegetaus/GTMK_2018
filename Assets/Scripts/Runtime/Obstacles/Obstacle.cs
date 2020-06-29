@@ -60,9 +60,17 @@ namespace GMTK
         public void MoveTo(Lane lane, Action onComplete)
         {
             if (!IsSelected) return;
+
+            this.lane = lane;
+            float pos = -1.0f * Consts.LANE_SEPARATION * (float)lane;
+
             LeanTween.cancel(gameObject);
-            LeanTween.moveZ(gameObject, -1 * Consts.LANE_SEPARATION * (int)lane, a.time)
-                .setOnComplete(onComplete)
+            LeanTween.moveZ(gameObject, pos, a.time)
+                .setOnComplete(() => {
+                    Deselect();
+                    onComplete.Invoke();
+                    transform.position = transform.position.With(z: pos);
+                })
                 .setEase(a.ease);
         }
 

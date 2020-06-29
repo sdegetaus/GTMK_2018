@@ -21,14 +21,16 @@ namespace GMTK
 
         public virtual void Initialize(Lane lane)
         {
+            speed = Assets.Instance.Speed;
+            lerpSpeed = Assets.Instance.LerpSpeed;
+
+            this.lane = lane;
+
             if (objects is null || objects.Count == 0)
                 objects = gameObject.GetComponentsInChildren<Type>(true).ToList();
 
-            this.lane = lane;
-            speed = Assets.Instance.Speed;
-            lerpSpeed = Assets.Instance.LerpSpeed;
             UnactivateAll();
-            ActivateRandom();
+            ActivateItem(Utilities.GetRandomEnum<ObjectEnum>());
         }
 
         protected void FixedUpdate()
@@ -44,8 +46,14 @@ namespace GMTK
         protected void ActivateItem(ObjectEnum item)
         {
             int enumToInt = (int)Enum.Parse(typeof(ObjectEnum), item.ToString());
+
+            objects[enumToInt].gameObject.transform.position.With(
+                z: -1 * (float)lane * Consts.LANE_SEPARATION
+            );
+
             objects[enumToInt].gameObject.SetActive(true);
             objects[enumToInt].SetLane(lane);
+
             activeObject = item;
         }
 
@@ -53,11 +61,6 @@ namespace GMTK
         {
             int enumToInt = (int)Enum.Parse(typeof(ObjectEnum), item.ToString());
             objects[enumToInt].gameObject.SetActive(false);
-        }
-
-        protected void ActivateRandom()
-        {
-            ActivateItem(Utilities.GetRandomEnum<ObjectEnum>());
         }
 
         protected void UnactivateAll()
