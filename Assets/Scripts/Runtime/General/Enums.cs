@@ -13,9 +13,9 @@ public enum PoolTag
 
 public enum Lane
 {
-    Left,
-    Middle,
-    Right
+    Left = -1,
+    Middle = 0,
+    Right = 1
 }
 
 public enum ObstacleEnum

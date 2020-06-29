@@ -7,9 +7,12 @@ namespace GMTK
     public class Player : MonoBehaviour
     {
         public static Lane CurrentLane = Lane.Middle;
-        public static Lane PreviousLane = Lane.Middle;
 
-        public Vector3 Position { get => gameObject.transform.position; }
+        public Vector3 Position
+        {
+            get => gameObject.transform.position;
+            set => gameObject.transform.position = value;
+        }
 
         [SerializeField]
         private bool isMoving = false;
@@ -22,8 +25,9 @@ namespace GMTK
         [SerializeField] public Image arrowImage = null;
 
         // Private Variables
-        private bool fromStart = false;
         private Assets assets = null;
+
+        //private bool fromStart = false;
 
         private void Start()
         {
@@ -40,25 +44,23 @@ namespace GMTK
 
         private void OnRunStarted()
         {
-            fromStart = true;
-            Move(Lane.Middle);
             StartCoroutine(RandomWalker());
         }
 
         private void OnRunOver()
         {
-            signalingCanvas.enabled = false;
-            LeanTween.cancel(gameObject);
-            isMoving = false;
             StopAllCoroutines();
+            LeanTween.cancel(gameObject);
+            signalingCanvas.enabled = false;
+            isMoving = false;
         }
 
         private void OnRunPaused()
         {
-            signalingCanvas.enabled = false;
-            LeanTween.cancel(gameObject);
-            isMoving = false;
             StopAllCoroutines();
+            LeanTween.cancel(gameObject);
+            signalingCanvas.enabled = false;
+            isMoving = false;
         }
 
         private void OnRunResumed()
@@ -73,65 +75,53 @@ namespace GMTK
             signalingCanvas.enabled = true;
             while (true)
             {
-                var newLane = CheckLaneLimit(CurrentLane + ((Random.value * 100f).HasChance() ? 1 : -1));
-                ChangeArrowDirection(newLane);
-                yield return new WaitForSeconds(1f);
-                Move(newLane);
+                Lane toLane = GetRandomLane();
+
+                ChangeArrowDirection(toLane);
+
+                if (toLane == CurrentLane)
+                {
+                    yield return new WaitForSeconds(2.0f);
+                    continue;
+                }
+
+                yield return new WaitForSeconds(2.0f);
+
+                Move(toLane);
+
+                while (isMoving) yield return null;
             }
         }
 
-
-        private Lane CheckLaneLimit(Lane toLane)
+        private Lane GetRandomLane()
         {
-            if (toLane < 0) return CurrentLane;
-            if (toLane > Lane.Right) return CurrentLane;
-            return toLane;
+            Lane newLane = CurrentLane + ((Random.value * 100f).HasChance() ? 1 : -1);
+            if (Mathf.Abs((int)newLane + (int)CurrentLane) >= 2) return Lane.Middle;
+            return newLane;
         }
 
         private void Move(Lane toLane)
         {
-            if (CurrentLane == toLane && fromStart == false)
-            {
-                return;
-            }
-
-            PreviousLane = CurrentLane;
-
-            float to = 0.0f;
-            var newLanePosition = toLane;
-
             isMoving = true;
 
-            switch (toLane)
-            {
-                case Lane.Left:
-                    to = Consts.LANE_SEPARATION;
-                    break;
-                case Lane.Right:
-                    to = -Consts.LANE_SEPARATION;
-                    break;
-                default:
-                    newLanePosition = Lane.Middle;
-                    break;
-            }
-
+            var to = -1 * (float)toLane * Consts.LANE_SEPARATION;
             LeanTween.moveZ(gameObject, to, movementTransition)
                 .setOnComplete(() =>
                 {
-                    arrowImage.sprite = assets.arrowStraight;
-                    gameObject.transform.position = gameObject.transform.position.With(z: to);
-                    CurrentLane = newLanePosition;
+                    Position = Position.With(z: to);
+                    CurrentLane = toLane;
                     isMoving = false;
-                    fromStart = false;
                 }
-            ).setEase(LeanTweenType.easeOutQuad);
+            ).setEase(
+                LeanTweenType.easeOutQuad
+            );
         }
 
-        private void ChangeArrowDirection(Lane newLane)
+        private void ChangeArrowDirection(Lane toLane)
         {
-            if (newLane == PreviousLane)
+            if (toLane == CurrentLane)
                 arrowImage.sprite = assets.arrowStraight;
-            else if (newLane < PreviousLane)
+            else if (toLane < CurrentLane)
                 arrowImage.sprite = assets.arrowLeft;
             else
                 arrowImage.sprite = assets.arrowRight;
@@ -161,15 +151,14 @@ namespace GMTK
         private void MoveLeft()
         {
             if (isMoving) return;
-            Move(CheckLaneLimit(CurrentLane - 1));
+            Move(CurrentLane - 1);
         }
 
         private void MoveRight()
         {
             if (isMoving) return;
-            Move(CheckLaneLimit(CurrentLane + 1));
+            Move(CurrentLane + 1);
         }
-
 #endif
 
     }
