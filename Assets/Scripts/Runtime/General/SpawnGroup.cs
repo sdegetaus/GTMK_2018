@@ -6,9 +6,11 @@ using UnityEngine;
 namespace GMTK
 {
     public abstract class SpawnGroup<Type, ObjectEnum> : MonoBehaviour
-        where Type : Component
+        where Type : Component, ISelectable
         where ObjectEnum : Enum
     {
+        public Lane lane = Lane.Middle;
+
         [SerializeField]
         protected ObjectEnum activeObject;
 
@@ -17,11 +19,12 @@ namespace GMTK
         protected FloatVariable speed = null;
         protected FloatVariable lerpSpeed = null;
 
-        public virtual void Initialize()
+        public virtual void Initialize(Lane lane)
         {
             if (objects is null || objects.Count == 0)
                 objects = gameObject.GetComponentsInChildren<Type>(true).ToList();
 
+            this.lane = lane;
             speed = Assets.Instance.Speed;
             lerpSpeed = Assets.Instance.LerpSpeed;
             UnactivateAll();
@@ -42,6 +45,7 @@ namespace GMTK
         {
             int enumToInt = (int)Enum.Parse(typeof(ObjectEnum), item.ToString());
             objects[enumToInt].gameObject.SetActive(true);
+            objects[enumToInt].SetLane(lane);
             activeObject = item;
         }
 
@@ -61,5 +65,6 @@ namespace GMTK
             foreach (Type item in objects)
                 item.gameObject.SetActive(false);
         }
+
     }
 }

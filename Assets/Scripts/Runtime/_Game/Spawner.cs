@@ -81,6 +81,8 @@ namespace GMTK
                     );
                 }
 
+                var newLane = GetRandomLane();
+
                 // Collectable Spawning...
                 if (5f.HasChance())
                 {
@@ -88,11 +90,11 @@ namespace GMTK
                         PoolTag.CollectableGroup,
                         Vector3.zero.With(
                             x: Consts.SPAWN_POINT_X,
-                            z: GetNewLanePosition() ?? 0
+                            z: (float)newLane * Consts.LANE_SEPARATION
                         )
                     ).GetComponent<CollectableGroup>();
 
-                    collectableGroup.Initialize();
+                    collectableGroup.Initialize(newLane);
 
                     yield return new WaitForSeconds(
                         Assets.Instance.SpawnYieldTime.value
@@ -104,11 +106,11 @@ namespace GMTK
                     PoolTag.ObstacleGroup,
                     Vector3.zero.With(
                         x: Consts.SPAWN_POINT_X,
-                        z: GetNewLanePosition() ?? 0
+                        z: (float)newLane * Consts.LANE_SEPARATION
                     )
                 ).GetComponent<ObstacleGroup>();
 
-                obstacleGroup.Initialize();
+                obstacleGroup.Initialize(newLane);
 
                 yield return new WaitForSeconds(
                     Assets.Instance.SpawnYieldTime.value
@@ -116,19 +118,14 @@ namespace GMTK
             }
         }
 
-        // TEMP, TODO:
-        private float? GetNewLanePosition()
+        private Lane GetRandomLane()
         {
-            float? newLanePosition;
-
             if (33.0f.HasChance())
-                newLanePosition = -Consts.LANE_SEPARATION;
+                return Lane.Left;
             else if (33.0f.HasChance())
-                newLanePosition = Consts.LANE_SEPARATION;
+                return Lane.Right;
             else
-                newLanePosition = 0;
-
-            return newLanePosition;
+                return Lane.Middle;
         }
     }
 }

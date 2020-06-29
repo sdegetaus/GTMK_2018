@@ -1,25 +1,36 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using System.Linq;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace GMTK
 {
     public class Obstacle : MonoBehaviour, ICollide, ISelectable
     {
-        private new List<Renderer> renderer;
-        public TweenPreset a = null;
+        [SerializeField]
+        protected Lane lane = Lane.Middle;
 
-        public bool IsSelected = false;
+        [SerializeField]
+        private TweenPreset a = null;
+
+        // Private Variables
+        private List<Renderer> renderers;
+        private bool IsSelected = false;
 
         private void Start()
         {
-            renderer = GetComponentsInChildren<Renderer>().ToList();
+            renderers = GetComponentsInChildren<Renderer>().ToList();
         }
 
         public void OnTriggerEnter(Collider other)
         {
             if (GameManager.GodMode) return;
             GameManager.Events.OnRunOver.Raise();
+        }
+
+        public void SetLane(Lane lane)
+        {
+            this.lane = lane;
         }
 
         public void OnClick()
@@ -44,6 +55,15 @@ namespace GMTK
             if (!IsSelected) return;
             LeanTween.moveY(gameObject, 0, a.time / 2f).setEase(a.ease);
             IsSelected = false;
+        }
+
+        public void MoveTo(Lane lane, Action onComplete)
+        {
+            if (!IsSelected) return;
+            LeanTween.cancel(gameObject);
+            LeanTween.moveZ(gameObject, -1 * Consts.LANE_SEPARATION * (int)lane, a.time)
+                .setOnComplete(onComplete)
+                .setEase(a.ease);
         }
 
     }
