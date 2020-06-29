@@ -48,6 +48,7 @@ namespace GMTK
                 // MainMenu: 100 - 199
 
                 case ClickType.StartRun:
+                    if (!Pools.IsReady) break;
                     GameManager.Events.OnRunStarted.Raise();
                     break;
 

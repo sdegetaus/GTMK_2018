@@ -15,6 +15,8 @@ namespace GMTK
             public GameObject prefab;
         }
 
+        public static bool IsReady = false;
+
         [Header("Pools")]
         public Pool obstacleGroupPool;
         public Pool collectibleGroupPool;
@@ -22,7 +24,6 @@ namespace GMTK
 
         // Private Variables
         private Dictionary<PoolTag, Queue<GameObject>> poolGroup = new Dictionary<PoolTag, Queue<GameObject>>();
-
 
         public void Initialize()
         {
@@ -95,6 +96,7 @@ namespace GMTK
             yield return null;
 
             GameManager.Events.OnPoolLoaded.Raise();
+            IsReady = true;
         }
 
         public void DeactivateObjects()
