@@ -27,8 +27,6 @@ namespace GMTK
         // Private Variables
         private Assets assets = null;
 
-        //private bool fromStart = false;
-
         private void Start()
         {
             assets = Assets.Instance;
@@ -75,21 +73,16 @@ namespace GMTK
             signalingCanvas.enabled = true;
             while (true)
             {
+                while (isMoving) yield return null;
                 Lane toLane = GetRandomLane();
-
-                ChangeArrowDirection(toLane);
-
+                UpdateArrowImage(toLane);
                 if (toLane == CurrentLane)
                 {
                     yield return new WaitForSeconds(2.0f);
                     continue;
                 }
-
                 yield return new WaitForSeconds(2.0f);
-
                 Move(toLane);
-
-                while (isMoving) yield return null;
             }
         }
 
@@ -98,6 +91,16 @@ namespace GMTK
             Lane newLane = CurrentLane + ((Random.value * 100f).HasChance() ? 1 : -1);
             if (Mathf.Abs((int)newLane + (int)CurrentLane) >= 2) return Lane.Middle;
             return newLane;
+        }
+
+        private void UpdateArrowImage(Lane toLane)
+        {
+            if (toLane == CurrentLane)
+                arrowImage.sprite = assets.arrowStraight;
+            else if (toLane < CurrentLane)
+                arrowImage.sprite = assets.arrowLeft;
+            else
+                arrowImage.sprite = assets.arrowRight;
         }
 
         private void Move(Lane toLane)
@@ -115,16 +118,6 @@ namespace GMTK
             ).setEase(
                 LeanTweenType.easeOutQuad
             );
-        }
-
-        private void ChangeArrowDirection(Lane toLane)
-        {
-            if (toLane == CurrentLane)
-                arrowImage.sprite = assets.arrowStraight;
-            else if (toLane < CurrentLane)
-                arrowImage.sprite = assets.arrowLeft;
-            else
-                arrowImage.sprite = assets.arrowRight;
         }
 
 #if UNITY_EDITOR
