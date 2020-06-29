@@ -9,6 +9,7 @@ namespace GMTK
 
     public interface ISelectable
     {
+        void OnClick();
         void Select();
         void Deselect();
     }

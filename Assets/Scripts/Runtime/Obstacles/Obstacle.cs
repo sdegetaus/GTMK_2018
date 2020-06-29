@@ -24,24 +24,26 @@ namespace GMTK
 
         public void OnClick()
         {
-            LeanTween.cancel(gameObject);
-
             if (!IsSelected)
-                Select();
+               Select();
             else
                 Deselect();
-
-            IsSelected = !IsSelected;
         }
 
         public void Select()
         {
+            LeanTween.cancel(gameObject);
+            if (IsSelected) return;
             LeanTween.moveY(gameObject, a.to, a.time).setEase(a.ease);
+            IsSelected = true;
         }
 
         public void Deselect()
         {
+            LeanTween.cancel(gameObject);
+            if (!IsSelected) return;
             LeanTween.moveY(gameObject, 0, a.time / 2f).setEase(a.ease);
+            IsSelected = false;
         }
 
     }
